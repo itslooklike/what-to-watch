@@ -126,7 +126,9 @@ export default function Home() {
           <div className="catalog__movies-list">
             {films.map((film, idx) => {
               return (
-                <SmallMovieCard key={idx} name={film.name} href={film.url} imgSrc={film.imgSrc} />
+                <div key={idx} className="catalog__movies-card">
+                  <SmallMovieCard name={film.name} href={film.url} imgSrc={film.imgSrc} />
+                </div>
               )
             })}
           </div>
