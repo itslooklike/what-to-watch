@@ -1,6 +1,6 @@
 // import Head from 'next/head'
 // import Image from 'next/image'
-import { SmallMovieCard } from '../components/SmallMovieCard'
+import { MovieCardList } from '../components/MovieCardList'
 import { films } from '../mocks/films'
 
 export default function Home() {
@@ -123,15 +123,7 @@ export default function Home() {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {films.map((film, idx) => {
-              return (
-                <div key={idx} className="catalog__movies-card">
-                  <SmallMovieCard name={film.name} href={film.url} imgSrc={film.imgSrc} />
-                </div>
-              )
-            })}
-          </div>
+          <MovieCardList films={films} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">
