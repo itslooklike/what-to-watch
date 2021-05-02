@@ -33,14 +33,16 @@ export function MovieCardList(props) {
     <Root>
       {films.map((film, idx) => {
         return (
-          <Link passHref key={idx} href="/movie-page">
-            <SmallMovieCard
-              name={film.name}
-              href={film.url}
-              imgSrc={film.imgSrc}
-              videoLink={film.videoLink}
-            />
-          </Link>
+          <Wrap key={idx}>
+            <Link passHref href="/movie-page">
+              <SmallMovieCard
+                name={film.name}
+                href={film.url}
+                imgSrc={film.imgSrc}
+                videoLink={film.videoLink}
+              />
+            </Link>
+          </Wrap>
         )
       })}
     </Root>
