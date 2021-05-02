@@ -1,3 +1,4 @@
+import { useState, forwardRef } from 'react'
 import { styled } from 'linaria/react'
 
 const Root = styled.article`
@@ -56,17 +57,38 @@ const LinkTo = styled.a`
   color: inherit;
 `
 
-export function SmallMovieCard(props) {
-  const { name, href, imgSrc } = props
+const Video = styled.video`
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`
+
+export const SmallMovieCard = forwardRef((props, ref) => {
+  const { name, href, imgSrc, videoLink, onClick } = props
+
+  const [isHover, setHover] = useState(false)
+
+  const handleHover = () => setHover(true)
+
+  const handleLeave = () => setHover(false)
+
+  const isShowVideo = isHover && videoLink
 
   return (
-    <Root>
+    <Root onMouseEnter={handleHover} onMouseLeave={handleLeave}>
       <ImgWrap>
-        <Img src={imgSrc} alt={name} width="280" height="175" />
+        {isShowVideo ? (
+          <Video src={videoLink} autoPlay poster={imgSrc} muted></Video>
+        ) : (
+          <Img src={imgSrc} alt={name} width="280" height="175" />
+        )}
       </ImgWrap>
       <Title>
-        <LinkTo href={href}>{name}</LinkTo>
+        <LinkTo ref={ref} href={href} onClick={onClick}>
+          {name}
+        </LinkTo>
       </Title>
     </Root>
   )
-}
+})
