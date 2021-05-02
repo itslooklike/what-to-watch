@@ -14,11 +14,13 @@ export default function MoviePageReviews() {
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <a href="main.html" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              <Link href="/">
+                <a className="logo__link">
+                  <span className="logo__letter logo__letter--1">W</span>
+                  <span className="logo__letter logo__letter--2">T</span>
+                  <span className="logo__letter logo__letter--3">W</span>
+                </a>
+              </Link>
             </div>
 
             <div className="user-block">
@@ -101,7 +103,7 @@ export default function MoviePageReviews() {
 
                       <footer className="review__details">
                         <cite className="review__author">Kate Muir</cite>
-                        <time className="review__date" datetime="2016-12-24">
+                        <time className="review__date" dateTime="2016-12-24">
                           December 24, 2016
                         </time>
                       </footer>
@@ -121,7 +123,7 @@ export default function MoviePageReviews() {
 
                       <footer className="review__details">
                         <cite className="review__author">Bill Goodykoontz</cite>
-                        <time className="review__date" datetime="2015-11-18">
+                        <time className="review__date" dateTime="2015-11-18">
                           November 18, 2015
                         </time>
                       </footer>
@@ -139,7 +141,7 @@ export default function MoviePageReviews() {
 
                       <footer className="review__details">
                         <cite className="review__author">Amanda Greever</cite>
-                        <time className="review__date" datetime="2015-11-18">
+                        <time className="review__date" dateTime="2015-11-18">
                           November 18, 2015
                         </time>
                       </footer>
@@ -158,7 +160,7 @@ export default function MoviePageReviews() {
 
                       <footer className="review__details">
                         <cite className="review__author">Matthew Lickona</cite>
-                        <time className="review__date" datetime="2016-12-20">
+                        <time className="review__date" dateTime="2016-12-20">
                           December 20, 2016
                         </time>
                       </footer>
@@ -176,7 +178,7 @@ export default function MoviePageReviews() {
 
                       <footer className="review__details">
                         <cite className="review__author">Paula Fleri-Soler</cite>
-                        <time className="review__date" datetime="2016-12-20">
+                        <time className="review__date" dateTime="2016-12-20">
                           December 20, 2016
                         </time>
                       </footer>
@@ -194,7 +196,7 @@ export default function MoviePageReviews() {
 
                       <footer className="review__details">
                         <cite className="review__author">Paula Fleri-Soler</cite>
-                        <time className="review__date" datetime="2016-12-20">
+                        <time className="review__date" dateTime="2016-12-20">
                           December 20, 2016
                         </time>
                       </footer>
