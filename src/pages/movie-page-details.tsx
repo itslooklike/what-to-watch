@@ -3,7 +3,6 @@ import Link from 'next/link'
 export default function MoviePageDetails() {
   return (
     <div>
-      {' '}
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">

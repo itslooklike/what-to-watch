@@ -1,5 +1,6 @@
 import { useState, forwardRef } from 'react'
 import { styled } from 'linaria/react'
+import { IFilm } from '../store/FilmsStore'
 
 const Root = styled.article`
   border-radius: 6px;
@@ -64,8 +65,16 @@ const Video = styled.video`
   object-fit: cover;
 `
 
-export const SmallMovieCard = forwardRef((props, ref) => {
-  const { name, href, imgSrc, videoLink, onClick } = props
+type TProps = {
+  film: IFilm
+
+  // FIXME: это должно пробрасываться
+  onClick?: VoidFunction
+  href?: string
+}
+
+export const SmallMovieCard = forwardRef<HTMLAnchorElement, TProps>((props, ref) => {
+  const { film, onClick, href } = props
 
   const [isHover, setHover] = useState(false)
 
@@ -73,20 +82,20 @@ export const SmallMovieCard = forwardRef((props, ref) => {
 
   const handleLeave = () => setHover(false)
 
-  const isShowVideo = isHover && videoLink
+  const isShowVideo = isHover && film.video_link
 
   return (
     <Root onMouseEnter={handleHover} onMouseLeave={handleLeave}>
       <ImgWrap>
         {isShowVideo ? (
-          <Video src={videoLink} autoPlay poster={imgSrc} muted></Video>
+          <Video src={film.video_link} autoPlay poster={film.poster_image} muted></Video>
         ) : (
-          <Img src={imgSrc} alt={name} width="280" height="175" />
+          <Img src={film.poster_image} alt={film.name} width="280" height="175" />
         )}
       </ImgWrap>
       <Title>
         <LinkTo ref={ref} href={href} onClick={onClick}>
-          {name}
+          {film.name}
         </LinkTo>
       </Title>
     </Root>

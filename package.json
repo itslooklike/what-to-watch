@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "linaria": "^2.1.0",
     "next": "10.2.0",
     "next-linaria": "^0.10.0",

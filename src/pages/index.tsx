@@ -1,9 +1,14 @@
-// import Head from 'next/head'
-// import Image from 'next/image'
 import { MovieCardList } from '../components/MovieCardList'
-import { films } from '../mocks/films'
+import { api } from '../services/api'
+import { IFilm } from '../store/FilmsStore'
 
-export default function Home() {
+type TProps = {
+  films: IFilm[]
+}
+
+export default function Home(props: TProps) {
+  const { films } = props
+
   return (
     <div>
       <section className="movie-card">
@@ -148,4 +153,10 @@ export default function Home() {
       </div>
     </div>
   )
+}
+
+Home.getInitialProps = async function () {
+  const { data } = await api.get<IFilm[]>('/films')
+
+  return { films: data }
 }

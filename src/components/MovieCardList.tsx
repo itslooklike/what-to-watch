@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { styled } from 'linaria/react'
 import { SmallMovieCard } from './SmallMovieCard'
+import { IFilm } from '../store/FilmsStore'
 
 const Root = styled.div`
   display: flex;
@@ -27,20 +28,20 @@ const Wrap = styled.div`
   }
 `
 
-export function MovieCardList(props) {
+type TProps = {
+  films: IFilm[]
+}
+
+export function MovieCardList(props: TProps) {
   const { films } = props
+
   return (
     <Root>
       {films.map((film, idx) => {
         return (
           <Wrap key={idx}>
-            <Link passHref href="/movie-page">
-              <SmallMovieCard
-                name={film.name}
-                href={film.url}
-                imgSrc={film.imgSrc}
-                videoLink={film.videoLink}
-              />
+            <Link href="/movie-page" passHref>
+              <SmallMovieCard film={film} />
             </Link>
           </Wrap>
         )
