@@ -1,5 +1,8 @@
+import './SmallMovieCard.css'
+
 export function SmallMovieCard(props) {
   const { name, href, imgSrc } = props
+
   return (
     <article className="small-movie-card catalog__movies-card">
       <div className="small-movie-card__image">
