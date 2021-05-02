@@ -1,11 +1,11 @@
-type Genre = 'Adventure' | 'Fantasy' | 'Drama' | 'Action' | 'Crime' | 'Comedy' | 'Thriller'
+export type TGenre = 'Adventure' | 'Fantasy' | 'Drama' | 'Action' | 'Crime' | 'Comedy' | 'Thriller'
 
 export interface IFilm {
   background_color: string
   background_image: string
   description: string
   director: string
-  genre: Genre
+  genre: TGenre
   id: number
   is_favorite: boolean
   name: string
