@@ -125,13 +125,15 @@ const Home = observer(() => {
   )
 })
 
-export async function getServerSideProps() {
+Home.getInitialProps = async () => {
+  if (FilmsStore.data.length) {
+    return {}
+  }
+
   const { data } = await FilmsStore.fetchFilms()
 
   return {
-    props: {
-      initialFilmsStore: data,
-    },
+    initialFilmsStore: data,
   }
 }
 
