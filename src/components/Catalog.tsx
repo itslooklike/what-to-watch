@@ -6,6 +6,7 @@ import { observer } from 'mobx-react-lite'
 import cn from 'classnames'
 import FilmsStore, { TGenre } from '../store/FilmsStore'
 import { MovieCardList } from '../components/MovieCardList'
+import { useFilmsPagination } from '../services/useFilmsPagination'
 
 const Root = styled.section`
   margin-bottom: 115px;
@@ -58,6 +59,10 @@ const listLinkStyles = css`
   }
 `
 
+const ButtonWrap = styled.div`
+  margin-top: 50px;
+`
+
 const ButtonMore = styled.button`
   display: block;
   width: 100%;
@@ -81,6 +86,7 @@ const ButtonMore = styled.button`
 export const Catalog = observer(() => {
   const { query } = useRouter()
   const genre = query.genre as TGenre
+  const [currentFilms, handleMore, isHasMore] = useFilmsPagination(genre)
 
   return (
     <Root>
@@ -100,10 +106,14 @@ export const Catalog = observer(() => {
           )
         })}
       </List>
-      <MovieCardList films={FilmsStore.selectFilmsByGenre(genre)} />
-      <div>
-        <ButtonMore type="button">Show more</ButtonMore>
-      </div>
+      <MovieCardList films={currentFilms} />
+      {isHasMore && (
+        <ButtonWrap>
+          <ButtonMore type="button" onClick={handleMore}>
+            Show more
+          </ButtonMore>
+        </ButtonWrap>
+      )}
     </Root>
   )
 })
