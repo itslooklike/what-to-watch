@@ -40,7 +40,7 @@ export function MovieCardList(props: TProps) {
       {films.map((film, idx) => {
         return (
           <Wrap key={idx}>
-            <Link href="/movie-page" passHref>
+            <Link href={`/m/${film.id}`} passHref>
               <SmallMovieCard film={film} />
             </Link>
           </Wrap>

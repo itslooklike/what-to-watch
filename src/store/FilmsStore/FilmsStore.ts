@@ -53,6 +53,14 @@ class FilmsStore {
 
     return this.data
   }
+
+  selectFilmById(id: number | string) {
+    if (typeof id === 'string') {
+      return this.data.find((film) => film.id === +id)
+    }
+
+    return this.data.find((film) => film.id === id)
+  }
 }
 
 export default new FilmsStore()

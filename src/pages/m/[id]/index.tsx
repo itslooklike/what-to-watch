@@ -1,12 +1,25 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import FilmsStore from '../../../store/FilmsStore'
+import { Footer } from '../../../components/Footer'
 
 export default function MoviePage() {
+  const router = useRouter()
+  const id = router.query.id as string
+
+  const film = FilmsStore.selectFilmById(id)
+
+  if (!film) {
+    // FIXME: redirect to 404
+    return 404
+  }
+
   return (
     <div>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src={film.background_image} alt={film.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -31,10 +44,10 @@ export default function MoviePage() {
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{film.name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">Drama</span>
-                <span className="movie-card__year">2014</span>
+                <span className="movie-card__genre">{film.genre}</span>
+                <span className="movie-card__year">{film.released}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -61,29 +74,24 @@ export default function MoviePage() {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img
-                src="img/the-grand-budapest-hotel-poster.jpg"
-                alt="The Grand Budapest Hotel poster"
-                width="218"
-                height="327"
-              />
+              <img src={film.poster_image} alt={`${film.name} poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
               <nav className="movie-nav movie-card__nav">
                 <ul className="movie-nav__list">
                   <li className="movie-nav__item movie-nav__item--active">
-                    <Link href="/movie-page">
+                    <Link href={`/m/${id}`}>
                       <a className="movie-nav__link">Overview</a>
                     </Link>
                   </li>
                   <li className="movie-nav__item">
-                    <Link href="/movie-page-details">
+                    <Link href={`/m/${id}/details`}>
                       <a className="movie-nav__link">Details</a>
                     </Link>
                   </li>
                   <li className="movie-nav__item">
-                    <Link href="/movie-page-reviews">
+                    <Link href={`/m/${id}/reviews`}>
                       <a className="movie-nav__link">Reviews</a>
                     </Link>
                   </li>
@@ -91,35 +99,22 @@ export default function MoviePage() {
               </nav>
 
               <div className="movie-rating">
-                <div className="movie-rating__score">8,9</div>
+                <div className="movie-rating__score">{film.rating}</div>
                 <p className="movie-rating__meta">
                   <span className="movie-rating__level">Very good</span>
-                  <span className="movie-rating__count">240 ratings</span>
+                  <span className="movie-rating__count">{film.rating} ratings</span>
                 </p>
               </div>
 
               <div className="movie-card__text">
-                <p>
-                  In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided
-                  over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes
-                  Gustave's friend and protege.
-                </p>
-
-                <p>
-                  Gustave prides himself on providing first-class service to the hotel's guests,
-                  including satisfying the sexual needs of the many elderly women who stay there.
-                  When one of Gustave's lovers dies mysteriously, Gustave finds himself the
-                  recipient of a priceless painting and the chief suspect in her murder.
-                </p>
+                <p>{film.description}</p>
 
                 <p className="movie-card__director">
-                  <strong>Director: Wes Andreson</strong>
+                  <strong>Director: {film.director}</strong>
                 </p>
 
                 <p className="movie-card__starring">
-                  <strong>
-                    Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other
-                  </strong>
+                  <strong>Starring: {film.starring.join(', ')} and other</strong>
                 </p>
               </div>
             </div>
@@ -188,19 +183,7 @@ export default function MoviePage() {
           </div>
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   )
