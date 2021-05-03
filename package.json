@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "classnames": "^2.3.1",
     "linaria": "^2.1.0",
     "mobx": "^6.3.0",
     "mobx-react-lite": "^3.2.0",

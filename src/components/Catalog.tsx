@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { css } from 'linaria'
 import { styled } from 'linaria/react'
 import { observer } from 'mobx-react-lite'
+import cn from 'classnames'
 import FilmsStore, { TGenre } from '../store/FilmsStore'
 import { MovieCardList } from '../components/MovieCardList'
 
@@ -27,14 +29,13 @@ const ListItem = styled.li`
   margin-bottom: 20px;
 `
 
-const ListLink = styled.a`
+const listLinkStyles = css`
   display: block;
   color: #dfcf77;
   text-decoration: none;
   position: relative;
   padding-bottom: 15px;
   transition: font-weight;
-  cursor: pointer;
 
   ::after {
     content: '';
@@ -76,6 +77,7 @@ const ButtonMore = styled.button`
   }
 `
 
+// FIXME: что-то придумать с ссылками
 export const Catalog = observer(() => {
   const { query } = useRouter()
   const genre = query.genre as TGenre
@@ -85,14 +87,14 @@ export const Catalog = observer(() => {
       <List>
         <ListItem>
           <Link href="/" scroll={false}>
-            <ListLink className={genre ? '' : 'active'}>All genres</ListLink>
+            <a className={cn(listLinkStyles, !genre && 'active')}>All genres</a>
           </Link>
         </ListItem>
         {FilmsStore.filmGenres.map((genreItem, idx) => {
           return (
             <ListItem key={idx}>
               <Link href={`/?genre=${genreItem}`} scroll={false}>
-                <ListLink className={genre === genreItem ? 'active' : ''}>{genreItem}</ListLink>
+                <a className={cn(listLinkStyles, genre === genreItem && 'active')}>{genreItem}</a>
               </Link>
             </ListItem>
           )
