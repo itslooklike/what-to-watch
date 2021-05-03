@@ -1,4 +1,5 @@
 import { styled } from 'linaria/react'
+import { IFilm } from '../store/FilmsStore'
 import { Header } from '../components/Header'
 import { Button } from '../components/Button'
 
@@ -6,7 +7,7 @@ const Card = styled.section`
   position: relative;
   z-index: 1;
   color: #eee5b5;
-  padding-bottom: 78px;
+  padding-bottom: 80px;
   background: #e1b0b2;
 `
 
@@ -96,37 +97,38 @@ const CardGenre = styled.span`
 
 const CardButtons = styled.div`
   display: flex;
+  gap: 15px;
 `
 
-export const MovieCardHeader = () => {
+type TProps = {
+  film: IFilm
+}
+
+export const MovieCardHeader = (props: TProps) => {
+  const { film } = props
+
   return (
     <Card>
       <CardBg>
-        <CardImg src="/img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+        <CardImg src={film.background_image} alt={film.name} />
       </CardBg>
-
-      <h1 className="visually-hidden">WTW</h1>
-
       <Header />
-
       <CardWrap>
         <CardInfo>
           <CardPoster>
             <CardPosterImg
-              src="/img/the-grand-budapest-hotel-poster.jpg"
-              alt="The Grand Budapest Hotel poster"
+              src={film.poster_image}
+              alt={`${film.name} poster`}
               width="218"
               height="327"
             />
           </CardPoster>
-
           <CardDesc>
-            <CardTitle>The Grand Budapest Hotel</CardTitle>
+            <CardTitle>{film.name}</CardTitle>
             <CardMeta>
-              <CardGenre>Drama</CardGenre>
-              <span>2014</span>
+              <CardGenre>{film.genre}</CardGenre>
+              <span>{film.released}</span>
             </CardMeta>
-
             <CardButtons>
               <Button>Play</Button>
               <Button>My list</Button>

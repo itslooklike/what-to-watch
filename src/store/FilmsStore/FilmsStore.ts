@@ -67,6 +67,10 @@ class FilmsStore {
       (film) => film.genre === currentFilm.genre && film.id !== currentFilm.id
     )
   }
+
+  get firstFilm() {
+    return this.data[0]
+  }
 }
 
 export default new FilmsStore()
