@@ -2,7 +2,12 @@ import './globals.css'
 
 import FilmsStore from '../store/FilmsStore'
 
-function MyApp({ Component, pageProps }) {
+type TProps = {
+  Component: any
+  pageProps: any
+}
+
+function MyApp({ Component, pageProps }: TProps) {
   const { initialFilmsStore, ...restPageProps } = pageProps
 
   if (initialFilmsStore) {
