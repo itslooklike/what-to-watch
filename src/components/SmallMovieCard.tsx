@@ -10,7 +10,7 @@ const Root = styled.article`
 
   :hover {
     z-index: 3;
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 `
 

@@ -61,6 +61,12 @@ class FilmsStore {
 
     return this.data.find((film) => film.id === id)
   }
+
+  selectLikeThis(currentFilm: IFilm) {
+    return this.data.filter(
+      (film) => film.genre === currentFilm.genre && film.id !== currentFilm.id
+    )
+  }
 }
 
 export default new FilmsStore()

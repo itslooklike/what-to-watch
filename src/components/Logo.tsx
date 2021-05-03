@@ -5,7 +5,7 @@ const Root = styled.div`
   display: inline-flex;
 `
 
-const LogoLink = styled.div`
+const LogoLinkDefault = styled.a`
   border: 1px solid rgba(223, 207, 119, 0.36);
   border-radius: 8px;
   width: 93px;
@@ -17,7 +17,6 @@ const LogoLink = styled.div`
   justify-content: center;
   font-weight: bold;
   text-decoration: none;
-
   transition: color 0.2s, border-color 0.2s;
 
   &[href]:hover,
@@ -27,7 +26,7 @@ const LogoLink = styled.div`
   }
 `
 
-const LogoLinkLight = styled.div`
+const LogoLinkLight = styled.a`
   border: 1px solid rgba(84, 80, 62, 0.36);
   color: #54503e;
   border-radius: 8px;
@@ -62,22 +61,26 @@ const LogoLetter3 = styled.span`
   transform: rotate(8deg) translateY(5px);
 `
 
+const TextBlock = () => (
+  <>
+    <LogoLetter1>W</LogoLetter1>
+    <LogoLetter2>T</LogoLetter2>
+    <LogoLetter3>W</LogoLetter3>
+  </>
+)
+
 export function Logo({ light }: { light?: boolean }) {
   return (
     <Root>
       <Link href="/">
         {light ? (
           <LogoLinkLight>
-            <LogoLetter1>W</LogoLetter1>
-            <LogoLetter2>T</LogoLetter2>
-            <LogoLetter3>W</LogoLetter3>
+            <TextBlock />
           </LogoLinkLight>
         ) : (
-          <LogoLink>
-            <LogoLetter1>W</LogoLetter1>
-            <LogoLetter2>T</LogoLetter2>
-            <LogoLetter3>W</LogoLetter3>
-          </LogoLink>
+          <LogoLinkDefault>
+            <TextBlock />
+          </LogoLinkDefault>
         )}
       </Link>
     </Root>

@@ -34,7 +34,7 @@ export function Header() {
       <Logo />
       <UserBlock>
         <Avatar>
-          <AvatarImg src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+          <AvatarImg src="/img/avatar.jpg" alt="User avatar" width="63" height="63" />
         </Avatar>
       </UserBlock>
     </Root>

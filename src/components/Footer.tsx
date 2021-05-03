@@ -1,6 +1,12 @@
 import { styled } from 'linaria/react'
 import { Logo } from './Logo'
 
+const LogoWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+`
+
 const Copyright = styled.div`
   text-align: center;
   font-size: 14px;
@@ -15,7 +21,9 @@ const CopyrightText = styled.p`
 export function Footer() {
   return (
     <footer>
-      <Logo />
+      <LogoWrap>
+        <Logo />
+      </LogoWrap>
       <Copyright>
         <CopyrightText>© 2021 What to watch Ltd.</CopyrightText>
       </Copyright>
