@@ -634,51 +634,6 @@ main {
   margin-bottom: 40px;
 }
 
-.movie-card__row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-}
-
-.movie-card__text-col {
-  width: 155px;
-  margin-right: 35px;
-}
-.movie-card__text-col:last-child {
-  margin-right: 0;
-}
-
-.movie-card__details-item {
-  font-size: 19px;
-  line-height: 30px;
-}
-
-.movie-card__details-name {
-  display: block;
-  color: #252525;
-  font-weight: bold;
-}
-
-.movie-card__details-value {
-  color: #131313;
-}
-
-.movie-card__reviews {
-  padding-top: 20px;
-}
-
-.movie-card__reviews-col {
-  width: calc((100% - 60px) / 2);
-  margin-right: 60px;
-  max-width: 380px;
-}
-.movie-card__reviews-col:last-child {
-  margin-right: 0;
-}
-
 .movie-card__header {
   position: relative;
 }
@@ -929,72 +884,6 @@ main {
   color: rgba(56, 44, 42, 0.7);
   -webkit-transition: color 0.2s;
   transition: color 0.2s;
-}
-
-.review {
-  border-bottom: 2px solid #e8c3c4;
-  font-size: 17px;
-  color: #252525;
-  line-height: 24px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 75px;
-  position: relative;
-  margin-bottom: 10px;
-}
-.review:last-child {
-  margin-bottom: 0px;
-  border-bottom: none;
-}
-
-.review__quote {
-  margin: 0;
-  font-size: 17px;
-  line-height: 24px;
-}
-
-.review__text {
-  margin: 0;
-  margin-bottom: 15px;
-}
-
-.review__details {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 16px;
-  line-height: 27px;
-  color: rgba(0, 0, 0, 0.4);
-}
-
-.review__author {
-  font-style: normal;
-  font-weight: bold;
-}
-
-.review__date {
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-.review__date::before {
-  content: '·';
-  margin-left: 4px;
-  margin-right: 4px;
-}
-
-.review__rating {
-  position: absolute;
-  right: 0;
-  top: 22px;
-  background: rgba(255, 255, 255, 0.24);
-  border-radius: 8px;
-  width: 55px;
-  text-align: center;
-  font-size: 19px;
-  color: #353535;
-  font-weight: 500;
-  line-height: 25px;
-  padding: 5px;
 }
 
 .sign-in {
