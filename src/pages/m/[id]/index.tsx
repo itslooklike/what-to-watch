@@ -1,23 +1,11 @@
 import { useRouter } from 'next/router'
-import FilmsStore from '../../../store/FilmsStore'
-import { Footer } from '../../../components/Footer'
-import { MovieCardList } from '../../../components/MovieCardList'
-import { FilmCard } from '../../../components/FilmCard'
+import FilmsStore, { getInitial } from '../../../store/FilmsStore'
+import { FilmLayout } from '../../../components/FilmLayout'
 import { FilmOverview } from '../../../components/FilmOverview'
 
-MoviePage.getInitialProps = async () => {
-  if (FilmsStore.data.length) {
-    return {}
-  }
+MovieIndex.getInitialProps = getInitial
 
-  const { data } = await FilmsStore.fetchFilms()
-
-  return {
-    initialFilmsStore: data,
-  }
-}
-
-export default function MoviePage() {
+export default function MovieIndex() {
   const router = useRouter()
   const id = router.query.id as string
 
@@ -29,20 +17,8 @@ export default function MoviePage() {
   }
 
   return (
-    <div>
-      <FilmCard film={film} content={<FilmOverview film={film} />} />
-
-      <div className="page-content">
-        <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
-
-          <div className="catalog__movies-list">
-            <MovieCardList films={FilmsStore.selectLikeThis(film)} />
-          </div>
-        </section>
-
-        <Footer />
-      </div>
-    </div>
+    <FilmLayout film={film}>
+      <FilmOverview film={film} />
+    </FilmLayout>
   )
 }
