@@ -3,11 +3,23 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 import { MovieCardList } from '../components/MovieCardList'
-import { Logo } from '../components/Logo'
+import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import FilmsStore, { TGenre } from '../store/FilmsStore'
 
-const Home = observer(() => {
+Home.getInitialProps = async () => {
+  if (FilmsStore.data.length) {
+    return {}
+  }
+
+  const { data } = await FilmsStore.fetchFilms()
+
+  return {
+    initialFilmsStore: data,
+  }
+}
+
+function Home() {
   const { query } = useRouter()
 
   const genre = query.genre as TGenre
@@ -21,15 +33,7 @@ const Home = observer(() => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <Logo />
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
-        </header>
+        <Header />
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
@@ -78,6 +82,7 @@ const Home = observer(() => {
                 <a className="catalog__genres-link">All genres</a>
               </Link>
             </li>
+
             {FilmsStore.filmGenres.map((genreItem, idx) => {
               return (
                 <li
@@ -107,18 +112,6 @@ const Home = observer(() => {
       </div>
     </div>
   )
-})
-
-Home.getInitialProps = async () => {
-  if (FilmsStore.data.length) {
-    return {}
-  }
-
-  const { data } = await FilmsStore.fetchFilms()
-
-  return {
-    initialFilmsStore: data,
-  }
 }
 
-export default Home
+export default observer(Home)

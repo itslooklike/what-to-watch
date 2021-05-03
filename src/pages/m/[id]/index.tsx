@@ -3,6 +3,18 @@ import { useRouter } from 'next/router'
 import FilmsStore from '../../../store/FilmsStore'
 import { Footer } from '../../../components/Footer'
 
+MoviePage.getInitialProps = async () => {
+  if (FilmsStore.data.length) {
+    return {}
+  }
+
+  const { data } = await FilmsStore.fetchFilms()
+
+  return {
+    initialFilmsStore: data,
+  }
+}
+
 export default function MoviePage() {
   const router = useRouter()
   const id = router.query.id as string
