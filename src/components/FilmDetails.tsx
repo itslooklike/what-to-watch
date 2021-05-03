@@ -46,7 +46,6 @@ export const FilmDetails = (props: TProps) => {
           <ItemValue>{film.starring.join(', ')}</ItemValue>
         </Item>
       </Col>
-
       <Col>
         <Item>
           <ItemName>Run Time</ItemName>

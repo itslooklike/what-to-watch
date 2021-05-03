@@ -1,5 +1,6 @@
+import './globals.css'
+
 import FilmsStore from '../store/FilmsStore'
-import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   const { initialFilmsStore, ...restPageProps } = pageProps

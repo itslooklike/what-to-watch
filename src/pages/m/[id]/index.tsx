@@ -12,7 +12,6 @@ export default function MovieIndex() {
   const film = FilmsStore.selectFilmById(id)
 
   if (!film) {
-    // FIXME: redirect to 404
     return 404
   }
 

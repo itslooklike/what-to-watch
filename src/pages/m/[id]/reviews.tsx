@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import FilmsStore, { getInitial } from '../../../store/FilmsStore'
-import { FilmReviews } from '../../../components/FilmReviews'
 import { FilmLayout } from '../../../components/FilmLayout'
+import { FilmReviews } from '../../../components/FilmReviews'
 
 MoviePageReviews.getInitialProps = getInitial
 
@@ -12,7 +12,6 @@ export default function MoviePageReviews() {
   const film = FilmsStore.selectFilmById(id)
 
   if (!film) {
-    // FIXME: redirect to 404
     return 404
   }
 
