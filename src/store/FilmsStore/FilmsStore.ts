@@ -55,11 +55,7 @@ class FilmsStore {
   }
 
   selectFilmById(id: number | string) {
-    if (typeof id === 'string') {
-      return this.data.find((film) => film.id === +id)
-    }
-
-    return this.data.find((film) => film.id === id)
+    return this.data.find((film) => film.id === (typeof id === 'string' ? +id : id))
   }
 
   selectLikeThis(currentFilm: IFilm) {
