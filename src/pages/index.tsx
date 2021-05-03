@@ -1,23 +1,13 @@
-import { observer } from 'mobx-react-lite'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { observer } from 'mobx-react-lite'
 
 import { MovieCardList } from '../components/MovieCardList'
 import { Footer } from '../components/Footer'
 import { MovieCardHeader } from '../components/MovieCardHeader'
-import FilmsStore, { TGenre } from '../store/FilmsStore'
+import FilmsStore, { TGenre, getInitial } from '../store/FilmsStore'
 
-Home.getInitialProps = async () => {
-  if (FilmsStore.data.length) {
-    return {}
-  }
-
-  const { data } = await FilmsStore.fetchFilms()
-
-  return {
-    initialFilmsStore: data,
-  }
-}
+Home.getInitialProps = getInitial
 
 function Home() {
   const { query } = useRouter()

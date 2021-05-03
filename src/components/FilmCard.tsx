@@ -1,11 +1,9 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { styled } from 'linaria/react'
-
 import { IFilm } from '../store/FilmsStore'
 import { Header } from '../components/Header'
 import { Button } from '../components/Button'
-import { FilmOverview } from '../components/FilmOverview'
-import { ReactNode } from 'react'
 
 const Root = styled.section`
   position: relative;
@@ -87,6 +85,7 @@ const Genre = styled.span`
 
 const ButtonsWrap = styled.div`
   display: flex;
+  gap: 15px;
 `
 
 const TranslateTop = styled.div`
@@ -158,7 +157,8 @@ const NavListLink = styled.a`
     display: none;
   }
 
-  :hover::after {
+  :hover::after,
+  &.active::after {
     display: block;
   }
 `
@@ -169,6 +169,8 @@ const Info = styled.div`
 `
 
 const Navigation = ({ filmId }: { filmId: number | string }) => {
+  const { asPath } = useRouter()
+
   const list = [
     {
       url: `/m/${filmId}`,
@@ -188,8 +190,8 @@ const Navigation = ({ filmId }: { filmId: number | string }) => {
     <NavList>
       {list.map((item, idx) => (
         <NavListItem key={idx}>
-          <Link href={item.url}>
-            <NavListLink>{item.text}</NavListLink>
+          <Link href={item.url} scroll={false}>
+            <NavListLink className={asPath === item.url ? 'active' : ''}>{item.text}</NavListLink>
           </Link>
         </NavListItem>
       ))}
@@ -199,7 +201,7 @@ const Navigation = ({ filmId }: { filmId: number | string }) => {
 
 type TProps = {
   film: IFilm
-  content: ReactNode
+  content: React.ReactNode
 }
 
 export const FilmCard = (props: TProps) => {
@@ -217,14 +219,14 @@ export const FilmCard = (props: TProps) => {
             <Title>{film.name}</Title>
             <Meta>
               <Genre>{film.genre}</Genre>
-              <span className="movie-card__year">{film.released}</span>
+              <span>{film.released}</span>
             </Meta>
 
             <ButtonsWrap>
               <Button>Play</Button>
               <Button>My list</Button>
               <Link href="add-review.html">
-                <a>Add review</a>
+                <Button asTag="a">Add review</Button>
               </Link>
             </ButtonsWrap>
           </Description>
@@ -241,12 +243,10 @@ export const FilmCard = (props: TProps) => {
               height="327"
             />
           </Poster>
-
           <div>
             <Nav>
               <Navigation filmId={film.id} />
             </Nav>
-
             <div>{content}</div>
           </div>
         </Info>

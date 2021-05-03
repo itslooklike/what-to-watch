@@ -1,7 +1,7 @@
+import { css } from 'linaria'
 import React from 'react'
-import { styled } from 'linaria/react'
 
-const Root = styled.button`
+const className = css`
   display: inline-block;
   vertical-align: top;
   padding: 0;
@@ -33,10 +33,12 @@ const Root = styled.button`
   }
 `
 
-export const Button: React.FC = ({ children }) => {
-  return (
-    <Root type="button">
-      <span>{children}</span>
-    </Root>
-  )
+type TProps = {
+  asTag?: string
 }
+
+export const Button: React.FC<TProps> = React.forwardRef((props, ref) => {
+  const { children, asTag = 'button', ...rest } = props
+
+  return React.createElement(asTag, { className, ref, ...rest }, <span>{children}</span>)
+})
