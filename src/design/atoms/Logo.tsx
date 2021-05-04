@@ -52,20 +52,20 @@ const LogoLetter3 = styled.span`
   transform: rotate(8deg) translateY(5px);
 `
 
-const TextBlock = () => (
-  <>
-    <LogoLetter1>W</LogoLetter1>
-    <LogoLetter2>T</LogoLetter2>
-    <LogoLetter3>W</LogoLetter3>
-  </>
-)
+type TProps = {
+  type?: 'light'
+}
 
-export function Logo({ type }: { type?: 'light' }) {
+export const Logo = (props: TProps) => {
+  const { type } = props
+
   return (
     <Root>
       <Link href="/">
         <a className={cx(stylesLink, type)}>
-          <TextBlock />
+          <LogoLetter1>W</LogoLetter1>
+          <LogoLetter2>T</LogoLetter2>
+          <LogoLetter3>W</LogoLetter3>
         </a>
       </Link>
     </Root>

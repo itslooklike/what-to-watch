@@ -1,5 +1,6 @@
 import 'normalize.css'
 import './globals.css'
+
 import React from 'react'
 import App from 'next/app'
 import type { AppProps, AppContext } from 'next/app'
