@@ -1,7 +1,7 @@
 import React from 'react'
-import { css } from 'linaria'
+import { css, cx } from 'linaria'
 
-const className = css`
+const styles = css`
   display: inline-block;
   vertical-align: top;
   padding: 0;
@@ -25,20 +25,19 @@ const className = css`
     background: rgba(0, 0, 0, 0.51);
     transform: scale(1.1);
   }
-
-  img,
-  svg {
-    vertical-align: top;
-    margin-right: 9px;
-  }
 `
 
 type TProps = {
   asTag?: string
+  className?: string
 }
 
 export const Button: React.FC<TProps> = React.forwardRef((props, ref) => {
-  const { children, asTag = 'button', ...rest } = props
+  const { children, className, asTag = 'button', ...rest } = props
 
-  return React.createElement(asTag, { className, ref, ...rest }, <span>{children}</span>)
+  return React.createElement(
+    asTag,
+    { className: cx(styles, className), ref, ...rest },
+    <span>{children}</span>
+  )
 })
