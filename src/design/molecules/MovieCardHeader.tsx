@@ -1,7 +1,8 @@
+import { useState } from 'react'
 import { styled } from 'linaria/react'
 
 import { Button } from '~/design/atoms'
-import { Header } from '~/design/molecules'
+import { Header, Player } from '~/design/molecules'
 import type { IFilm } from '~/store/FilmsStore'
 
 const Card = styled.section`
@@ -107,9 +108,15 @@ type TProps = {
 
 export const MovieCardHeader = (props: TProps) => {
   const { film } = props
+  const [showPlayer, setPlayer] = useState(false)
+
+  const handleOpenPlayer = () => setPlayer(true)
+
+  const handleClosePlayer = () => setPlayer(false)
 
   return (
     <Card>
+      {showPlayer && <Player film={film} onClose={handleClosePlayer} />}
       <CardBg>
         <CardImg src={film.background_image} alt={film.name} />
       </CardBg>
@@ -131,7 +138,9 @@ export const MovieCardHeader = (props: TProps) => {
               <span>{film.released}</span>
             </CardMeta>
             <CardButtons>
-              <Button icon="IconPlay">Play</Button>
+              <Button icon="IconPlay" onClick={handleOpenPlayer}>
+                Play
+              </Button>
               <Button icon="IconInList">My list</Button>
             </CardButtons>
           </CardDesc>

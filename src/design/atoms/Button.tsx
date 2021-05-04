@@ -4,8 +4,8 @@ import { styled } from 'linaria/react'
 import * as Icons from '~/icons'
 
 const styles = css`
-  display: inline-block;
-  vertical-align: top;
+  display: inline-flex;
+  justify-content: center;
   padding: 0;
   text-decoration: none;
   border: 0;
@@ -45,6 +45,7 @@ type TProps = {
   asTag?: string
   className?: string
   icon?: keyof typeof Icons
+  onClick?: VoidFunction
 }
 
 export const Button: React.FC<TProps> = React.forwardRef((props, ref) => {
