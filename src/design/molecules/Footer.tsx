@@ -1,6 +1,6 @@
 import { styled } from 'linaria/react'
 
-import { Logo } from './Logo'
+import { Logo } from '~/design/atoms'
 
 const LogoWrap = styled.div`
   display: flex;

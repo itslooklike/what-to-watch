@@ -4,10 +4,10 @@ import { useRouter } from 'next/router'
 import { css } from 'linaria'
 import { styled } from 'linaria/react'
 
-import { TGenre } from '~/store/FilmsStore'
-import { MovieCardList } from '~/components/MovieCardList'
+import { MovieCardList } from '~/design/molecules'
 import { useFilmsPagination } from '~/utils/useFilmsPagination'
 import { useMobxStores } from '~/store'
+import type { TGenre } from '~/store/FilmsStore'
 
 const Root = styled.section`
   margin-bottom: 115px;

@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
-import { FilmLayout } from '~/components/FilmLayout'
-import { FilmOverview } from '~/components/FilmOverview'
+import { FilmOverview } from '~/design/atoms'
+import { FilmLayout } from '~/design/organisms'
 import { useMobxStores } from '~/store'
 
 const MovieIndex: NextPage = () => {

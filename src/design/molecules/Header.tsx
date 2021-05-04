@@ -1,6 +1,6 @@
 import { styled } from 'linaria/react'
 
-import { Logo } from '~/components/Logo'
+import { Logo } from '~/design/atoms'
 
 const Root = styled.div`
   display: flex;

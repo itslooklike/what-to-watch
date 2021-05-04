@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'linaria/react'
 
-import { Review } from '~/components/Review'
+import { Review } from '~/design/atoms'
 import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.div`

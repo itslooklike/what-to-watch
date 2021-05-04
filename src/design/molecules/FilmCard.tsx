@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { styled } from 'linaria/react'
 
-import { Header } from '~/components/Header'
-import { Button } from '~/components/Button'
+import { Button } from '~/design/atoms'
+import { Header } from '~/design/molecules'
 import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.section`

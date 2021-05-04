@@ -1,5 +1,5 @@
-import { css } from 'linaria'
 import React from 'react'
+import { css } from 'linaria'
 
 const className = css`
   display: inline-block;

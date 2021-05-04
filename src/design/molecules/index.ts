@@ -1,0 +1,7 @@
+export { Catalog } from './Catalog'
+export { FilmCard } from './FilmCard'
+export { FilmReviews } from './FilmReviews'
+export { Footer } from './Footer'
+export { Header } from './Header'
+export { MovieCardHeader } from './MovieCardHeader'
+export { MovieCardList } from './MovieCardList'
