@@ -41,15 +41,25 @@ const SubmitButton = styled.button`
 
 type TProps = {
   name: string
+  value: string
   placeholder?: string
+  onChange: (_: string) => void
 }
 
 export const TextArea = (props: TProps) => {
-  const { name, placeholder } = props
+  const { name, placeholder, onChange, value } = props
 
   return (
     <Root>
-      <Area name={name} placeholder={placeholder}></Area>
+      <Area
+        value={value}
+        name={name}
+        placeholder={placeholder}
+        onChange={(evt) => {
+          const { value } = evt.target
+          onChange(value)
+        }}
+      ></Area>
       <Footer>
         <SubmitButton type="submit">Post</SubmitButton>
       </Footer>

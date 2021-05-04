@@ -3,6 +3,7 @@ import { styled } from 'linaria/react'
 const Root = styled.div`
   display: flex;
   justify-content: center;
+  gap: 10px;
   margin-bottom: 15px;
 `
 
@@ -14,7 +15,6 @@ const Label = styled.label`
   font-size: 0;
   line-height: 0;
   display: block;
-  padding-right: 10px;
   cursor: pointer;
 
   ::after {
@@ -35,26 +35,39 @@ const Label = styled.label`
   }
 `
 
-const INIT_RATING = 4
-
 type TProps = {
   name: string
+  value: string
+  onChange: (_: string) => void
 }
 
-export const RatingStars = ({ name }: TProps) => {
+export const RatingStars = ({ name, onChange, value }: TProps) => {
+  console.log('value', value)
   return (
     <Root>
       {Array.from({ length: 5 }).map((_, idx) => {
-        const value = idx + 1
-        const id = `star-${value}`
+        const index = `star-${idx + 1}`
+        const checked = value === index
+        console.log('checked', checked)
 
         return (
-          <>
-            <Input id={id} type="radio" name={name} value={value} />
-            <Label className="rating__label" htmlFor={id}>
-              Rating {value}
+          <div key={idx}>
+            <Input
+              id={index}
+              type="radio"
+              name={name}
+              value={value}
+              onChange={(evt) => {
+                const { value } = evt.target
+                console.log('value', value)
+                onChange(value)
+              }}
+              checked={checked}
+            />
+            <Label className="rating__label" htmlFor={index}>
+              Rating {index}
             </Label>
-          </>
+          </div>
         )
       })}
     </Root>

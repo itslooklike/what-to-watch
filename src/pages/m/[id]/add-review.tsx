@@ -1,3 +1,4 @@
+import { SyntheticEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import { styled } from 'linaria/react'
 import type { NextPage } from 'next'
@@ -69,8 +70,24 @@ const MoviePageAddReviews: NextPage = () => {
   const id = router.query.id as string
   const film = filmsStore.selectFilmById(id)
 
+  const [rating, setRating] = useState('4')
+  const [text, setText] = useState('')
+
   if (!film) {
     return <>404</>
+  }
+
+  const handleStars = (value: string) => {
+    setRating(value)
+  }
+
+  const handleText = (textAreaText: string) => {
+    setText(textAreaText)
+  }
+
+  const handleSubmit = (event: SyntheticEvent) => {
+    event.preventDefault()
+    console.log('submit', { text })
   }
 
   return (
@@ -91,11 +108,16 @@ const MoviePageAddReviews: NextPage = () => {
       </Top>
 
       <ReviewBlock>
-        <form action="#">
+        <form onSubmit={handleSubmit}>
           <div>
-            <RatingStars name="rating" />
+            <RatingStars name="rating" onChange={handleStars} value={rating} />
           </div>
-          <TextArea name="review-text" placeholder="Review text" />
+          <TextArea
+            value={text}
+            name="review-text"
+            placeholder="Review text"
+            onChange={handleText}
+          />
         </form>
       </ReviewBlock>
     </Root>
