@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import { api } from '../../services/api'
+import { api } from '~/utils/api'
 import { IFilm, TGenre } from './types'
 
 export class FilmsStore {

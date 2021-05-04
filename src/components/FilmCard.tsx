@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { styled } from 'linaria/react'
-import { IFilm } from '../store/FilmsStore'
-import { Header } from '../components/Header'
-import { Button } from '../components/Button'
+
+import { Header } from '~/components/Header'
+import { Button } from '~/components/Button'
+import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.section`
   position: relative;

@@ -1,7 +1,8 @@
 import { styled } from 'linaria/react'
-import { IFilm } from '../store/FilmsStore'
-import { Header } from '../components/Header'
-import { Button } from '../components/Button'
+
+import { Header } from '~/components/Header'
+import { Button } from '~/components/Button'
+import type { IFilm } from '~/store/FilmsStore'
 
 const Card = styled.section`
   position: relative;

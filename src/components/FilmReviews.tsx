@@ -1,7 +1,8 @@
 import React from 'react'
 import { styled } from 'linaria/react'
-import { IFilm } from '../store/FilmsStore'
-import { Review } from '../components/Review'
+
+import { Review } from '~/components/Review'
+import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.div`
   display: grid;

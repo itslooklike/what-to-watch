@@ -1,5 +1,5 @@
 import React from 'react'
-import { isServer } from '../services/isServer'
+import { isServer } from '~/utils/isServer'
 import { FilmsStore } from './FilmsStore'
 
 export interface IStore {

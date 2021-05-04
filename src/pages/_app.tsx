@@ -2,7 +2,8 @@ import './globals.css'
 import React from 'react'
 import App from 'next/app'
 import type { AppProps, AppContext } from 'next/app'
-import { getStores, StoreProvider, TInitialStoreData } from '../store'
+
+import { getStores, StoreProvider, TInitialStoreData } from '~/store'
 
 MyApp.getInitialProps = async (appContext: AppContext) => {
   const mobxStores = getStores()

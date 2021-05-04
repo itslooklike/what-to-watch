@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { styled } from 'linaria/react'
-import { SmallMovieCard } from './SmallMovieCard'
-import { IFilm } from '../store/FilmsStore'
+
+import { SmallMovieCard } from '~/components/SmallMovieCard'
+import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.div`
   display: grid;

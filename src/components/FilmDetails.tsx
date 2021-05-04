@@ -1,6 +1,7 @@
 import React from 'react'
 import { styled } from 'linaria/react'
-import { IFilm } from '../store/FilmsStore'
+
+import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.div`
   display: flex;

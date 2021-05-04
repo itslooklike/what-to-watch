@@ -1,10 +1,11 @@
 import { styled } from 'linaria/react'
-import { IFilm } from '../store/FilmsStore'
-import { FilmCard } from '../components/FilmCard'
-import { MovieCardList } from '../components/MovieCardList'
-import { Footer } from '../components/Footer'
-import { PageContent } from '../components/PageContent'
-import { useMobxStores } from '../store'
+
+import { FilmCard } from '~/components/FilmCard'
+import { MovieCardList } from '~/components/MovieCardList'
+import { Footer } from '~/components/Footer'
+import { PageContent } from '~/components/PageContent'
+import { useMobxStores } from '~/store'
+import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.section`
   margin-bottom: 160px;

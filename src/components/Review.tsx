@@ -1,5 +1,5 @@
-import { styled } from 'linaria/react'
 import React from 'react'
+import { styled } from 'linaria/react'
 
 const Root = styled.div`
   border-bottom: 2px solid #e8c3c4;

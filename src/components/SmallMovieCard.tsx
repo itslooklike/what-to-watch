@@ -1,6 +1,7 @@
 import { useState, forwardRef } from 'react'
 import { styled } from 'linaria/react'
-import { IFilm } from '../store/FilmsStore'
+
+import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.article`
   border-radius: 6px;

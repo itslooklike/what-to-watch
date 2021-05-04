@@ -1,8 +1,9 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { FilmLayout } from '../../../components/FilmLayout'
-import { FilmReviews } from '../../../components/FilmReviews'
-import { useMobxStores } from '../../../store'
+
+import { FilmLayout } from '~/components/FilmLayout'
+import { FilmReviews } from '~/components/FilmReviews'
+import { useMobxStores } from '~/store'
 
 const MoviePageReviews: NextPage = () => {
   const { filmsStore } = useMobxStores()

@@ -3,10 +3,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { css } from 'linaria'
 import { styled } from 'linaria/react'
-import { TGenre } from '../store/FilmsStore'
-import { MovieCardList } from '../components/MovieCardList'
-import { useFilmsPagination } from '../services/useFilmsPagination'
-import { useMobxStores } from '../store'
+
+import { TGenre } from '~/store/FilmsStore'
+import { MovieCardList } from '~/components/MovieCardList'
+import { useFilmsPagination } from '~/utils/useFilmsPagination'
+import { useMobxStores } from '~/store'
 
 const Root = styled.section`
   margin-bottom: 115px;

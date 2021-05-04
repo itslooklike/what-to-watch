@@ -1,4 +1,5 @@
 import { styled } from 'linaria/react'
+
 import { Logo } from './Logo'
 
 const LogoWrap = styled.div`
