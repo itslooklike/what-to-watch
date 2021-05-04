@@ -225,10 +225,12 @@ export const FilmCard = (props: TProps) => {
             </Meta>
 
             <ButtonsWrap>
-              <Button>Play</Button>
-              <Button>My list</Button>
+              <Button icon="IconPlay">Play</Button>
+              <Button icon="IconInList">My list</Button>
               <Link href="add-review.html">
-                <Button asTag="a">Add review</Button>
+                <Button asTag="a" icon="IconAdd">
+                  Add review
+                </Button>
               </Link>
             </ButtonsWrap>
           </Description>

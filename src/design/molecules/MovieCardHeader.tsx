@@ -131,8 +131,8 @@ export const MovieCardHeader = (props: TProps) => {
               <span>{film.released}</span>
             </CardMeta>
             <CardButtons>
-              <Button>Play</Button>
-              <Button>My list</Button>
+              <Button icon="IconPlay">Play</Button>
+              <Button icon="IconInList">My list</Button>
             </CardButtons>
           </CardDesc>
         </CardInfo>

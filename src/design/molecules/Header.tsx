@@ -1,5 +1,6 @@
 import { styled } from 'linaria/react'
 
+import { IconUser } from '~/icons'
 import { Logo } from '~/design/atoms'
 
 const Root = styled.div`
@@ -22,20 +23,13 @@ const Avatar = styled.div`
   border-radius: 50%;
 `
 
-const AvatarImg = styled.img`
-  vertical-align: top;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`
-
 export function Header() {
   return (
     <Root>
       <Logo />
       <UserBlock>
         <Avatar>
-          <AvatarImg src="/img/icons/icon-user.svg" alt="User avatar" width="63" height="63" />
+          <IconUser width="63" height="63" />
         </Avatar>
       </UserBlock>
     </Root>

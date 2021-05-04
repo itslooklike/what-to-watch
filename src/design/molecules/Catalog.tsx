@@ -50,12 +50,12 @@ const stylesLink = css`
     display: none;
   }
 
-  :hover::after {
+  :not(&.active):hover::after {
     display: block;
   }
 
   &.active {
-    opacity: 0.7;
+    opacity: 0.4;
   }
 `
 

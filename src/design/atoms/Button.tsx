@@ -1,5 +1,7 @@
 import React from 'react'
 import { css, cx } from 'linaria'
+import { styled } from 'linaria/react'
+import * as Icons from '~/icons'
 
 const styles = css`
   display: inline-block;
@@ -27,17 +29,39 @@ const styles = css`
   }
 `
 
+const Content = styled.span`
+  display: flex;
+  align-items: center;
+`
+
+const IconWrap = styled.span`
+  position: relative;
+  top: 1px;
+  margin-right: 10px;
+  align-self: center;
+`
+
 type TProps = {
   asTag?: string
   className?: string
+  icon?: keyof typeof Icons
 }
 
 export const Button: React.FC<TProps> = React.forwardRef((props, ref) => {
-  const { children, className, asTag = 'button', ...rest } = props
+  const { children, className, icon, asTag = 'button', ...rest } = props
+
+  const Icon = icon ? Icons[icon] : undefined
 
   return React.createElement(
     asTag,
     { className: cx(styles, className), ref, ...rest },
-    <span>{children}</span>
+    <Content>
+      {Icon && (
+        <IconWrap>
+          <Icon width="20" />
+        </IconWrap>
+      )}
+      <span>{children}</span>
+    </Content>
   )
 })
