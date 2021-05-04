@@ -5,8 +5,8 @@ import { styled } from 'linaria/react'
 
 import { Button } from '~/design/atoms'
 import { Header } from '~/design/molecules'
+import { usePlayerModal } from '~/design/organisms'
 import type { IFilm } from '~/store/FilmsStore'
-
 const Root = styled.section`
   position: relative;
   z-index: 1;
@@ -208,9 +208,11 @@ type TProps = {
 
 export const FilmCard = (props: TProps) => {
   const { film, content } = props
+  const { playerModal, handleOpenPlayer } = usePlayerModal(film)
 
   return (
     <Root>
+      {playerModal}
       <Hero>
         <Background>
           <BackgroundImg src={film.background_image} alt={film.name} />
@@ -225,7 +227,9 @@ export const FilmCard = (props: TProps) => {
             </Meta>
 
             <ButtonsWrap>
-              <Button icon="IconPlay">Play</Button>
+              <Button icon="IconPlay" onClick={handleOpenPlayer}>
+                Play
+              </Button>
               <Button icon="IconInList">My list</Button>
               <Link href={`/m/${film.id}/add-review`}>
                 <Button asTag="a" icon="IconAdd">
