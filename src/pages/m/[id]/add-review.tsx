@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { styled } from 'linaria/react'
 import type { NextPage } from 'next'
 
-import { RatingStars } from '~/design/atoms'
+import { RatingStars, TextArea } from '~/design/atoms'
 import { Header } from '~/design/molecules'
 import { useMobxStores } from '~/store'
 
@@ -93,22 +93,9 @@ const MoviePageAddReviews: NextPage = () => {
       <ReviewBlock>
         <form action="#">
           <div>
-            <RatingStars />
+            <RatingStars name="rating" />
           </div>
-
-          <div className="add-review__text">
-            <textarea
-              className="add-review__textarea"
-              name="review-text"
-              id="review-text"
-              placeholder="Review text"
-            ></textarea>
-            <div className="add-review__submit">
-              <button className="add-review__btn" type="submit">
-                Post
-              </button>
-            </div>
-          </div>
+          <TextArea name="review-text" placeholder="Review text" />
         </form>
       </ReviewBlock>
     </Root>

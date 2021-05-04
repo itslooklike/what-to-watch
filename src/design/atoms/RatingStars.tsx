@@ -35,7 +35,13 @@ const Label = styled.label`
   }
 `
 
-export const RatingStars = () => {
+const INIT_RATING = 4
+
+type TProps = {
+  name: string
+}
+
+export const RatingStars = ({ name }: TProps) => {
   return (
     <Root>
       {Array.from({ length: 5 }).map((_, idx) => {
@@ -44,7 +50,7 @@ export const RatingStars = () => {
 
         return (
           <>
-            <Input id={id} type="radio" name="rating" value={value} />
+            <Input id={id} type="radio" name={name} value={value} />
             <Label className="rating__label" htmlFor={id}>
               Rating {value}
             </Label>
