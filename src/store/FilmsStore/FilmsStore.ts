@@ -2,17 +2,21 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import { api } from '../../services/api'
 import { IFilm, TGenre } from './types'
 
-class FilmsStore {
+export class FilmsStore {
   loading = false
   data: IFilm[] = []
   error: any = null
 
-  constructor() {
+  constructor(initialData: Partial<FilmsStore> = {}) {
     makeAutoObservable(this)
+    this.data = initialData.data || []
   }
 
-  hydrate(data: IFilm[]) {
-    this.data = data
+  hydrate() {
+    return {
+      data: this.data,
+      // error: this.error,
+    }
   }
 
   async fetchFilms() {
@@ -46,6 +50,10 @@ class FilmsStore {
     return this.data
   }
 
+  get firstFilm() {
+    return this.data[0]
+  }
+
   selectFilmsByGenre(genre: TGenre) {
     if (genre) {
       return this.data.filter((film) => film.genre === genre)
@@ -63,10 +71,4 @@ class FilmsStore {
       (film) => film.genre === currentFilm.genre && film.id !== currentFilm.id
     )
   }
-
-  get firstFilm() {
-    return this.data[0]
-  }
 }
-
-export default new FilmsStore()

@@ -1,12 +1,12 @@
+import cn from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { css } from 'linaria'
 import { styled } from 'linaria/react'
-import { observer } from 'mobx-react-lite'
-import cn from 'classnames'
-import FilmsStore, { TGenre } from '../store/FilmsStore'
+import { TGenre } from '../store/FilmsStore'
 import { MovieCardList } from '../components/MovieCardList'
 import { useFilmsPagination } from '../services/useFilmsPagination'
+import { useMobxStores } from '../store'
 
 const Root = styled.section`
   margin-bottom: 115px;
@@ -83,7 +83,8 @@ const ButtonMore = styled.button`
 `
 
 // FIXME: что-то придумать с ссылками
-export const Catalog = observer(() => {
+export const Catalog = () => {
+  const { filmsStore } = useMobxStores()
   const { query } = useRouter()
   const genre = query.genre as TGenre
   const [currentFilms, handleMore, isHasMore] = useFilmsPagination(genre)
@@ -96,7 +97,7 @@ export const Catalog = observer(() => {
             <a className={cn(listLinkStyles, !genre && 'active')}>All genres</a>
           </Link>
         </ListItem>
-        {FilmsStore.filmGenres.map((genreItem, idx) => {
+        {filmsStore.filmGenres.map((genreItem, idx) => {
           return (
             <ListItem key={idx}>
               <Link href={`/?genre=${genreItem}`} scroll={false}>
@@ -116,4 +117,4 @@ export const Catalog = observer(() => {
       )}
     </Root>
   )
-})
+}

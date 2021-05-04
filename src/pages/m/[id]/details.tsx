@@ -1,18 +1,18 @@
+import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import FilmsStore, { getInitial } from '../../../store/FilmsStore'
 import { FilmLayout } from '../../../components/FilmLayout'
 import { FilmDetails } from '../../../components/FilmDetails'
+import { useMobxStores } from '../../../store'
 
-MoviePageDetails.getInitialProps = getInitial
-
-export default function MoviePageDetails() {
+const MoviePageDetails: NextPage = () => {
+  const { filmsStore } = useMobxStores()
   const router = useRouter()
   const id = router.query.id as string
 
-  const film = FilmsStore.selectFilmById(id)
+  const film = filmsStore.selectFilmById(id)
 
   if (!film) {
-    return 404
+    return <>404</>
   }
 
   return (
@@ -21,3 +21,10 @@ export default function MoviePageDetails() {
     </FilmLayout>
   )
 }
+
+MoviePageDetails.getInitialProps = async ({ mobxStores }) => {
+  await mobxStores.filmsStore.getFilms()
+  return {}
+}
+
+export default MoviePageDetails

@@ -1,16 +1,16 @@
-import { observer } from 'mobx-react-lite'
-import FilmsStore, { getInitial } from '../store/FilmsStore'
+import type { NextPage } from 'next'
 import { Footer } from '../components/Footer'
 import { MovieCardHeader } from '../components/MovieCardHeader'
 import { PageContent } from '../components/PageContent'
 import { Catalog } from '../components/Catalog'
+import { useMobxStores } from '../store'
 
-Home.getInitialProps = getInitial
+const Home: NextPage = () => {
+  const { filmsStore } = useMobxStores()
 
-function Home() {
   return (
     <div>
-      <MovieCardHeader film={FilmsStore.firstFilm} />
+      <MovieCardHeader film={filmsStore.firstFilm} />
       <PageContent>
         <Catalog />
         <Footer />
@@ -19,4 +19,9 @@ function Home() {
   )
 }
 
-export default observer(Home)
+Home.getInitialProps = async ({ mobxStores }) => {
+  await mobxStores.filmsStore.getFilms()
+  return {}
+}
+
+export default Home

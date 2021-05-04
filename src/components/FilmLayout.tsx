@@ -1,9 +1,10 @@
 import { styled } from 'linaria/react'
-import FilmsStore, { IFilm } from '../store/FilmsStore'
+import { IFilm } from '../store/FilmsStore'
 import { FilmCard } from '../components/FilmCard'
 import { MovieCardList } from '../components/MovieCardList'
 import { Footer } from '../components/Footer'
 import { PageContent } from '../components/PageContent'
+import { useMobxStores } from '../store'
 
 const Root = styled.section`
   margin-bottom: 160px;
@@ -27,6 +28,7 @@ type TProps = {
 }
 
 export const FilmLayout: React.FC<TProps> = (props) => {
+  const { filmsStore } = useMobxStores()
   const { children, film } = props
 
   return (
@@ -35,7 +37,7 @@ export const FilmLayout: React.FC<TProps> = (props) => {
       <PageContent>
         <Root>
           <Title>More like this</Title>
-          <MovieCardList films={FilmsStore.selectLikeThis(film)} />
+          <MovieCardList films={filmsStore.selectLikeThis(film)} />
         </Root>
         <Footer />
       </PageContent>
