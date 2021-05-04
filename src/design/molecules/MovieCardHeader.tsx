@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { styled } from 'linaria/react'
 
 import { Button } from '~/design/atoms'
@@ -79,6 +80,16 @@ const CardTitle = styled.h2`
   font-size: 32px;
   line-height: 45px;
   margin: 0 0 7px;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    :hover {
+      opacity: 0.5;
+    }
+  }
 `
 
 const CardMeta = styled.p`
@@ -128,7 +139,12 @@ export const MovieCardHeader = (props: TProps) => {
             />
           </CardPoster>
           <CardDesc>
-            <CardTitle>{film.name}</CardTitle>
+            <CardTitle>
+              <Link href={`/m/${film.id}`}>
+                <a>{film.name}</a>
+              </Link>
+            </CardTitle>
+
             <CardMeta>
               <CardGenre>{film.genre}</CardGenre>
               <span>{film.released}</span>
