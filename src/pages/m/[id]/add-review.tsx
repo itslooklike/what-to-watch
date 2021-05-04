@@ -1,5 +1,6 @@
 import { SyntheticEvent, useState } from 'react'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { styled } from 'linaria/react'
 import type { NextPage } from 'next'
 
@@ -87,8 +88,17 @@ const MoviePageAddReviews: NextPage = () => {
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault()
-    console.log('submit', { text })
+    console.log('submit', { text, rating })
   }
+
+  const headerTitle = (
+    <>
+      <Link href={`/m/${film.id}`}>
+        <a>{film.name}</a>
+      </Link>{' '}
+      / Add review
+    </>
+  )
 
   return (
     <Root>
@@ -96,7 +106,7 @@ const MoviePageAddReviews: NextPage = () => {
         <Background>
           <Image src={film.background_image} alt={film.name} />
         </Background>
-        <Header title={`${film.name} / Add review`} />
+        <Header title={headerTitle} />
         <Poster>
           <PosterImage
             src={film.poster_image}

@@ -42,7 +42,6 @@ type TProps = {
 }
 
 export const RatingStars = ({ name, onChange, value }: TProps) => {
-  console.log('value', value)
   return (
     <Root>
       {Array.from({ length: 5 }).map((_, idx) => {
@@ -59,7 +58,6 @@ export const RatingStars = ({ name, onChange, value }: TProps) => {
               value={value}
               onChange={(evt) => {
                 const { value } = evt.target
-                console.log('value', value)
                 onChange(value)
               }}
               checked={checked}

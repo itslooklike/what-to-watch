@@ -29,6 +29,16 @@ const Title = styled.div`
   color: #eee5b5;
   font-size: 17px;
   line-height: 20px;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+
+    :hover {
+      opacity: 0.5;
+    }
+  }
 `
 
 type TProps = {
@@ -37,6 +47,7 @@ type TProps = {
 
 export function Header(props: TProps) {
   const { title } = props
+
   return (
     <Root>
       <Logo />
