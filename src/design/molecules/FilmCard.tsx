@@ -227,7 +227,7 @@ export const FilmCard = (props: TProps) => {
             <ButtonsWrap>
               <Button icon="IconPlay">Play</Button>
               <Button icon="IconInList">My list</Button>
-              <Link href="add-review.html">
+              <Link href={`/m/${film.id}/add-review`}>
                 <Button asTag="a" icon="IconAdd">
                   Add review
                 </Button>
