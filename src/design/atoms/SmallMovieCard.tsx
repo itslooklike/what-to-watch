@@ -1,4 +1,5 @@
 import { useState, forwardRef } from 'react'
+import { css } from 'linaria'
 import { styled } from 'linaria/react'
 
 import type { IFilm } from '~/store/FilmsStore'
@@ -52,7 +53,7 @@ const Title = styled.h3`
   font-weight: 500;
 `
 
-const LinkTo = styled.a`
+const stylesLink = css`
   display: inline-block;
   vertical-align: top;
   text-decoration: none;
@@ -95,9 +96,9 @@ export const SmallMovieCard = forwardRef<HTMLAnchorElement, TProps>((props, ref)
         )}
       </ImgWrap>
       <Title>
-        <LinkTo ref={ref} href={href} onClick={onClick}>
+        <a className={stylesLink} ref={ref} href={href} onClick={onClick}>
           {film.name}
-        </LinkTo>
+        </a>
       </Title>
     </Root>
   )

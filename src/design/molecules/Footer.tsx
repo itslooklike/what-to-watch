@@ -23,7 +23,7 @@ export function Footer() {
   return (
     <footer>
       <LogoWrap>
-        <Logo />
+        <Logo type="light" />
       </LogoWrap>
       <Copyright>
         <CopyrightText>© 2021 What to watch Ltd.</CopyrightText>

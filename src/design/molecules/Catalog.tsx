@@ -1,7 +1,6 @@
-import cn from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { css } from 'linaria'
+import { css, cx } from 'linaria'
 import { styled } from 'linaria/react'
 
 import { MovieCardList } from '~/design/molecules'
@@ -31,7 +30,7 @@ const ListItem = styled.li`
   margin-bottom: 20px;
 `
 
-const listLinkStyles = css`
+const stylesLink = css`
   display: block;
   color: #dfcf77;
   text-decoration: none;
@@ -83,7 +82,6 @@ const ButtonMore = styled.button`
   }
 `
 
-// FIXME: что-то придумать с ссылками
 export const Catalog = () => {
   const { filmsStore } = useMobxStores()
   const { query } = useRouter()
@@ -95,14 +93,14 @@ export const Catalog = () => {
       <List>
         <ListItem>
           <Link href="/" scroll={false}>
-            <a className={cn(listLinkStyles, !genre && 'active')}>All genres</a>
+            <a className={cx(stylesLink, !genre && 'active')}>All genres</a>
           </Link>
         </ListItem>
         {filmsStore.filmGenres.map((genreItem, idx) => {
           return (
             <ListItem key={idx}>
               <Link href={`/?genre=${genreItem}`} scroll={false}>
-                <a className={cn(listLinkStyles, genre === genreItem && 'active')}>{genreItem}</a>
+                <a className={cx(stylesLink, genre === genreItem && 'active')}>{genreItem}</a>
               </Link>
             </ListItem>
           )

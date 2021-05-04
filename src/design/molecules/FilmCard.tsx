@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { css, cx } from 'linaria'
 import { styled } from 'linaria/react'
 
 import { Button } from '~/design/atoms'
@@ -139,7 +140,7 @@ const NavListItem = styled.li`
   }
 `
 
-const NavListLink = styled.a`
+const stylesLink = css`
   display: block;
   color: #eee5b5;
   text-decoration: none;
@@ -192,7 +193,7 @@ const Navigation = ({ filmId }: { filmId: number | string }) => {
       {list.map((item, idx) => (
         <NavListItem key={idx}>
           <Link href={item.url} scroll={false}>
-            <NavListLink className={asPath === item.url ? 'active' : ''}>{item.text}</NavListLink>
+            <a className={cx(stylesLink, asPath === item.url && 'active')}>{item.text}</a>
           </Link>
         </NavListItem>
       ))}
