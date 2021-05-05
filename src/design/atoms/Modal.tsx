@@ -11,15 +11,14 @@ const Backdrop = styled.div`
   left: 0;
 `
 
-export const Modal: React.FC = ({ children }) => {
-  return (
-    <ClientOnlyPortal>
-      <Backdrop>{children}</Backdrop>
-      <style jsx>{`
-        :global(body) {
-          overflow: hidden;
-        }
-      `}</style>
-    </ClientOnlyPortal>
-  )
-}
+// FIXME: избавиться от `style jsx`
+export const Modal: React.FC = ({ children }) => (
+  <ClientOnlyPortal>
+    <Backdrop>{children}</Backdrop>
+    <style jsx>{`
+      :global(body) {
+        overflow: hidden;
+      }
+    `}</style>
+  </ClientOnlyPortal>
+)

@@ -7,6 +7,4 @@ const Root = styled.div`
   padding-bottom: 70px;
 `
 
-export const PageContent: React.FC = ({ children }) => {
-  return <Root>{children}</Root>
-}
+export const PageContent: React.FC = ({ children }) => <Root>{children}</Root>

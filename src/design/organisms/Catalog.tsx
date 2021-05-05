@@ -96,15 +96,13 @@ export const Catalog = () => {
             <a className={cx(stylesLink, !genre && 'active')}>All genres</a>
           </Link>
         </ListItem>
-        {filmsStore.filmGenres.map((genreItem, idx) => {
-          return (
-            <ListItem key={idx}>
-              <Link href={`/?genre=${genreItem}`} scroll={false}>
-                <a className={cx(stylesLink, genre === genreItem && 'active')}>{genreItem}</a>
-              </Link>
-            </ListItem>
-          )
-        })}
+        {filmsStore.filmGenres.map((genreItem, idx) => (
+          <ListItem key={idx}>
+            <Link href={`/?genre=${genreItem}`} scroll={false}>
+              <a className={cx(stylesLink, genre === genreItem && 'active')}>{genreItem}</a>
+            </Link>
+          </ListItem>
+        ))}
       </List>
       <MovieCardList films={currentFilms} />
       {isHasMore && (

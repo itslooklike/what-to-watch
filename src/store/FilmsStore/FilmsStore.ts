@@ -4,7 +4,9 @@ import { IFilm, TGenre } from './types'
 
 export class FilmsStore {
   loading = false
+
   data: IFilm[] = []
+
   error: any = null
 
   constructor(initialData: Partial<FilmsStore> = {}) {
@@ -19,7 +21,7 @@ export class FilmsStore {
     }
   }
 
-  async fetchFilms() {
+  static async fetchFilms() {
     return api.get<IFilm[]>('/films')
   }
 
@@ -27,7 +29,7 @@ export class FilmsStore {
     this.loading = true
 
     try {
-      const { data } = await this.fetchFilms()
+      const { data } = await FilmsStore.fetchFilms()
 
       runInAction(() => {
         this.loading = false

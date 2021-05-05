@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { TGenre } from '../store/FilmsStore'
-import { useMobxStores } from '../store'
+import { TGenre } from '~/store/FilmsStore'
+import { useMobxStores } from '~/store'
 
 const PAG_SIZE = 8
 

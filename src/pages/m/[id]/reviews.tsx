@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
 import { FilmReviews } from '~/design/molecules'
-import { FilmLayout } from '~/design/organisms'
+import { FilmLayout } from '~/design/templates'
 import { useMobxStores } from '~/store'
 
 const MoviePageReviews: NextPage = () => {
@@ -18,7 +18,7 @@ const MoviePageReviews: NextPage = () => {
 
   return (
     <FilmLayout film={film}>
-      <FilmReviews film={film} />
+      <FilmReviews />
     </FilmLayout>
   )
 }

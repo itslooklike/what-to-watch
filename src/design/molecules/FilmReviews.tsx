@@ -1,8 +1,6 @@
-import React from 'react'
 import { styled } from 'linaria/react'
 
 import { Review } from '~/design/atoms'
-import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.div`
   display: grid;
@@ -87,28 +85,18 @@ const MOCKS = [
   },
 ]
 
-type TProps = {
-  film: IFilm
-}
-
-export const FilmReviews = (props: TProps) => {
-  const { film } = props
-
-  return (
-    <Root>
-      {MOCKS.map((feedback, idx) => {
-        return (
-          <Review
-            author={feedback.author}
-            humanDate={feedback.humanDate}
-            date={feedback.date}
-            rating={feedback.rating}
-            key={idx}
-          >
-            {feedback.content}
-          </Review>
-        )
-      })}
-    </Root>
-  )
-}
+export const FilmReviews = () => (
+  <Root>
+    {MOCKS.map((feedback, idx) => (
+      <Review
+        author={feedback.author}
+        humanDate={feedback.humanDate}
+        date={feedback.date}
+        rating={feedback.rating}
+        key={idx}
+      >
+        {feedback.content}
+      </Review>
+    ))}
+  </Root>
+)

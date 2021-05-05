@@ -41,33 +41,30 @@ type TProps = {
   onChange: (_: string) => void
 }
 
-export const RatingStars = ({ name, onChange, value }: TProps) => {
-  return (
-    <Root>
-      {Array.from({ length: 5 }).map((_, idx) => {
-        const index = `star-${idx + 1}`
-        const checked = value === index
-        console.log('checked', checked)
+export const RatingStars = ({ name, onChange, value }: TProps) => (
+  <Root>
+    {Array.from({ length: 5 }).map((_, idx) => {
+      const index = `star-${idx + 1}`
+      const checked = value === index
+      console.log('checked', checked)
 
-        return (
-          <div key={idx}>
-            <Input
-              id={index}
-              type="radio"
-              name={name}
-              value={value}
-              onChange={(evt) => {
-                const { value } = evt.target
-                onChange(value)
-              }}
-              checked={checked}
-            />
-            <Label className="rating__label" htmlFor={index}>
-              Rating {index}
-            </Label>
-          </div>
-        )
-      })}
-    </Root>
-  )
-}
+      return (
+        <div key={idx}>
+          <Input
+            id={index}
+            type="radio"
+            name={name}
+            value={value}
+            onChange={(evt) => {
+              onChange(evt.target.value)
+            }}
+            checked={checked}
+          />
+          <Label className="rating__label" htmlFor={index}>
+            Rating {index}
+          </Label>
+        </div>
+      )
+    })}
+  </Root>
+)

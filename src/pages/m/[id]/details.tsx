@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
 import { FilmDetails } from '~/design/atoms'
-import { FilmLayout } from '~/design/organisms'
+import { FilmLayout } from '~/design/templates'
 import { useMobxStores } from '~/store'
 
 const MoviePageDetails: NextPage = () => {

@@ -29,7 +29,7 @@ type TProps = {
 export function Player({ film, onClose }: TProps) {
   return (
     <Root>
-      <ReactPlayer width="100%" height="100%" url={film.video_link} controls playing></ReactPlayer>
+      <ReactPlayer width="100%" height="100%" url={film.video_link} controls playing />
       <ButtonWrap>
         <Button onClick={onClose}>Exit</Button>
       </ButtonWrap>

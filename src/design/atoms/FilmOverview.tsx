@@ -75,14 +75,11 @@ export const FilmOverview = (props: TProps) => {
           <RatingCount>{film.rating} ratings</RatingCount>
         </RatingMeta>
       </Rating>
-
       <Text>
         <p>{film.description}</p>
-
         <TextDirector>
           <strong>Director: {film.director}</strong>
         </TextDirector>
-
         <TextStarring>
           <strong>Starring: {film.starring.join(', ')} and other</strong>
         </TextStarring>

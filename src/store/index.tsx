@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { isServer } from '~/utils/isServer'
 import { FilmsStore } from './FilmsStore'
 
@@ -36,7 +37,8 @@ type TStoreProvider = {
 }
 
 export function StoreProvider(props: TStoreProvider) {
-  return <StoreContext.Provider value={props.value}>{props.children}</StoreContext.Provider>
+  const { value, children } = props
+  return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>
 }
 
 export function useMobxStores() {

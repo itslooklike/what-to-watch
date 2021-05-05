@@ -1,2 +1,3 @@
-export { FilmLayout } from './FilmLayout'
-export { usePlayerModal } from './usePlayerModal'
+export { Catalog } from './Catalog'
+export { FilmCard } from './FilmCard'
+export { MovieCardHeader } from './MovieCardHeader'

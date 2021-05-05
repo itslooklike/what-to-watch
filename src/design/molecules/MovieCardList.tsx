@@ -20,15 +20,13 @@ export function MovieCardList(props: TProps) {
 
   return (
     <Root>
-      {films.map((film, idx) => {
-        return (
+      {films.map((film, idx) => (
           <div key={idx}>
             <Link href={`/m/${film.id}`} passHref>
               <SmallMovieCard film={film} />
             </Link>
           </div>
-        )
-      })}
+        ))}
     </Root>
   )
 }

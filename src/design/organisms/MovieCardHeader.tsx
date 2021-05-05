@@ -3,7 +3,7 @@ import { styled } from 'linaria/react'
 
 import { Button } from '~/design/atoms'
 import { Header } from '~/design/molecules'
-import { usePlayerModal } from '~/design/organisms'
+import { usePlayerModal } from '~/design/hooks/usePlayerModal'
 import type { IFilm } from '~/store/FilmsStore'
 
 const Card = styled.section`

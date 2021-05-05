@@ -56,10 +56,9 @@ export const TextArea = (props: TProps) => {
         name={name}
         placeholder={placeholder}
         onChange={(evt) => {
-          const { value } = evt.target
-          onChange(value)
+          onChange(evt.target.value)
         }}
-      ></Area>
+      />
       <Footer>
         <SubmitButton type="submit">Post</SubmitButton>
       </Footer>

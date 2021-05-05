@@ -90,7 +90,7 @@ export const SmallMovieCard = forwardRef<HTMLAnchorElement, TProps>((props, ref)
     <Root onMouseEnter={handleHover} onMouseLeave={handleLeave}>
       <ImgWrap>
         {isShowVideo ? (
-          <Video src={film.video_link} autoPlay poster={film.preview_image} muted></Video>
+          <Video src={film.video_link} autoPlay poster={film.preview_image} muted />
         ) : (
           <Img src={film.preview_image} alt={film.name} width="280" height="175" loading="lazy" />
         )}

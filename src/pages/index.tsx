@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 
 import { PageContent } from '~/design/atoms'
-import { Footer, Catalog, MovieCardHeader } from '~/design/molecules'
+import { Footer } from '~/design/molecules'
+import { MovieCardHeader, Catalog } from '~/design/organisms'
 import { useMobxStores } from '~/store'
 
 const Home: NextPage = () => {

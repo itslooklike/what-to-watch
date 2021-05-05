@@ -1,7 +1,8 @@
 import { styled } from 'linaria/react'
 
 import { PageContent } from '~/design/atoms'
-import { FilmCard, MovieCardList, Footer } from '~/design/molecules'
+import { MovieCardList, Footer } from '~/design/molecules'
+import { FilmCard } from '~/design/organisms'
 import { useMobxStores } from '~/store'
 import type { IFilm } from '~/store/FilmsStore'
 
