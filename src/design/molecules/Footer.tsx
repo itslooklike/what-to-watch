@@ -2,6 +2,10 @@ import { styled } from 'linaria/react'
 
 import { Logo } from '~/design/atoms'
 
+const Root = styled.footer`
+  padding: 20px;
+`
+
 const LogoWrap = styled.div`
   display: flex;
   justify-content: center;
@@ -21,13 +25,13 @@ const CopyrightText = styled.p`
 
 export function Footer() {
   return (
-    <footer>
+    <Root>
       <LogoWrap>
         <Logo type="light" />
       </LogoWrap>
       <Copyright>
         <CopyrightText>© 2021 What to watch Ltd.</CopyrightText>
       </Copyright>
-    </footer>
+    </Root>
   )
 }

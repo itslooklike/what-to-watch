@@ -18,22 +18,18 @@ const Root = styled.section`
 `
 
 const List = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 20px;
+  justify-content: left;
   margin: 0;
   padding: 25px 0;
   list-style: none;
 `
 
-const ListItem = styled.li`
-  margin-right: 20px;
-  margin-bottom: 20px;
-`
-
 const stylesLink = css`
   position: relative;
   display: block;
-  padding-bottom: 15px;
   color: #dfcf77;
   text-decoration: none;
   transition: font-weight;
@@ -91,17 +87,17 @@ export const Catalog = () => {
   return (
     <Root>
       <List>
-        <ListItem>
+        <li>
           <Link href="/" scroll={false}>
             <a className={cx(stylesLink, !genre && 'active')}>All genres</a>
           </Link>
-        </ListItem>
+        </li>
         {filmsStore.filmGenres.map((genreItem, idx) => (
-          <ListItem key={idx}>
+          <li key={idx}>
             <Link href={`/?genre=${genreItem}`} scroll={false}>
               <a className={cx(stylesLink, genre === genreItem && 'active')}>{genreItem}</a>
             </Link>
-          </ListItem>
+          </li>
         ))}
       </List>
       <MovieCardList films={currentFilms} />

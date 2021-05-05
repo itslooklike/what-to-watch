@@ -10,7 +10,7 @@ const Root = styled.section`
   width: 100%;
   max-width: 1300px;
   margin-right: auto;
-  margin-bottom: 160px;
+  margin-bottom: 100px;
   margin-left: auto;
   padding: 30px 75px 0;
 `

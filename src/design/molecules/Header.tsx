@@ -11,10 +11,11 @@ import { useMobxStores } from '~/store'
 const Root = styled.div`
   display: flex;
   align-items: center;
+  width: 100%;
   max-width: 1300px;
   margin-right: auto;
   margin-left: auto;
-  padding: 22px 75px;
+  padding: 20px 75px;
 `
 
 const UserBlock = styled.div`
@@ -64,15 +65,19 @@ export const Header = observer((props: TProps) => {
       <Logo />
       {title && <Title>{title}</Title>}
       <UserBlock>
-        <Link href="/login">
-          <a className={stylesAvatar}>
-            {userStore.user ? (
+        {userStore.user ? (
+          <Link href="/my-list">
+            <a className={stylesAvatar}>
               <Avatar width="63" height="63" src={apiUrl + userStore.user.avatar_url} />
-            ) : (
+            </a>
+          </Link>
+        ) : (
+          <Link href="/login">
+            <a className={stylesAvatar}>
               <IconUser width="63" height="63" />
-            )}
-          </a>
-        </Link>
+            </a>
+          </Link>
+        )}
       </UserBlock>
     </Root>
   )
