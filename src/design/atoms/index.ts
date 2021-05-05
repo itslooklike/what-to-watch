@@ -1,6 +1,7 @@
 export { Button } from './Button'
 export { FilmDetails } from './FilmDetails'
 export { FilmOverview } from './FilmOverview'
+export { Input } from './Input'
 export { Logo } from './Logo'
 export { Modal } from './Modal'
 export { PageContent } from './PageContent'

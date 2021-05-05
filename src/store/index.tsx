@@ -2,23 +2,27 @@ import React from 'react'
 
 import { isServer } from '~/utils/isServer'
 import { FilmsStore } from './FilmsStore'
+import { UserStore } from './UserStore'
 
 export interface IStore {
   filmsStore: FilmsStore
+  userStore: UserStore
 }
 
 let clientSideStores: IStore
 
-export function getStores(initialData = { filmsStoreInitialData: {} }) {
+export function getStores(initialData = { filmsStoreInitialData: {}, userStoreInitialData: {} }) {
   if (isServer) {
     return {
       filmsStore: new FilmsStore(initialData.filmsStoreInitialData),
+      userStore: new UserStore(initialData.userStoreInitialData),
     }
   }
 
   if (!clientSideStores) {
     clientSideStores = {
       filmsStore: new FilmsStore(initialData.filmsStoreInitialData),
+      userStore: new UserStore(initialData.userStoreInitialData),
     }
   }
 
@@ -27,7 +31,6 @@ export function getStores(initialData = { filmsStoreInitialData: {} }) {
 
 export type TInitialStoreData = Parameters<typeof getStores>[0]
 
-// FIXME: remove ignore
 // @ts-ignore
 const StoreContext = React.createContext<IStore>({})
 
