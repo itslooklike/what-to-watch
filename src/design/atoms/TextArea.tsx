@@ -8,15 +8,15 @@ const Root = styled.div`
 const Area = styled.textarea`
   display: block;
   width: 100%;
-  border: 0;
-  background: 0 0;
-  resize: vertical;
   height: 150px;
   min-height: 150px;
   padding: 25px;
-  font-size: 17px;
   color: #252525;
+  font-size: 17px;
   line-height: 24px;
+  background: 0 0;
+  border: 0;
+  resize: vertical;
 `
 
 const Footer = styled.div`
@@ -28,13 +28,13 @@ const Footer = styled.div`
 const SubmitButton = styled.button`
   display: block;
   padding: 0;
-  border: 0;
-  background: 0 0;
-  font-size: 17px;
   color: #866866;
-  letter-spacing: 0;
-  line-height: 27px;
   font-weight: 700;
+  font-size: 17px;
+  line-height: 27px;
+  letter-spacing: 0;
+  background: 0 0;
+  border: 0;
   cursor: pointer;
   transition: opacity 0.2s;
 `

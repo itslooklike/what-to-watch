@@ -6,23 +6,20 @@ import * as Icons from '~/icons'
 
 const styles = css`
   display: inline-flex;
+  align-items: center;
   justify-content: center;
-  padding: 0;
-  text-decoration: none;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.26);
-  border-radius: 8px;
+  min-width: 128px;
+  padding: 13px 30px;
   color: #eee5b5;
   font-size: 17px;
   line-height: 20px;
-  padding: 13px 30px;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.26);
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
   transition: 0.2s background-color, 0.2s transform;
   will-change: transform;
-  display: flex;
-  align-items: center;
-  min-width: 128px;
 
   :hover {
     background: rgba(0, 0, 0, 0.51);
@@ -38,8 +35,8 @@ const Content = styled.span`
 const IconWrap = styled.span`
   position: relative;
   top: 1px;
-  margin-right: 10px;
   align-self: center;
+  margin-right: 10px;
 `
 
 type TProps = {

@@ -5,8 +5,8 @@ import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.div`
   display: flex;
-  align-items: flex-start;
   gap: 35px;
+  align-items: flex-start;
 `
 
 const Col = styled.div`

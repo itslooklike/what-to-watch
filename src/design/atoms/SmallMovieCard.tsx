@@ -5,9 +5,9 @@ import { styled } from 'linaria/react'
 import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.article`
-  border-radius: 6px;
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+  border-radius: 6px;
   transition: 0.2s transform;
 
   :hover {
@@ -22,42 +22,42 @@ const ImgWrap = styled.div`
   height: 175px;
 
   ::after {
-    content: '';
     position: absolute;
-    z-index: 1;
     top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
+    z-index: 1;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.63) 97%);
+    content: '';
   }
 `
 
 const Img = styled.img`
-  vertical-align: top;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  vertical-align: top;
 `
 
 const Title = styled.h3`
   position: absolute;
-  z-index: 2;
-  left: 0;
   right: 0;
   bottom: 0;
-  padding: 10px 15px;
+  left: 0;
+  z-index: 2;
   margin: 0;
+  padding: 10px 15px;
+  font-weight: 500;
   font-size: 17px;
   line-height: 20px;
-  font-weight: 500;
 `
 
 const stylesLink = css`
   display: inline-block;
-  vertical-align: top;
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
+  vertical-align: top;
 `
 
 const Video = styled.video`

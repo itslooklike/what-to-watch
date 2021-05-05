@@ -2,8 +2,8 @@ import { styled } from 'linaria/react'
 
 const Root = styled.div`
   display: flex;
-  justify-content: center;
   gap: 10px;
+  justify-content: center;
   margin-bottom: 15px;
 `
 
@@ -12,18 +12,18 @@ const Input = styled.input`
 `
 
 const Label = styled.label`
+  display: block;
   font-size: 0;
   line-height: 0;
-  display: block;
   cursor: pointer;
 
   ::after {
-    content: '★';
     display: block;
+    color: rgba(56, 44, 42, 0.7);
     font-size: 32px;
     line-height: 36px;
-    color: rgba(56, 44, 42, 0.7);
     transition: color 0.2s;
+    content: '★';
   }
 
   ${Input}:checked~&::after {

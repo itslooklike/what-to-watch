@@ -7,8 +7,8 @@ import type { IFilm } from '~/store/FilmsStore'
 const Root = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  align-items: flex-start;
   gap: 20px;
+  align-items: flex-start;
 `
 
 type TProps = {
@@ -21,12 +21,12 @@ export function MovieCardList(props: TProps) {
   return (
     <Root>
       {films.map((film, idx) => (
-          <div key={idx}>
-            <Link href={`/m/${film.id}`} passHref>
-              <SmallMovieCard film={film} />
-            </Link>
-          </div>
-        ))}
+        <div key={idx}>
+          <Link href={`/m/${film.id}`} passHref>
+            <SmallMovieCard film={film} />
+          </Link>
+        </div>
+      ))}
     </Root>
   )
 }

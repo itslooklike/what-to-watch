@@ -7,33 +7,33 @@ const Root = styled.div`
 `
 
 const stylesLink = css`
-  border: 1px solid rgba(223, 207, 119, 0.36);
-  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 93px;
   height: 54px;
   color: #d9cd8d;
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
   font-weight: 700;
+  text-align: center;
   text-decoration: none;
+  border: 1px solid rgba(223, 207, 119, 0.36);
+  border-radius: 8px;
   transition: color 0.2s, border-color 0.2s;
 
   &[href]:hover,
   &[href]:focus {
-    border-color: rgba(84, 80, 62, 0.36);
     color: #54503e;
+    border-color: rgba(84, 80, 62, 0.36);
   }
 
   &.light {
-    border: 1px solid rgba(84, 80, 62, 0.36);
     color: #54503e;
+    border: 1px solid rgba(84, 80, 62, 0.36);
 
     &[href]:hover,
     &[href]:focus {
-      border-color: rgba(223, 207, 119, 0.36);
       color: #d9cd8d;
+      border-color: rgba(223, 207, 119, 0.36);
     }
   }
 `

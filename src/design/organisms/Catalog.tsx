@@ -9,20 +9,20 @@ import { useMobxStores } from '~/store'
 import type { TGenre } from '~/store/FilmsStore'
 
 const Root = styled.section`
-  margin-bottom: 115px;
-  max-width: 1300px;
   width: 100%;
-  margin-left: auto;
+  max-width: 1300px;
   margin-right: auto;
+  margin-bottom: 115px;
+  margin-left: auto;
   padding: 0 75px;
 `
 
 const List = styled.ul`
-  padding: 25px 0;
-  margin: 0;
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
+  margin: 0;
+  padding: 25px 0;
+  list-style: none;
 `
 
 const ListItem = styled.li`
@@ -31,23 +31,23 @@ const ListItem = styled.li`
 `
 
 const stylesLink = css`
+  position: relative;
   display: block;
+  padding-bottom: 15px;
   color: #dfcf77;
   text-decoration: none;
-  position: relative;
-  padding-bottom: 15px;
   transition: font-weight;
 
   ::after {
-    content: '';
     position: absolute;
-    z-index: 1;
-    left: 0;
     right: 0;
-    height: 1px;
     bottom: 0;
-    background-color: #d9cd8d;
+    left: 0;
+    z-index: 1;
     display: none;
+    height: 1px;
+    background-color: #d9cd8d;
+    content: '';
   }
 
   :not(&.active):hover::after {
@@ -67,15 +67,15 @@ const ButtonMore = styled.button`
   display: block;
   width: 100%;
   padding: 29px 40px;
-  background: none;
-  border: 1px solid rgba(217, 202, 116, 0.2);
-  border-radius: 8px;
-  transition: border-color 0.2s;
+  color: #d9ca74;
   font-size: 22px;
   line-height: 26px;
   text-align: center;
-  color: #d9ca74;
+  background: none;
+  border: 1px solid rgba(217, 202, 116, 0.2);
+  border-radius: 8px;
   cursor: pointer;
+  transition: border-color 0.2s;
 
   :hover {
     border-color: rgba(217, 202, 116, 0.5);

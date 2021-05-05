@@ -2,14 +2,14 @@ import React from 'react'
 import { styled } from 'linaria/react'
 
 const Root = styled.div`
-  border-bottom: 2px solid #e8c3c4;
-  font-size: 17px;
-  color: #252525;
-  line-height: 24px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 75px;
   position: relative;
+  padding-top: 20px;
+  padding-right: 75px;
+  padding-bottom: 20px;
+  color: #252525;
+  font-size: 17px;
+  line-height: 24px;
+  border-bottom: 2px solid #e8c3c4;
 `
 
 const Quote = styled.blockquote`
@@ -25,39 +25,39 @@ const Text = styled.p`
 
 const Details = styled.footer`
   display: flex;
+  color: rgba(0, 0, 0, 0.4);
   font-size: 16px;
   line-height: 27px;
-  color: rgba(0, 0, 0, 0.4);
 `
 
 const Author = styled.cite`
-  font-style: normal;
   font-weight: bold;
+  font-style: normal;
 `
 
 const Time = styled.time`
   flex-shrink: 0;
 
   ::before {
-    content: '·';
-    margin-left: 4px;
     margin-right: 4px;
+    margin-left: 4px;
+    content: '·';
   }
 `
 
 const Rating = styled.div`
   position: absolute;
-  right: 0;
   top: 22px;
-  background: rgba(255, 255, 255, 0.24);
-  border-radius: 8px;
+  right: 0;
   width: 55px;
-  text-align: center;
-  font-size: 19px;
+  padding: 5px;
   color: #353535;
   font-weight: 500;
+  font-size: 19px;
   line-height: 25px;
-  padding: 5px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
 `
 
 type TProps = {

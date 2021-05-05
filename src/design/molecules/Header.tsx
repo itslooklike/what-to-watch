@@ -7,8 +7,8 @@ const Root = styled.div`
   display: flex;
   align-items: center;
   max-width: 1300px;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
   padding: 22px 75px;
 `
 
@@ -25,10 +25,10 @@ const Avatar = styled.div`
 
 const Title = styled.div`
   margin: 0 20px;
-  text-decoration: none;
   color: #eee5b5;
   font-size: 17px;
   line-height: 20px;
+  text-decoration: none;
 
   a {
     color: inherit;

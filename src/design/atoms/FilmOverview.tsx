@@ -11,30 +11,30 @@ const Rating = styled.div`
 `
 
 const RatingScore = styled.div`
-  background: rgba(255, 255, 255, 0.24);
-  border-radius: 8px;
+  margin-right: 9px;
+  padding: 8px 12px;
+  color: rgba(0, 0, 0, 0.5);
   font-size: 30px;
   line-height: 36px;
-  color: rgba(0, 0, 0, 0.5);
-  padding: 8px 12px;
-  margin-right: 9px;
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
 `
 
 const RatingMeta = styled.p`
-  margin: 0;
-  font-size: 19px;
-  color: rgba(0, 0, 0, 0.5);
   display: flex;
+  margin: 0;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 19px;
 `
 
 const RatingLevel = styled.span`
   font-weight: bold;
 
   ::after {
-    content: '·';
-    margin-left: 4px;
     margin-right: 4px;
+    margin-left: 4px;
     font-weight: 400;
+    content: '·';
   }
 `
 
@@ -43,20 +43,20 @@ const RatingCount = styled.span`
 `
 
 const Text = styled.div`
-  color: #252525;
   width: 635px;
+  color: #252525;
   font-size: 19px;
   line-height: 27px;
 `
 
 const TextDirector = styled.p`
-  line-height: 21px;
   color: rgba(0, 0, 0, 0.4);
+  line-height: 21px;
 `
 
 const TextStarring = styled.p`
-  line-height: 24px;
   color: rgba(0, 0, 0, 0.4);
+  line-height: 24px;
 `
 
 type TProps = {

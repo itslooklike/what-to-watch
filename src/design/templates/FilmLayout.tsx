@@ -7,20 +7,20 @@ import { useMobxStores } from '~/store'
 import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.section`
-  margin-bottom: 160px;
-  max-width: 1300px;
   width: 100%;
-  margin-left: auto;
+  max-width: 1300px;
   margin-right: auto;
+  margin-bottom: 160px;
+  margin-left: auto;
   padding: 30px 75px 0;
 `
 
 const Title = styled.div`
   margin: 0 0 12px;
-  font-size: 22px;
-  line-height: 26px;
   color: #dfcf77;
   font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
 `
 
 type TProps = {

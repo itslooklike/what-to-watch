@@ -9,10 +9,10 @@ const LogoWrap = styled.div`
 `
 
 const Copyright = styled.div`
-  text-align: center;
+  color: #54503e;
   font-size: 14px;
   line-height: 16px;
-  color: #54503e;
+  text-align: center;
 `
 
 const CopyrightText = styled.p`

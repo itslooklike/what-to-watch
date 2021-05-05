@@ -9,12 +9,11 @@ import { Header } from '~/design/molecules'
 import { useMobxStores } from '~/store'
 
 const Root = styled.section`
-  padding-bottom: 45px;
-  min-height: 100vh;
   position: relative;
   z-index: 1;
+  min-height: 100vh;
+  padding-bottom: 80px;
   color: #eee5b5;
-  padding-bottom: 78px;
   background-color: #e1b0b2;
 `
 
@@ -24,45 +23,45 @@ const Top = styled.div`
 
 const Background = styled.div`
   position: absolute;
-  z-index: -1;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  z-index: -1;
 `
 
 const Image = styled.img`
-  vertical-align: top;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
+  vertical-align: top;
 `
 
 const Poster = styled.div`
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 0 8px 0 rgb(0 0 0 / 40%);
   flex-shrink: 0;
   width: 132px;
   height: 198px;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 0 8px 0 rgb(0 0 0 / 40%);
   transform: translateY(40px);
 `
 
 const PosterImage = styled.img`
-  vertical-align: top;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  vertical-align: top;
 `
 
 const ReviewBlock = styled.div`
-  padding-top: 62px;
-  max-width: 520px;
   width: 100%;
+  max-width: 520px;
   margin: 0 auto;
+  padding-top: 62px;
 `
 
 const MoviePageAddReviews: NextPage = () => {

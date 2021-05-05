@@ -9,43 +9,43 @@ import type { IFilm } from '~/store/FilmsStore'
 const Card = styled.section`
   position: relative;
   z-index: 1;
-  color: #eee5b5;
   padding-bottom: 80px;
+  color: #eee5b5;
   background: #e1b0b2;
 `
 
 const CardBg = styled.div`
   position: absolute;
-  z-index: -1;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
+  z-index: -1;
 
   ::after {
-    content: '';
     position: absolute;
-    z-index: 1;
     top: 0;
+    right: 0;
     bottom: 0;
     left: 0;
-    right: 0;
+    z-index: 1;
     background: rgba(0, 0, 0, 0.4);
+    content: '';
   }
 `
 
 const CardImg = styled.img`
-  vertical-align: top;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
+  vertical-align: top;
 `
 
 const CardWrap = styled.div`
   max-width: 1300px;
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
   padding: 0 75px;
 `
 
@@ -55,20 +55,20 @@ const CardInfo = styled.div`
 `
 
 const CardPoster = styled.div`
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
   width: 218px;
   height: 327px;
   margin-right: 40px;
-  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4);
 `
 
 const CardPosterImg = styled.img`
-  vertical-align: top;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  vertical-align: top;
 `
 
 const CardDesc = styled.div`
@@ -76,10 +76,10 @@ const CardDesc = styled.div`
 `
 
 const CardTitle = styled.h2`
-  font-family: 'Arial Black', sans-serif;
-  font-size: 32px;
-  line-height: 45px;
   margin: 0 0 7px;
+  font-size: 32px;
+  font-family: 'Arial Black', sans-serif;
+  line-height: 45px;
 
   a {
     color: inherit;
@@ -93,18 +93,17 @@ const CardTitle = styled.h2`
 `
 
 const CardMeta = styled.p`
-  margin: 0;
   display: flex;
+  margin: 0 0 20px;
   font-size: 17px;
   line-height: 20px;
-  margin: 0 0 20px;
 `
 
 const CardGenre = styled.span`
   ::after {
-    content: '·';
-    margin-left: 4px;
     margin-right: 4px;
+    margin-left: 4px;
+    content: '·';
   }
 `
 
