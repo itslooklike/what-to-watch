@@ -1,4 +1,4 @@
-import { useState, forwardRef } from 'react'
+import { useState, forwardRef, useRef } from 'react'
 import { css } from 'linaria'
 import { styled } from 'linaria/react'
 
@@ -78,11 +78,25 @@ type TProps = {
 export const SmallMovieCard = forwardRef<HTMLAnchorElement, TProps>((props, ref) => {
   const { film, onClick, href } = props
 
+  const timerRef = useRef<ReturnType<typeof setTimeout>>()
+
   const [isHover, setHover] = useState(false)
 
-  const handleHover = () => setHover(true)
+  const handleHover = () => {
+    timerRef.current = setTimeout(() => {
+      setHover(true)
+    }, 1_500)
+  }
 
-  const handleLeave = () => setHover(false)
+  const handleLeave = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current)
+    }
+
+    if (isHover) {
+      setHover(false)
+    }
+  }
 
   const isShowVideo = isHover && film.video_link
 
