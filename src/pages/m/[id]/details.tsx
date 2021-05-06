@@ -24,7 +24,7 @@ const MoviePageDetails: NextPage = () => {
       <Head>
         <title>WTW - {film.name}</title>
       </Head>
-      <SeoHead film={filmsStore.firstFilm} />
+      <SeoHead film={filmsStore.firstFilm} url={router.asPath} />
       <FilmLayout film={film}>
         <FilmDetails film={film} />
       </FilmLayout>

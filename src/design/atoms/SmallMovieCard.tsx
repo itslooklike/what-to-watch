@@ -63,7 +63,7 @@ const styleSubtext = css`
 `
 
 const LeftSlot = styled.h3`
-  right: 40px;
+  right: 50px;
   bottom: 10px;
   left: 15px;
   margin: 0;

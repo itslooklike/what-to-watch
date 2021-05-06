@@ -25,7 +25,7 @@ const MovieIndex: NextPage = () => {
       <Head>
         <title>WTW - {film.name}</title>
       </Head>
-      <SeoHead film={filmsStore.firstFilm} />
+      <SeoHead film={filmsStore.firstFilm} url={router.asPath} />
       <FilmLayout film={film}>
         <FilmOverview film={film} />
       </FilmLayout>
