@@ -1,4 +1,5 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+
 import { api } from '~/utils/api'
 import { IFilm, TGenre } from './types'
 

@@ -1,4 +1,5 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+
 import { api, AxiosError } from '~/utils/api'
 import { IUser, IUserSubmit, IUserResponseError } from './types'
 

@@ -3,19 +3,28 @@ import React from 'react'
 import { isServer } from '~/utils/isServer'
 import { FilmsStore } from './FilmsStore'
 import { UserStore } from './UserStore'
+import { FavoriteStore } from './FavoriteStore'
 
 export interface IStore {
   filmsStore: FilmsStore
   userStore: UserStore
+  favoriteStore: FavoriteStore
 }
 
 let clientSideStores: IStore
 
-export function getStores(initialData = { filmsStoreInitialData: {}, userStoreInitialData: {} }) {
+export function getStores(
+  initialData = {
+    filmsStoreInitialData: {},
+    userStoreInitialData: {},
+    favoriteStoreInitialData: {},
+  }
+) {
   if (isServer) {
     return {
       filmsStore: new FilmsStore(initialData.filmsStoreInitialData),
       userStore: new UserStore(initialData.userStoreInitialData),
+      favoriteStore: new FavoriteStore(initialData.favoriteStoreInitialData),
     }
   }
 
@@ -23,6 +32,7 @@ export function getStores(initialData = { filmsStoreInitialData: {}, userStoreIn
     clientSideStores = {
       filmsStore: new FilmsStore(initialData.filmsStoreInitialData),
       userStore: new UserStore(initialData.userStoreInitialData),
+      favoriteStore: new FavoriteStore(initialData.favoriteStoreInitialData),
     }
   }
 

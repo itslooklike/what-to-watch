@@ -31,6 +31,7 @@ MyApp.getInitialProps = async (appContext: AppContext) => {
   const initialStoreData: TInitialStoreData = {
     filmsStoreInitialData: mobxStores.filmsStore.hydrate(),
     userStoreInitialData: mobxStores.userStore.hydrate(),
+    favoriteStoreInitialData: mobxStores.favoriteStore.hydrate(),
   }
 
   return {
