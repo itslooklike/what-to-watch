@@ -13,7 +13,7 @@ const Root = styled.section`
   z-index: 1;
   flex-grow: 1;
   padding-bottom: 45px;
-  color: #eee5b5;
+  color: var(--color-primary);
   background-color: #e1b0b2;
 `
 
@@ -144,7 +144,7 @@ const stylesLink = css`
   position: relative;
   display: block;
   padding-bottom: 19px;
-  color: #eee5b5;
+  color: var(--color-primary);
   text-decoration: none;
 
   ::after {

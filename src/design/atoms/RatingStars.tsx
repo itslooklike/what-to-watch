@@ -2,7 +2,7 @@ import React from 'react'
 import { styled } from 'linaria/react'
 
 const Root = styled.div`
-  display: flex;
+  display: inline-flex;
   gap: 10px;
   justify-content: center;
   margin-bottom: 15px;

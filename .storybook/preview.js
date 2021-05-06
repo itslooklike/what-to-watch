@@ -1,3 +1,5 @@
+import '../src/pages/globals.css'
+
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
@@ -8,5 +10,15 @@ export const parameters = {
   },
   backgrounds: {
     default: 'dark',
+    values: [
+      {
+        name: 'dark',
+        value: '#0c0101',
+      },
+      {
+        name: 'pink',
+        value: '#e1b0b2;',
+      },
+    ],
   },
 }

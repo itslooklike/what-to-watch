@@ -10,7 +10,7 @@ const Card = styled.section`
   position: relative;
   z-index: 1;
   padding-bottom: 80px;
-  color: #eee5b5;
+  color: var(--color-primary);
   background: #e1b0b2;
 `
 

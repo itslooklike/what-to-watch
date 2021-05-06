@@ -55,7 +55,7 @@ const Title = styled.h3`
 
 const stylesLink = css`
   display: inline-block;
-  color: inherit;
+  color: var(--color-primary);
   text-decoration: none;
   vertical-align: top;
 `

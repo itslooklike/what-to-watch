@@ -15,7 +15,7 @@ const Root = styled.section`
   z-index: 1;
   min-height: 100vh;
   padding-bottom: 80px;
-  color: #eee5b5;
+  color: var(--color-primary);
   background-color: #e1b0b2;
 `
 
@@ -64,6 +64,11 @@ const ReviewBlock = styled.div`
   max-width: 520px;
   margin: 0 auto;
   padding-top: 62px;
+`
+
+const RatingWrap = styled.div`
+  display: flex;
+  justify-content: center;
 `
 
 const MoviePageAddReviews: NextPage = () => {
@@ -120,9 +125,9 @@ const MoviePageAddReviews: NextPage = () => {
 
       <ReviewBlock>
         <form onSubmit={handleSubmit}>
-          <div>
+          <RatingWrap>
             <RatingStars name="rating" onChange={handleStars} currentRating={rating} />
-          </div>
+          </RatingWrap>
           <TextArea
             value={text}
             name="review-text"

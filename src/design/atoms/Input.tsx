@@ -3,6 +3,7 @@ import { css, cx } from 'linaria'
 
 const stylesInput = css`
   display: block;
+  box-sizing: border-box;
   width: 100%;
   padding: 25px 20px;
   color: #dfcf77;
@@ -21,14 +22,14 @@ const stylesInput = css`
 
 type TProps = {
   onChange: (_: string) => void
-  type: string
-  placeholder?: string
   id: string
+  type?: string
+  placeholder?: string
   isError?: boolean
 }
 
 export const Input = (props: TProps) => {
-  const { onChange, type, placeholder, id, isError } = props
+  const { onChange, type = 'text', placeholder, id, isError } = props
 
   return (
     <div>
@@ -42,7 +43,7 @@ export const Input = (props: TProps) => {
         id={id}
       />
       <label htmlFor={id} className={cx('visually-hidden')}>
-        Email address
+        {placeholder}
       </label>
     </div>
   )

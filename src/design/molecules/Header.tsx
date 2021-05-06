@@ -40,7 +40,7 @@ const stylesAvatar = css`
 
 const Title = styled.div`
   margin: 0 20px;
-  color: #eee5b5;
+  color: var(--color-primary);
   font-size: 17px;
   line-height: 20px;
   text-decoration: none;

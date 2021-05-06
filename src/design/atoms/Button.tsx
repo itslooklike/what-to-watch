@@ -10,7 +10,7 @@ const styles = css`
   justify-content: center;
   min-width: 128px;
   padding: 13px 30px;
-  color: #eee5b5;
+  color: var(--color-primary);
   font-size: 17px;
   line-height: 20px;
   text-decoration: none;

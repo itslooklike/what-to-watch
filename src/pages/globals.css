@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-primary: #eee5b5;
+  --color-secondary: #e1b0b2;
+}
+
 *,
 *::before,
 *::after {

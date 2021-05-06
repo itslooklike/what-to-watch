@@ -8,6 +8,11 @@ import { Button } from './Button'
 export default {
   title: 'atoms/Button',
   component: Button,
+  parameters: {
+    backgrounds: {
+      default: 'pink',
+    },
+  },
 } as Meta
 
 const Template: Story<React.ComponentProps<typeof Button>> = (args) => (
@@ -27,7 +32,7 @@ export const AllIcons = () => (
       const Btn = Template.bind({})
       return (
         <div style={{ margin: '0 1em 1em 0', display: 'inline-block' }}>
-          <Btn icon={IconName} />
+          <Btn icon={IconName as keyof typeof Icons} />
         </div>
       )
     })}
