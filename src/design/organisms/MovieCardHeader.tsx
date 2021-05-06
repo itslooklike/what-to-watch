@@ -76,9 +76,9 @@ const CardDesc = styled.div`
 `
 
 const CardTitle = styled.h2`
-  margin: 0 0 7px;
+  margin: 0 0 5px;
+  color: var(--color-primary);
   font-size: 32px;
-  font-family: 'Arial Black', sans-serif;
   line-height: 45px;
 
   a {
@@ -95,6 +95,7 @@ const CardTitle = styled.h2`
 const CardMeta = styled.p`
   display: flex;
   margin: 0 0 20px;
+  color: var(--color-primary);
   font-size: 17px;
   line-height: 20px;
 `

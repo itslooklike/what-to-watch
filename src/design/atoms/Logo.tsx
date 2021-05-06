@@ -12,28 +12,28 @@ const stylesLink = css`
   justify-content: center;
   width: 93px;
   height: 54px;
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
   font-weight: 700;
   text-align: center;
   text-decoration: none;
-  border: 1px solid var(--color-primary-dark);
+  border: 1px solid var(--color-primary);
   border-radius: 8px;
   transition: color 0.2s, border-color 0.2s;
 
   &[href]:hover,
   &[href]:focus {
-    color: var(--color-grey);
-    border-color: var(--color-grey);
+    color: var(--color-primary-light);
+    border-color: var(--color-primary-light);
   }
 
   &.light {
-    color: var(--color-grey);
+    color: var(--color-primary-light);
     border: 1px solid rgba(84, 80, 62, 0.36);
 
     &[href]:hover,
     &[href]:focus {
       color: var(--color-primary);
-      border-color: var(--color-grey-light);
+      border-color: var(--color-primary);
     }
   }
 `

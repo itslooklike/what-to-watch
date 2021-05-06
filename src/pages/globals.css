@@ -3,27 +3,22 @@
 }
 
 :root {
-  --color-primary: #eee5b5;
-  --color-primary-dark: #dfcf77;
+  --color-primary: rgba(238, 229, 181, 1);
+  --color-primary-light: rgba(238, 229, 181, 0.5);
+  --color-primary-dark: rgba(238, 229, 181, 1);
   --color-primary-dark-opacity: rgba(217, 202, 116, 0.5);
-
-  --color-secondary: #e1b0b2;
-  --color-secondary-light: #e8c3c4;
-
-  --color-black: #252525;
+  --color-secondary: rgba(225, 176, 178, 1);
+  --color-secondary-light: rgba(232, 195, 196, 1);
+  --color-black: rgba(37, 37, 37, 1);
   --color-black-dark: rgba(0, 0, 0, 0.25);
-  --color-black-light: #382c2a;
+  --color-black-light: rgba(56, 44, 42, 1);
   --color-black-opacity: rgba(0, 0, 0, 0.5);
-
   --color-white-opacity: rgba(255, 255, 255, 0.25);
-
-  --color-grey: #54503e;
-  --color-grey-dark: #353535;
-  --color-grey-light: #866866;
-
-  --color-error: #a8421e;
-
-  --color-red-dark: #2b1b1b;
+  --color-grey: rgba(84, 80, 62, 1);
+  --color-grey-dark: rgba(53, 53, 53, 1);
+  --color-grey-light: rgba(134, 104, 102, 1);
+  --color-error: rgba(168, 66, 30, 1);
+  --color-red-dark: rgba(43, 27, 27, 1);
 }
 
 *,
