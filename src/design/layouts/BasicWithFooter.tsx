@@ -11,7 +11,9 @@ const Root = styled.div`
 `
 
 const Content = styled.div`
+  display: flex;
   flex: 1 0 auto;
+  flex-direction: column;
 `
 
 export const BasicWithFooter: React.FC = (props) => {

@@ -11,7 +11,7 @@ import type { IFilm } from '~/store/FilmsStore'
 const Root = styled.section`
   position: relative;
   z-index: 1;
-  min-height: 100vh;
+  flex-grow: 1;
   padding-bottom: 45px;
   color: #eee5b5;
   background-color: #e1b0b2;

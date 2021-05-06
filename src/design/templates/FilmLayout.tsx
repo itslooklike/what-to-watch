@@ -1,8 +1,9 @@
 import { styled } from 'linaria/react'
 
 import { ContentWrap } from '~/design/atoms'
-import { MovieCardList, Footer } from '~/design/molecules'
+import { MovieCardList } from '~/design/molecules'
 import { FilmCard } from '~/design/organisms'
+import { BasicWithFooter } from '~/design/layouts'
 import { useMobxStores } from '~/store'
 import type { IFilm } from '~/store/FilmsStore'
 
@@ -26,17 +27,14 @@ export const FilmLayout: React.FC<TProps> = (props) => {
   const films = filmsStore.selectLikeThis(film)
 
   return (
-    <div>
+    <BasicWithFooter>
       <FilmCard film={film} content={children} />
-      <ContentWrap>
-        {films.length > 0 && (
-          <div>
-            <Title>More like this</Title>
-            <MovieCardList films={films} />
-          </div>
-        )}
-      </ContentWrap>
-      <Footer />
-    </div>
+      {films.length > 0 && (
+        <ContentWrap>
+          <Title>More like this</Title>
+          <MovieCardList films={films} />
+        </ContentWrap>
+      )}
+    </BasicWithFooter>
   )
 }
