@@ -5,8 +5,7 @@ import { styled } from 'linaria/react'
 
 import { Button } from '~/design/atoms'
 import { Header } from '~/design/molecules'
-import { usePlayerModal } from '~/design/hooks/usePlayerModal'
-import { useToggleFavorite } from '~/design/hooks/useToggleFavorite'
+import { usePlayerModal, useToggleFavorite } from '~/store/hooks'
 import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.section`

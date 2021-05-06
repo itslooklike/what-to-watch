@@ -4,7 +4,7 @@ import { css, cx } from 'linaria'
 import { styled } from 'linaria/react'
 
 import { MovieCardList } from '~/design/molecules'
-import { useFilmsPagination } from '~/utils/useFilmsPagination'
+import { useFilmsPagination } from '~/store/hooks'
 import { useMobxStores } from '~/store'
 import type { TGenre } from '~/store/FilmsStore'
 
