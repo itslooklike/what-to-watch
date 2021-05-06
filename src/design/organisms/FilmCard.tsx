@@ -171,7 +171,7 @@ const Info = styled.div`
 `
 
 const Navigation = ({ filmId }: { filmId: number | string }) => {
-  const { asPath } = useRouter()
+  const router = useRouter()
 
   const list = [
     {
@@ -193,7 +193,7 @@ const Navigation = ({ filmId }: { filmId: number | string }) => {
       {list.map((item, idx) => (
         <NavListItem key={idx}>
           <Link href={item.url} scroll={false}>
-            <a className={cx(stylesLink, asPath === item.url && 'active')}>{item.text}</a>
+            <a className={cx(stylesLink, router?.asPath === item.url && 'active')}>{item.text}</a>
           </Link>
         </NavListItem>
       ))}

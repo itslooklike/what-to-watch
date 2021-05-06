@@ -2,13 +2,13 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { FilmDetails } from './FilmDetails'
+import { MovieCardList } from './MovieCardList'
 
-import { mockFilm } from '~/store/FilmsStore/mocks'
+import { mockFilms } from '~/store/FilmsStore/mocks'
 
 export default {
-  title: 'atoms/FilmDetails',
-  component: FilmDetails,
+  title: 'molecules/MovieCardList',
+  component: MovieCardList,
   parameters: {
     backgrounds: {
       default: 'pink',
@@ -16,11 +16,11 @@ export default {
   },
 } as Meta
 
-const Template: Story<React.ComponentProps<typeof FilmDetails>> = (args) => (
-  <FilmDetails {...args} />
+const Template: Story<React.ComponentProps<typeof MovieCardList>> = (args) => (
+  <MovieCardList {...args} />
 )
 
 export const Default = Template.bind({})
 Default.args = {
-  film: mockFilm,
+  films: mockFilms,
 }

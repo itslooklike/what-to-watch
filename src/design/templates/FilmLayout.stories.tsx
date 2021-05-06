@@ -2,24 +2,24 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { Header } from './Header'
+import { FilmLayout } from './FilmLayout'
 
 import { getStores, StoreProvider, TInitialStoreData } from '~/store'
+import { mockFilm } from '~/store/FilmsStore/mocks'
 import { mocksUser } from '~/store/UserStore/mocks'
 
 export default {
-  title: 'molecules/Header',
-  component: Header,
-  parameters: {
-    backgrounds: {
-      default: 'pink',
-    },
-  },
+  title: 'templates/FilmLayout',
+  component: FilmLayout,
 } as Meta
 
-const Template: Story<React.ComponentProps<typeof Header>> = (args) => <Header {...args} />
+const Template: Story<React.ComponentProps<typeof FilmLayout>> = (args) => <FilmLayout {...args} />
 
 export const Default = Template.bind({})
+Default.args = {
+  film: mockFilm,
+  children: <>CONTENT HERE</>,
+}
 Default.decorators = [
   (Story) => {
     const initialStoreData: TInitialStoreData = {

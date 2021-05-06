@@ -71,8 +71,11 @@ const ButtonMore = styled.button`
 
 export const Catalog = () => {
   const { filmsStore } = useMobxStores()
-  const { query } = useRouter()
-  const genre = query.genre as TGenre
+
+  const router = useRouter()
+
+  const genre = router?.query.genre as TGenre
+
   const [currentFilms, handleMore, isHasMore] = useFilmsPagination(genre)
 
   return (
