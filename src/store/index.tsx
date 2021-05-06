@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { isServer } from '~/utils/isServer'
+import { isServer } from '~/utils/env'
 import { FilmsStore } from './FilmsStore'
 import { UserStore } from './UserStore'
 import { FavoriteStore } from './FavoriteStore'
