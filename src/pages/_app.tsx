@@ -5,6 +5,7 @@ import './globals.css'
 
 import React from 'react'
 import App from 'next/app'
+import Head from 'next/head'
 import type { AppProps, AppContext } from 'next/app'
 
 import { getStores, StoreProvider, TInitialStoreData } from '~/store'
@@ -17,9 +18,17 @@ function MyApp({ Component, pageProps, initialStoreData }: AppProps & TCustomPro
   const stores = getStores(initialStoreData)
 
   return (
-    <StoreProvider value={stores}>
-      <Component {...pageProps} />
-    </StoreProvider>
+    <>
+      <Head>
+        <link rel="manifest" href="/manifest.webmanifest" />
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      </Head>
+      <StoreProvider value={stores}>
+        <Component {...pageProps} />
+      </StoreProvider>
+    </>
   )
 }
 
