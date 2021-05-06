@@ -1,0 +1,9 @@
+**/node_modules
+.linaria-cache
+.next
+images
+
+.git
+.vscode
+.idea
+yarn-error.log
