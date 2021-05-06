@@ -14,7 +14,7 @@ const Root = styled.section`
   flex-grow: 1;
   padding-bottom: 45px;
   color: var(--color-primary);
-  color: var(--color-secondary);
+  background-color: var(--color-secondary);
 `
 
 const Hero = styled.div`

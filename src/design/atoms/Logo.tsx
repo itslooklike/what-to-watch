@@ -16,14 +16,14 @@ const stylesLink = css`
   font-weight: 700;
   text-align: center;
   text-decoration: none;
-  border: 1px solid rgba(223, 207, 119, 0.36);
+  border: 1px solid var(--color-primary-dark);
   border-radius: 8px;
   transition: color 0.2s, border-color 0.2s;
 
   &[href]:hover,
   &[href]:focus {
     color: var(--color-grey);
-    border-color: var(--color-grey-light);
+    border-color: var(--color-grey);
   }
 
   &.light {
