@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { mockFilm } from '~/store/FilmsStore/moks'
+import { mockFilm } from '~/store/FilmsStore/mocks'
 import { SmallMovieCard } from './SmallMovieCard'
 
 export default {

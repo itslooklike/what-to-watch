@@ -4,7 +4,7 @@ export interface IUserSubmit {
 }
 
 export interface IUser {
-  id: string
+  id: number
   email: string
   name: string
   avatar_url: string
