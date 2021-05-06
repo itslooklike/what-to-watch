@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite'
 
 import { FilmOverview } from '~/design/atoms'
 import { FilmLayout } from '~/design/templates'
+import { getInitialFilms } from '~/utils/getInitialFilms'
 import { useMobxStores } from '~/store'
 
 const MovieIndex: NextPage = () => {
@@ -24,9 +25,6 @@ const MovieIndex: NextPage = () => {
   )
 }
 
-MovieIndex.getInitialProps = async ({ mobxStores }) => {
-  await mobxStores.filmsStore.getFilms()
-  return {}
-}
+MovieIndex.getInitialProps = getInitialFilms
 
 export default observer(MovieIndex)

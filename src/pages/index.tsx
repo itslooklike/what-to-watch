@@ -4,6 +4,7 @@ import type { NextPage } from 'next'
 import { PageContent } from '~/design/atoms'
 import { Footer } from '~/design/molecules'
 import { MovieCardHeader, Catalog } from '~/design/organisms'
+import { getInitialFilms } from '~/utils/getInitialFilms'
 import { useMobxStores } from '~/store'
 
 const Home: NextPage = () => {
@@ -20,9 +21,6 @@ const Home: NextPage = () => {
   )
 }
 
-Home.getInitialProps = async ({ mobxStores }) => {
-  await mobxStores.filmsStore.getFilms()
-  return {}
-}
+Home.getInitialProps = getInitialFilms
 
 export default observer(Home)

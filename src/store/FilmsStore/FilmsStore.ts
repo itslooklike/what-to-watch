@@ -22,15 +22,11 @@ export class FilmsStore {
     }
   }
 
-  static async fetchFilms() {
-    return api.get<IFilm[]>('/films')
-  }
-
-  async getFilms() {
+  async fetchFilms() {
     this.loading = true
 
     try {
-      const { data } = await FilmsStore.fetchFilms()
+      const { data } = await api.get<IFilm[]>('/films')
 
       runInAction(() => {
         this.loading = false

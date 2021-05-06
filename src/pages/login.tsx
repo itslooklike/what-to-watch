@@ -82,7 +82,7 @@ const InputsWrap = styled.div`
 const Login: NextPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const { userStore } = useMobxStores()
+  const { userStore, filmsStore } = useMobxStores()
   const router = useRouter()
 
   const handleEmail = (value: string) => {
@@ -103,6 +103,7 @@ const Login: NextPage = () => {
     await userStore.submit({ email, password })
 
     if (!userStore.getError) {
+      await filmsStore.fetchFilms()
       router.push('/')
     }
   }

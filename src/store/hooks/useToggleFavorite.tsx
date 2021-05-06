@@ -21,7 +21,7 @@ export const useToggleFavorite = (film: IFilm) => {
       await favoriteStore.add(film.id)
     }
 
-    await filmsStore.getFilms()
+    await filmsStore.fetchFilms()
   }, [userStore.user, film])
 
   return {

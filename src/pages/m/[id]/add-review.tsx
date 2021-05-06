@@ -6,6 +6,7 @@ import type { NextPage } from 'next'
 
 import { RatingStars, TextArea } from '~/design/atoms'
 import { Header } from '~/design/molecules'
+import { getInitialFilms } from '~/utils/getInitialFilms'
 import { useMobxStores } from '~/store'
 
 const Root = styled.section`
@@ -133,9 +134,6 @@ const MoviePageAddReviews: NextPage = () => {
   )
 }
 
-MoviePageAddReviews.getInitialProps = async ({ mobxStores }) => {
-  await mobxStores.filmsStore.getFilms()
-  return {}
-}
+MoviePageAddReviews.getInitialProps = getInitialFilms
 
 export default MoviePageAddReviews

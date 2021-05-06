@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 
 import { FilmDetails } from '~/design/atoms'
 import { FilmLayout } from '~/design/templates'
+import { getInitialFilms } from '~/utils/getInitialFilms'
 import { useMobxStores } from '~/store'
 
 const MoviePageDetails: NextPage = () => {
@@ -23,9 +24,6 @@ const MoviePageDetails: NextPage = () => {
   )
 }
 
-MoviePageDetails.getInitialProps = async ({ mobxStores }) => {
-  await mobxStores.filmsStore.getFilms()
-  return {}
-}
+MoviePageDetails.getInitialProps = getInitialFilms
 
 export default MoviePageDetails
