@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import { styled } from 'linaria/react'
+import { useRouter } from 'next/router'
 
 import { Button } from '~/design/atoms'
 import { Header } from '~/design/molecules'
 import { usePlayerModal } from '~/design/hooks/usePlayerModal'
+import { useMobxStores } from '~/store'
 import type { IFilm } from '~/store/FilmsStore'
 
 const Card = styled.section`
@@ -118,7 +120,25 @@ type TProps = {
 
 export const MovieCardHeader = (props: TProps) => {
   const { film } = props
+
+  const router = useRouter()
+
   const { handleOpenPlayer, playerModal } = usePlayerModal(film)
+
+  const { userStore, favoriteStore } = useMobxStores()
+
+  const handleAddInList = () => {
+    if (!userStore.user) {
+      router.push('/login')
+      return
+    }
+
+    if (film.is_favorite) {
+      favoriteStore.remove(film.id)
+    } else {
+      favoriteStore.add(film.id)
+    }
+  }
 
   return (
     <Card>
@@ -152,7 +172,9 @@ export const MovieCardHeader = (props: TProps) => {
               <Button icon="IconPlay" onClick={handleOpenPlayer}>
                 Play
               </Button>
-              <Button icon="IconInList">My list</Button>
+              <Button icon={film.is_favorite ? 'IconInList' : 'IconAdd'} onClick={handleAddInList}>
+                My list
+              </Button>
             </CardButtons>
           </CardDesc>
         </CardInfo>
