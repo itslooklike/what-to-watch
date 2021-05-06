@@ -1,6 +1,7 @@
-import type { NextPage } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { observer } from 'mobx-react-lite'
+import type { NextPage } from 'next'
 
 import { FilmOverview } from '~/design/atoms'
 import { FilmLayout } from '~/design/templates'
@@ -19,9 +20,14 @@ const MovieIndex: NextPage = () => {
   }
 
   return (
-    <FilmLayout film={film}>
-      <FilmOverview film={film} />
-    </FilmLayout>
+    <>
+      <Head>
+        <title>WTW - {film.name}</title>
+      </Head>
+      <FilmLayout film={film}>
+        <FilmOverview film={film} />
+      </FilmLayout>
+    </>
   )
 }
 

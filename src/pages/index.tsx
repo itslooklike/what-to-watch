@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { observer } from 'mobx-react-lite'
 import type { NextPage } from 'next'
 
@@ -11,12 +12,17 @@ const Home: NextPage = () => {
   const { filmsStore } = useMobxStores()
 
   return (
-    <BasicWithFooter>
-      <MovieCardHeader film={filmsStore.firstFilm} />
-      <ContentWrap>
-        <Catalog />
-      </ContentWrap>
-    </BasicWithFooter>
+    <>
+      <Head>
+        <title>What To Watch</title>
+      </Head>
+      <BasicWithFooter>
+        <MovieCardHeader film={filmsStore.firstFilm} />
+        <ContentWrap>
+          <Catalog />
+        </ContentWrap>
+      </BasicWithFooter>
+    </>
   )
 }
 

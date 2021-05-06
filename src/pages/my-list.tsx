@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import type { NextPage } from 'next'
 
 import { ContentWrap } from '~/design/atoms'
@@ -9,13 +10,18 @@ const MyList: NextPage = () => {
   const { favoriteStore } = useMobxStores()
 
   return (
-    <div>
-      <Header />
-      <ContentWrap>
-        <MovieCardList films={favoriteStore.data} />
-      </ContentWrap>
-      <Footer />
-    </div>
+    <>
+      <Head>
+        <title>WTW - Favorites</title>
+      </Head>
+      <div>
+        <Header />
+        <ContentWrap>
+          <MovieCardList films={favoriteStore.data} />
+        </ContentWrap>
+        <Footer />
+      </div>
+    </>
   )
 }
 

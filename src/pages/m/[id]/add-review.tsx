@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { SyntheticEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
@@ -108,36 +109,41 @@ const MoviePageAddReviews: NextPage = () => {
   )
 
   return (
-    <Root>
-      <Top>
-        <Background>
-          <Image src={film.background_image} alt={film.name} />
-        </Background>
-        <Header title={headerTitle} />
-        <Poster>
-          <PosterImage
-            src={film.poster_image}
-            alt={`${film.name} poster`}
-            width="218"
-            height="327"
-          />
-        </Poster>
-      </Top>
+    <>
+      <Head>
+        <title>WTW - {film.name}</title>
+      </Head>
+      <Root>
+        <Top>
+          <Background>
+            <Image src={film.background_image} alt={film.name} />
+          </Background>
+          <Header title={headerTitle} />
+          <Poster>
+            <PosterImage
+              src={film.poster_image}
+              alt={`${film.name} poster`}
+              width="218"
+              height="327"
+            />
+          </Poster>
+        </Top>
 
-      <ReviewBlock>
-        <form onSubmit={handleSubmit}>
-          <RatingWrap>
-            <RatingStars name="rating" onChange={handleStars} currentRating={rating} />
-          </RatingWrap>
-          <TextArea
-            value={text}
-            name="review-text"
-            placeholder="Review text"
-            onChange={handleText}
-          />
-        </form>
-      </ReviewBlock>
-    </Root>
+        <ReviewBlock>
+          <form onSubmit={handleSubmit}>
+            <RatingWrap>
+              <RatingStars name="rating" onChange={handleStars} currentRating={rating} />
+            </RatingWrap>
+            <TextArea
+              value={text}
+              name="review-text"
+              placeholder="Review text"
+              onChange={handleText}
+            />
+          </form>
+        </ReviewBlock>
+      </Root>
+    </>
   )
 }
 

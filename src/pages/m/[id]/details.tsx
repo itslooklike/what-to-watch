@@ -1,5 +1,6 @@
-import type { NextPage } from 'next'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
+import type { NextPage } from 'next'
 
 import { FilmDetails } from '~/design/atoms'
 import { FilmLayout } from '~/design/templates'
@@ -18,9 +19,14 @@ const MoviePageDetails: NextPage = () => {
   }
 
   return (
-    <FilmLayout film={film}>
-      <FilmDetails film={film} />
-    </FilmLayout>
+    <>
+      <Head>
+        <title>WTW - {film.name}</title>
+      </Head>
+      <FilmLayout film={film}>
+        <FilmDetails film={film} />
+      </FilmLayout>
+    </>
   )
 }
 

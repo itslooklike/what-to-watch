@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useState, SyntheticEvent } from 'react'
 import { styled } from 'linaria/react'
 import { observer } from 'mobx-react-lite'
@@ -88,35 +89,42 @@ const Login: NextPage = () => {
   }
 
   return (
-    <BasicWithFooter>
-      <Header title="Sign in" centerTitle hideUser />
-      <Content>
-        <form onSubmit={handleSubmit}>
-          <ErrorTitle>
-            {userStore.getError ? 'Please enter a valid email address' : emptyError || <>&nbsp;</>}
-          </ErrorTitle>
-          <InputsWrap>
-            <Input
-              onChange={handleEmail}
-              type="email"
-              placeholder="Email address"
-              id="user-email"
-              isError={Boolean(userStore.getError || emptyError)}
-            />
-            <Input
-              onChange={handlePassword}
-              type="password"
-              placeholder="Password"
-              id="user-password"
-              isError={Boolean(emptyError)}
-            />
-          </InputsWrap>
-          <ButtonWrap>
-            <LoginButton type="submit">Sign in</LoginButton>
-          </ButtonWrap>
-        </form>
-      </Content>
-    </BasicWithFooter>
+    <>
+      <Head>
+        <title>WTW - Login</title>
+      </Head>
+      <BasicWithFooter>
+        <Header title="Sign in" centerTitle hideUser />
+        <Content>
+          <form onSubmit={handleSubmit}>
+            <ErrorTitle>
+              {userStore.getError
+                ? 'Please enter a valid email address'
+                : emptyError || <>&nbsp;</>}
+            </ErrorTitle>
+            <InputsWrap>
+              <Input
+                onChange={handleEmail}
+                type="email"
+                placeholder="Email address"
+                id="user-email"
+                isError={Boolean(userStore.getError || emptyError)}
+              />
+              <Input
+                onChange={handlePassword}
+                type="password"
+                placeholder="Password"
+                id="user-password"
+                isError={Boolean(emptyError)}
+              />
+            </InputsWrap>
+            <ButtonWrap>
+              <LoginButton type="submit">Sign in</LoginButton>
+            </ButtonWrap>
+          </form>
+        </Content>
+      </BasicWithFooter>
+    </>
   )
 }
 
