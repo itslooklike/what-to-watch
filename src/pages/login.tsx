@@ -4,32 +4,10 @@ import { observer } from 'mobx-react-lite'
 import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
 
-import { Logo, Input } from '~/design/atoms'
+import { Input } from '~/design/atoms'
+import { Header } from '~/design/molecules'
 import { BasicWithFooter } from '~/design/layouts'
 import { useMobxStores } from '~/store'
-
-const Header = styled.header`
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 1300px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 22px 75px;
-`
-
-const Title = styled.h1`
-  position: absolute;
-  right: 200px;
-  left: 200px;
-  margin: 0 auto;
-  color: #dfcf77;
-  font-weight: 300;
-  font-size: 30px;
-  line-height: 36px;
-  text-align: center;
-`
 
 const Content = styled.div`
   width: 100%;
@@ -111,10 +89,7 @@ const Login: NextPage = () => {
 
   return (
     <BasicWithFooter>
-      <Header>
-        <Logo />
-        <Title>Sign in</Title>
-      </Header>
+      <Header title="Sign in" centerTitle hideUser />
       <Content>
         <form onSubmit={handleSubmit}>
           <ErrorTitle>
