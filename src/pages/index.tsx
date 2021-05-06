@@ -2,8 +2,8 @@ import { observer } from 'mobx-react-lite'
 import type { NextPage } from 'next'
 
 import { ContentWrap } from '~/design/atoms'
-import { Footer } from '~/design/molecules'
 import { MovieCardHeader, Catalog } from '~/design/organisms'
+import { BasicWithFooter } from '~/design/layouts'
 import { getInitialFilms } from '~/utils/getInitialFilms'
 import { useMobxStores } from '~/store'
 
@@ -11,13 +11,12 @@ const Home: NextPage = () => {
   const { filmsStore } = useMobxStores()
 
   return (
-    <div>
+    <BasicWithFooter>
       <MovieCardHeader film={filmsStore.firstFilm} />
       <ContentWrap>
         <Catalog />
       </ContentWrap>
-      <Footer />
-    </div>
+    </BasicWithFooter>
   )
 }
 

@@ -1,0 +1,1 @@
+export { BasicWithFooter } from './BasicWithFooter'

@@ -5,16 +5,8 @@ import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
 
 import { Logo, Input } from '~/design/atoms'
-import { Footer } from '~/design/molecules'
+import { BasicWithFooter } from '~/design/layouts'
 import { useMobxStores } from '~/store'
-
-const Root = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 15px 15px 70px;
-  background-image: linear-gradient(-180deg, #170202 0%, #0c0101 100%);
-`
 
 const Header = styled.header`
   position: relative;
@@ -40,7 +32,6 @@ const Title = styled.h1`
 `
 
 const Content = styled.div`
-  flex-grow: 1;
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
@@ -80,16 +71,25 @@ const InputsWrap = styled.div`
 `
 
 const Login: NextPage = () => {
+  const [emptyError, setEmptyError] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { userStore, filmsStore } = useMobxStores()
   const router = useRouter()
 
+  const handleInput = () => {
+    if (emptyError) {
+      setEmptyError('')
+    }
+  }
+
   const handleEmail = (value: string) => {
+    handleInput()
     setEmail(value)
   }
 
   const handlePassword = (value: string) => {
+    handleInput()
     setPassword(value)
   }
 
@@ -97,7 +97,8 @@ const Login: NextPage = () => {
     event.preventDefault()
 
     if (!email || !password) {
-      console.log('ошибка')
+      setEmptyError('Please fill fields')
+      return
     }
 
     await userStore.submit({ email, password })
@@ -109,27 +110,30 @@ const Login: NextPage = () => {
   }
 
   return (
-    <Root>
+    <BasicWithFooter>
       <Header>
         <Logo />
         <Title>Sign in</Title>
       </Header>
       <Content>
         <form onSubmit={handleSubmit}>
-          {userStore.getError && <ErrorTitle>Please enter a valid email address</ErrorTitle>}
+          <ErrorTitle>
+            {userStore.getError ? 'Please enter a valid email address' : emptyError || <>&nbsp;</>}
+          </ErrorTitle>
           <InputsWrap>
             <Input
               onChange={handleEmail}
               type="email"
               placeholder="Email address"
               id="user-email"
-              isError={Boolean(userStore.getError)}
+              isError={Boolean(userStore.getError || emptyError)}
             />
             <Input
               onChange={handlePassword}
               type="password"
               placeholder="Password"
               id="user-password"
+              isError={Boolean(emptyError)}
             />
           </InputsWrap>
           <ButtonWrap>
@@ -137,8 +141,7 @@ const Login: NextPage = () => {
           </ButtonWrap>
         </form>
       </Content>
-      <Footer />
-    </Root>
+    </BasicWithFooter>
   )
 }
 
