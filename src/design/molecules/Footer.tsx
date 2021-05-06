@@ -13,7 +13,7 @@ const LogoWrap = styled.div`
 `
 
 const Copyright = styled.div`
-  color: #54503e;
+  color: var(--color-grey);
   font-size: 14px;
   line-height: 16px;
   text-align: center;

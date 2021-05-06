@@ -5,7 +5,6 @@ const Root = styled.div`
   display: inline-flex;
   gap: 10px;
   justify-content: center;
-  margin-bottom: 15px;
 `
 
 const Input = styled.input`
@@ -20,7 +19,7 @@ const Label = styled.label`
 
   ::after {
     display: block;
-    color: rgba(56, 44, 42, 0.7);
+    color: var(--color-grey);
     font-size: 32px;
     line-height: 36px;
     transition: color 0.2s;
@@ -28,11 +27,11 @@ const Label = styled.label`
   }
 
   ${Input}:checked ~ &::after {
-    color: rgba(56, 44, 42, 0.36);
+    color: var(--color-grey-light);
   }
 
   ${Input}:checked + &::after {
-    color: rgba(56, 44, 42, 0.7);
+    color: var(--color-grey);
   }
 `
 

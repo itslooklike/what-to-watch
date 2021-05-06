@@ -14,7 +14,7 @@ const Root = styled.section`
   flex-grow: 1;
   padding-bottom: 45px;
   color: var(--color-primary);
-  background-color: #e1b0b2;
+  color: var(--color-secondary);
 `
 
 const Hero = styled.div`
@@ -39,7 +39,7 @@ const Background = styled.div`
     bottom: 0;
     left: 0;
     z-index: 1;
-    background: rgba(0, 0, 0, 0.4);
+    background-color: var(--color-black-opacity);
     content: '';
   }
 `
@@ -107,7 +107,7 @@ const Poster = styled.div`
   margin-right: 40px;
   overflow: hidden;
   border-radius: 5px;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 8px 0 var(--color-black-opacity);
 `
 
 const PosterImg = styled.img`
@@ -155,7 +155,7 @@ const stylesLink = css`
     z-index: 1;
     display: none;
     height: 4px;
-    background: #eee5b5;
+    background-color: var(--color-primary);
     content: '';
   }
 

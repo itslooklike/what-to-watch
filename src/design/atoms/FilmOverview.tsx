@@ -13,17 +13,17 @@ const Rating = styled.div`
 const RatingScore = styled.div`
   margin-right: 9px;
   padding: 8px 12px;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--color-black-opacity);
   font-size: 30px;
   line-height: 36px;
-  background: rgba(255, 255, 255, 0.24);
+  background-color: var(--color-white-opacity);
   border-radius: 8px;
 `
 
 const RatingMeta = styled.p`
   display: flex;
   margin: 0;
-  color: rgba(0, 0, 0, 0.5);
+  color: var(--color-black-opacity);
   font-size: 19px;
 `
 
@@ -39,23 +39,23 @@ const RatingLevel = styled.span`
 `
 
 const RatingCount = styled.span`
-  color: #382c2a;
+  color: var(--color-black-light);
 `
 
 const Text = styled.div`
   width: 635px;
-  color: #252525;
+  color: var(--color-black);
   font-size: 19px;
   line-height: 27px;
 `
 
 const TextDirector = styled.p`
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--color-black-opacity);
   line-height: 21px;
 `
 
 const TextStarring = styled.p`
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--color-black-opacity);
   line-height: 24px;
 `
 

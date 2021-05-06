@@ -6,17 +6,17 @@ const stylesInput = css`
   box-sizing: border-box;
   width: 100%;
   padding: 25px 20px;
-  color: #dfcf77;
+  color: var(--color-primary-dark);
   font-weight: 300;
   font-size: 30px;
   line-height: 44px;
-  background: #2b1b1b;
+  background-color: var(--color-red-dark);
   border: 1px solid transparent;
   border-radius: 8px;
   transition: border-color 0.2s;
 
   &.error {
-    border-color: #a8421e;
+    border-color: var(--color-error);
   }
 `
 

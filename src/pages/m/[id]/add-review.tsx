@@ -16,7 +16,7 @@ const Root = styled.section`
   min-height: 100vh;
   padding-bottom: 80px;
   color: var(--color-primary);
-  background-color: #e1b0b2;
+  color: var(--color-secondary);
 `
 
 const Top = styled.div`
@@ -69,6 +69,7 @@ const ReviewBlock = styled.div`
 const RatingWrap = styled.div`
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
 `
 
 const MoviePageAddReviews: NextPage = () => {

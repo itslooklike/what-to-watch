@@ -12,7 +12,7 @@ const stylesLink = css`
   justify-content: center;
   width: 93px;
   height: 54px;
-  color: #d9cd8d;
+  color: var(--color-primary-dark);
   font-weight: 700;
   text-align: center;
   text-decoration: none;
@@ -22,18 +22,18 @@ const stylesLink = css`
 
   &[href]:hover,
   &[href]:focus {
-    color: #54503e;
-    border-color: rgba(84, 80, 62, 0.36);
+    color: var(--color-grey);
+    border-color: var(--color-grey-light);
   }
 
   &.light {
-    color: #54503e;
+    color: var(--color-grey);
     border: 1px solid rgba(84, 80, 62, 0.36);
 
     &[href]:hover,
     &[href]:focus {
-      color: #d9cd8d;
-      border-color: rgba(223, 207, 119, 0.36);
+      color: var(--color-primary);
+      border-color: var(--color-grey-light);
     }
   }
 `

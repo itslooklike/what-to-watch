@@ -11,7 +11,7 @@ const Card = styled.section`
   z-index: 1;
   padding-bottom: 80px;
   color: var(--color-primary);
-  background: #e1b0b2;
+  color: var(--color-secondary);
 `
 
 const CardBg = styled.div`
@@ -29,7 +29,7 @@ const CardBg = styled.div`
     bottom: 0;
     left: 0;
     z-index: 1;
-    background: rgba(0, 0, 0, 0.4);
+    background-color: var(--color-black-opacity);
     content: '';
   }
 `
@@ -61,7 +61,7 @@ const CardPoster = styled.div`
   margin-right: 40px;
   overflow: hidden;
   border-radius: 5px;
-  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 8px 0 var(--color-black-opacity);
 `
 
 const CardPosterImg = styled.img`

@@ -14,7 +14,7 @@ const styles = css`
   font-size: 17px;
   line-height: 20px;
   text-decoration: none;
-  background: rgba(0, 0, 0, 0.26);
+  background-color: var(--color-black-dark);
   border: 0;
   border-radius: 8px;
   cursor: pointer;
@@ -22,7 +22,7 @@ const styles = css`
   will-change: transform;
 
   :hover {
-    background: rgba(0, 0, 0, 0.51);
+    background-color: var(--color-black-opacity);
     transform: scale(1.1);
   }
 `

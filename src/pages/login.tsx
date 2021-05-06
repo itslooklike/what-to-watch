@@ -21,7 +21,7 @@ const LoginButton = styled.button`
   display: block;
   width: 100%;
   padding: 24px 40px;
-  color: #d9cd8d;
+  color: var(--color-primary-dark);
   font-size: 30px;
   line-height: 44px;
   text-align: center;
@@ -37,7 +37,7 @@ const ButtonWrap = styled.div`
 
 const ErrorTitle = styled.p`
   margin-bottom: 40px;
-  color: #dfcf77;
+  color: var(--color-primary-dark);
   font-size: 22px;
   line-height: 26px;
   text-align: center;

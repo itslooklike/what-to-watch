@@ -9,7 +9,7 @@ import type { IFilm } from '~/store/FilmsStore'
 
 const Title = styled.div`
   margin: 0 0 12px;
-  color: #dfcf77;
+  color: var(--color-primary-dark);
   font-weight: 400;
   font-size: 22px;
   line-height: 26px;

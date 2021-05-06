@@ -1,7 +1,7 @@
 import { styled } from 'linaria/react'
 
 const Root = styled.div`
-  background: #e8c3c4;
+  background-color: var(--color-secondary-light);
   border-radius: 8px;
 `
 
@@ -11,7 +11,7 @@ const Area = styled.textarea`
   height: 150px;
   min-height: 150px;
   padding: 25px;
-  color: #252525;
+  color: var(--color-black);
   font-size: 17px;
   line-height: 24px;
   background: 0 0;
@@ -28,7 +28,7 @@ const Footer = styled.div`
 const SubmitButton = styled.button`
   display: block;
   padding: 0;
-  color: #866866;
+  color: var(--color-grey-light);
   font-weight: 700;
   font-size: 17px;
   line-height: 27px;

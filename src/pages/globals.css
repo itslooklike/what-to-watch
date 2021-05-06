@@ -4,7 +4,26 @@
 
 :root {
   --color-primary: #eee5b5;
+  --color-primary-dark: #dfcf77;
+  --color-primary-dark-opacity: rgba(217, 202, 116, 0.5);
+
   --color-secondary: #e1b0b2;
+  --color-secondary-light: #e8c3c4;
+
+  --color-black: #252525;
+  --color-black-dark: rgba(0, 0, 0, 0.25);
+  --color-black-light: #382c2a;
+  --color-black-opacity: rgba(0, 0, 0, 0.5);
+
+  --color-white-opacity: rgba(255, 255, 255, 0.25);
+
+  --color-grey: #54503e;
+  --color-grey-dark: #353535;
+  --color-grey-light: #866866;
+
+  --color-error: #a8421e;
+
+  --color-red-dark: #2b1b1b;
 }
 
 *,
@@ -28,7 +47,7 @@ body {
   font-family: 'Arial', 'Helvetica', sans-serif;
   font-size: 19px;
   line-height: 23px;
-  color: #fff;
+  color: var(--color-primary);
   background-image: linear-gradient(-180deg, #170202 0%, #0c0101 100%);
   margin: 0;
   min-width: 1000px;

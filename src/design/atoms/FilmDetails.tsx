@@ -20,11 +20,11 @@ const Item = styled.p`
 
 const ItemName = styled.strong`
   display: block;
-  color: #252525;
+  color: var(--color-black);
   font-weight: bold;
 `
 const ItemValue = styled.span`
-  color: #131313;
+  color: var(--color-black);
 `
 
 type TProps = {

@@ -21,7 +21,7 @@ const List = styled.ul`
 const stylesLink = css`
   position: relative;
   display: block;
-  color: #dfcf77;
+  color: var(--color-primary-dark);
   text-decoration: none;
   transition: font-weight;
 
@@ -33,7 +33,7 @@ const stylesLink = css`
     z-index: 1;
     display: none;
     height: 1px;
-    background-color: #d9cd8d;
+    background-color: var(--color-primary-dark);
     content: '';
   }
 
@@ -54,7 +54,7 @@ const ButtonMore = styled.button`
   display: block;
   width: 100%;
   padding: 29px 40px;
-  color: #d9ca74;
+  color: var(--color-primary-dark);
   font-size: 22px;
   line-height: 26px;
   text-align: center;
@@ -65,7 +65,7 @@ const ButtonMore = styled.button`
   transition: border-color 0.2s;
 
   :hover {
-    border-color: rgba(217, 202, 116, 0.5);
+    border-color: var(--color-primary-dark-opacity);
   }
 `
 

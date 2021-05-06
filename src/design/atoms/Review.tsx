@@ -6,10 +6,10 @@ const Root = styled.div`
   padding-top: 20px;
   padding-right: 75px;
   padding-bottom: 20px;
-  color: #252525;
+  color: var(--color-black);
   font-size: 17px;
   line-height: 24px;
-  border-bottom: 2px solid #e8c3c4;
+  border-bottom: 2px solid var(--color-secondary-light);
 `
 
 const Quote = styled.blockquote`
@@ -25,7 +25,7 @@ const Text = styled.p`
 
 const Details = styled.footer`
   display: flex;
-  color: rgba(0, 0, 0, 0.4);
+  color: var(--color-black-opacity);
   font-size: 16px;
   line-height: 27px;
 `
@@ -51,12 +51,12 @@ const Rating = styled.div`
   right: 0;
   width: 55px;
   padding: 5px;
-  color: #353535;
+  color: var(--color-grey-dark);
   font-weight: 500;
   font-size: 19px;
   line-height: 25px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.24);
+  background-color: var(--color-white-opacity);
   border-radius: 8px;
 `
 
