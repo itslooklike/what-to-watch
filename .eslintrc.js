@@ -60,6 +60,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 0,
     '@typescript-eslint/explicit-module-boundary-types': 0,
     '@typescript-eslint/ban-ts-comment': ['warn'],
+    '@typescript-eslint/no-unused-vars': ['error'],
 
     'no-use-before-define': 0,
     '@typescript-eslint/no-use-before-define': ['error'],

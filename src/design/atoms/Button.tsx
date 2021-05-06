@@ -34,9 +34,14 @@ const Content = styled.span`
 
 const IconWrap = styled.span`
   position: relative;
-  top: 1px;
-  align-self: center;
+  top: -1px;
+  display: flex;
+  align-items: center;
   margin-right: 10px;
+
+  svg {
+    display: inline-flex;
+  }
 `
 
 type TProps = {
@@ -57,7 +62,7 @@ export const Button: React.FC<TProps> = React.forwardRef((props, ref) => {
     <Content>
       {Icon && (
         <IconWrap>
-          <Icon width="20" />
+          <Icon height="20" />
         </IconWrap>
       )}
       <span>{children}</span>

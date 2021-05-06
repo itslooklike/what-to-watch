@@ -1,4 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="18" height="14" fill="none">
-  <defs />
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 14">
   <path fill="#EEE5B5" fill-rule="evenodd" d="M2.405 5.354l3.777 3.555L15.58 0 18 2.805 6.19 14 0 8.173l2.405-2.82z" clip-rule="evenodd" />
 </svg>
