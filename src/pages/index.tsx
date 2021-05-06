@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite'
 import type { NextPage } from 'next'
 
 import { PageContent } from '~/design/atoms'
@@ -24,4 +25,4 @@ Home.getInitialProps = async ({ mobxStores }) => {
   return {}
 }
 
-export default Home
+export default observer(Home)
