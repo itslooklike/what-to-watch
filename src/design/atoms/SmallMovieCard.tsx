@@ -1,4 +1,4 @@
-import { useState, forwardRef, useRef } from 'react'
+import { useState, forwardRef, useRef, useEffect } from 'react'
 import { css } from 'linaria'
 import { styled } from 'linaria/react'
 
@@ -69,8 +69,6 @@ const Video = styled.video`
 
 type TProps = {
   film: IFilm
-
-  // FIXME: это должно пробрасываться
   onClick?: VoidFunction
   href?: string
 }
@@ -99,6 +97,15 @@ export const SmallMovieCard = forwardRef<HTMLAnchorElement, TProps>((props, ref)
   }
 
   const isShowVideo = isHover && film.video_link
+
+  /* eslint-disable-next-line arrow-body-style */
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current)
+      }
+    }
+  }, [])
 
   return (
     <Root onMouseEnter={handleHover} onMouseLeave={handleLeave}>

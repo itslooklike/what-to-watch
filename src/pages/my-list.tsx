@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 
 import { ContentWrap } from '~/design/atoms'
 import { Footer, Header, MovieCardList } from '~/design/molecules'
+import { withAuth } from '~/store/hocs'
 import { useMobxStores } from '~/store'
 
 const MyList: NextPage = () => {
@@ -23,4 +24,4 @@ MyList.getInitialProps = async ({ mobxStores }) => {
   return {}
 }
 
-export default MyList
+export default withAuth(MyList)

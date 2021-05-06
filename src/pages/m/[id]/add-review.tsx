@@ -7,6 +7,7 @@ import type { NextPage } from 'next'
 import { RatingStars, TextArea } from '~/design/atoms'
 import { Header } from '~/design/molecules'
 import { getInitialFilms } from '~/utils/getInitialFilms'
+import { withAuth } from '~/store/hocs'
 import { useMobxStores } from '~/store'
 
 const Root = styled.section`
@@ -136,4 +137,4 @@ const MoviePageAddReviews: NextPage = () => {
 
 MoviePageAddReviews.getInitialProps = getInitialFilms
 
-export default MoviePageAddReviews
+export default withAuth(MoviePageAddReviews)

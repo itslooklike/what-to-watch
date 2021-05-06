@@ -65,19 +65,15 @@ export const Header = observer((props: TProps) => {
       <Logo />
       {title && <Title>{title}</Title>}
       <UserBlock>
-        {userStore.user ? (
-          <Link href="/my-list">
-            <a className={stylesAvatar}>
+        <Link href="/my-list">
+          <a className={stylesAvatar}>
+            {userStore.user ? (
               <Avatar width="63" height="63" src={apiUrl + userStore.user.avatar_url} />
-            </a>
-          </Link>
-        ) : (
-          <Link href="/login">
-            <a className={stylesAvatar}>
+            ) : (
               <IconUser width="63" height="63" />
-            </a>
-          </Link>
-        )}
+            )}
+          </a>
+        </Link>
       </UserBlock>
     </Root>
   )
