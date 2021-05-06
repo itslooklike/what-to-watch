@@ -6,6 +6,7 @@ import type { NextPage } from 'next'
 import { FilmOverview } from '~/design/atoms'
 import { FilmLayout } from '~/design/templates'
 import { getInitialFilms } from '~/utils/getInitialFilms'
+import { SeoHead } from '~/utils/SeoHead'
 import { useMobxStores } from '~/store'
 
 const MovieIndex: NextPage = () => {
@@ -24,6 +25,7 @@ const MovieIndex: NextPage = () => {
       <Head>
         <title>WTW - {film.name}</title>
       </Head>
+      <SeoHead film={filmsStore.firstFilm} />
       <FilmLayout film={film}>
         <FilmOverview film={film} />
       </FilmLayout>

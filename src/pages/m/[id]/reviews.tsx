@@ -5,6 +5,7 @@ import type { NextPage } from 'next'
 import { FilmReviews } from '~/design/molecules'
 import { FilmLayout } from '~/design/templates'
 import { getInitialFilms } from '~/utils/getInitialFilms'
+import { SeoHead } from '~/utils/SeoHead'
 import { useMobxStores } from '~/store'
 
 const MoviePageReviews: NextPage = () => {
@@ -23,6 +24,7 @@ const MoviePageReviews: NextPage = () => {
       <Head>
         <title>WTW - {film.name}</title>
       </Head>
+      <SeoHead film={filmsStore.firstFilm} />
       <FilmLayout film={film}>
         <FilmReviews />
       </FilmLayout>
