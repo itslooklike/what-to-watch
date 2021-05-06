@@ -8,15 +8,22 @@ type TProps = {
   url: string
 }
 
-export const SeoHead = ({ film, url }: TProps) => (
-  <Head>
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="ru_RU" />
-    <meta property="og:title" content={film.name} />
-    <meta property="og:description" content="Watch movies" />
-    <meta property="og:url" content={site + url} />
-    <meta property="og:image" content={film.poster_image} />
-    <meta property="vk:image" content={film.poster_image} />
-    <meta property="twitter:image" content={film.poster_image} />
-  </Head>
-)
+export const SeoHead = ({ film, url }: TProps) => {
+  const image = film.preview_image
+
+  return (
+    <Head>
+      <meta property="og:type" content="website" />
+      <meta property="og:locale" content="ru_RU" />
+      <meta property="og:title" content={film.name} />
+      <meta property="og:description" content={film.description} />
+      <meta property="og:url" content={site + url} />
+      <meta property="og:image" content={image} />
+      <meta property="vk:image" content={image} />
+      <meta property="twitter:image" content={image} />
+
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:image" content={image} />
+    </Head>
+  )
+}
