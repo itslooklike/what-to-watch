@@ -120,7 +120,7 @@ const MoviePageAddReviews: NextPage = () => {
       <ReviewBlock>
         <form onSubmit={handleSubmit}>
           <div>
-            <RatingStars name="rating" onChange={handleStars} value={rating} />
+            <RatingStars name="rating" onChange={handleStars} currentRating={rating} />
           </div>
           <TextArea
             value={text}

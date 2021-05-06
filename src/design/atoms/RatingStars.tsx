@@ -1,3 +1,4 @@
+import React from 'react'
 import { styled } from 'linaria/react'
 
 const Root = styled.div`
@@ -26,44 +27,40 @@ const Label = styled.label`
     content: '★';
   }
 
-  ${Input}:checked~&::after {
+  ${Input}:checked ~ &::after {
     color: rgba(56, 44, 42, 0.36);
   }
 
-  ${Input}:checked+&::after {
+  ${Input}:checked + &::after {
     color: rgba(56, 44, 42, 0.7);
   }
 `
 
 type TProps = {
   name: string
-  value: string
+  currentRating: string
   onChange: (_: string) => void
 }
 
-export const RatingStars = ({ name, onChange, value }: TProps) => (
+export const RatingStars = ({ name, onChange, currentRating }: TProps) => (
   <Root>
     {Array.from({ length: 5 }).map((_, idx) => {
-      const index = `star-${idx + 1}`
-      const checked = value === index
-      console.log('checked', checked)
+      const value = idx + 1
+      const index = `star-${value}`
+      const checked = `star-${currentRating}` === index
 
       return (
-        <div key={idx}>
+        <React.Fragment key={idx}>
           <Input
             id={index}
             type="radio"
             name={name}
             value={value}
-            onChange={(evt) => {
-              onChange(evt.target.value)
-            }}
+            onChange={(evt) => onChange(evt.target.value)}
             checked={checked}
           />
-          <Label className="rating__label" htmlFor={index}>
-            Rating {index}
-          </Label>
-        </div>
+          <Label htmlFor={index}>Rating {index}</Label>
+        </React.Fragment>
       )
     })}
   </Root>
