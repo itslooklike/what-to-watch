@@ -40,6 +40,25 @@ export class UserStore {
     }
   }
 
+  async checkAuth() {
+    this.loading = true
+
+    try {
+      const { data } = await api.get<IUser>('/login')
+
+      runInAction(() => {
+        this.loading = false
+        this.error = null
+        this.data = data
+      })
+    } catch (error) {
+      runInAction(() => {
+        this.loading = false
+        this.error = error
+      })
+    }
+  }
+
   get user() {
     return this.data
   }
