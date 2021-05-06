@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite'
 import type { NextPage } from 'next'
 
-import { PageContent } from '~/design/atoms'
+import { ContentWrap } from '~/design/atoms'
 import { Footer } from '~/design/molecules'
 import { MovieCardHeader, Catalog } from '~/design/organisms'
 import { getInitialFilms } from '~/utils/getInitialFilms'
@@ -13,10 +13,10 @@ const Home: NextPage = () => {
   return (
     <div>
       <MovieCardHeader film={filmsStore.firstFilm} />
-      <PageContent>
+      <ContentWrap>
         <Catalog />
-        <Footer />
-      </PageContent>
+      </ContentWrap>
+      <Footer />
     </div>
   )
 }

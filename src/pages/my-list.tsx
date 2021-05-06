@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 
+import { ContentWrap } from '~/design/atoms'
 import { Footer, Header, MovieCardList } from '~/design/molecules'
 import { useMobxStores } from '~/store'
 
@@ -9,9 +10,9 @@ const MyList: NextPage = () => {
   return (
     <div>
       <Header />
-      <div>
+      <ContentWrap>
         <MovieCardList films={favoriteStore.data} />
-      </div>
+      </ContentWrap>
       <Footer />
     </div>
   )

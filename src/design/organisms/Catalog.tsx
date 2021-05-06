@@ -8,15 +8,6 @@ import { useFilmsPagination } from '~/store/hooks'
 import { useMobxStores } from '~/store'
 import type { TGenre } from '~/store/FilmsStore'
 
-const Root = styled.section`
-  width: 100%;
-  max-width: 1300px;
-  margin-right: auto;
-  margin-bottom: 115px;
-  margin-left: auto;
-  padding: 0 75px;
-`
-
 const List = styled.ul`
   display: grid;
   grid-auto-flow: column;
@@ -85,7 +76,7 @@ export const Catalog = () => {
   const [currentFilms, handleMore, isHasMore] = useFilmsPagination(genre)
 
   return (
-    <Root>
+    <div>
       <List>
         <li>
           <Link href="/" scroll={false}>
@@ -108,6 +99,6 @@ export const Catalog = () => {
           </ButtonMore>
         </ButtonWrap>
       )}
-    </Root>
+    </div>
   )
 }
