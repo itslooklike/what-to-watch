@@ -1,16 +1,16 @@
 import type { NextPage } from 'next'
 
-import { Footer, Header } from '~/design/molecules'
-import { Catalog } from '~/design/organisms'
+import { Footer, Header, MovieCardList } from '~/design/molecules'
+import { useMobxStores } from '~/store'
 
 const MyList: NextPage = () => {
-  console.log()
+  const { favoriteStore } = useMobxStores()
 
   return (
     <div>
       <Header />
       <div>
-        <Catalog />
+        <MovieCardList films={favoriteStore.data} />
       </div>
       <Footer />
     </div>
@@ -18,7 +18,7 @@ const MyList: NextPage = () => {
 }
 
 MyList.getInitialProps = async ({ mobxStores }) => {
-  await mobxStores.filmsStore.getFilms()
+  await mobxStores.favoriteStore.fetchFavorite()
   return {}
 }
 

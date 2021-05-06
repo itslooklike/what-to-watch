@@ -1,5 +1,6 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
+import { observer } from 'mobx-react-lite'
 
 import { FilmOverview } from '~/design/atoms'
 import { FilmLayout } from '~/design/templates'
@@ -28,4 +29,4 @@ MovieIndex.getInitialProps = async ({ mobxStores }) => {
   return {}
 }
 
-export default MovieIndex
+export default observer(MovieIndex)

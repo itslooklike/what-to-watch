@@ -6,6 +6,7 @@ import { styled } from 'linaria/react'
 import { Button } from '~/design/atoms'
 import { Header } from '~/design/molecules'
 import { usePlayerModal } from '~/design/hooks/usePlayerModal'
+import { useToggleFavorite } from '~/design/hooks/useToggleFavorite'
 import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.section`
@@ -208,7 +209,10 @@ type TProps = {
 
 export const FilmCard = (props: TProps) => {
   const { film, content } = props
+
   const { playerModal, handleOpenPlayer } = usePlayerModal(film)
+
+  const { handleFavorite } = useToggleFavorite(film)
 
   return (
     <Root>
@@ -230,9 +234,11 @@ export const FilmCard = (props: TProps) => {
               <Button icon="IconPlay" onClick={handleOpenPlayer}>
                 Play
               </Button>
-              <Button icon="IconInList">My list</Button>
+              <Button icon={film.is_favorite ? 'IconInList' : 'IconAdd'} onClick={handleFavorite}>
+                My list
+              </Button>
               <Link href={`/m/${film.id}/add-review`}>
-                <Button asTag="a" icon={film.is_favorite ? 'IconInList' : 'IconAdd'}>
+                <Button asTag="a" icon="IconAdd">
                   Add review
                 </Button>
               </Link>

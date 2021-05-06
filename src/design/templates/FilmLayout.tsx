@@ -28,17 +28,23 @@ type TProps = {
 }
 
 export const FilmLayout: React.FC<TProps> = (props) => {
-  const { filmsStore } = useMobxStores()
   const { children, film } = props
+
+  const { filmsStore } = useMobxStores()
+
+  const films = filmsStore.selectLikeThis(film)
 
   return (
     <div>
       <FilmCard film={film} content={children} />
       <PageContent>
-        <Root>
-          <Title>More like this</Title>
-          <MovieCardList films={filmsStore.selectLikeThis(film)} />
-        </Root>
+        {films.length > 0 && (
+          <Root>
+            <Title>More like this</Title>
+            <MovieCardList films={films} />
+          </Root>
+        )}
+
         <Footer />
       </PageContent>
     </div>
