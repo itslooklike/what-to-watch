@@ -1,10 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { getStores, StoreProvider, TInitialStoreData } from '~/store'
+
 import { Catalog } from './Catalog'
 
+import { getStores, StoreProvider, TInitialStoreData } from '~/store'
 import { mockFilms } from '~/store/FilmsStore/mocks'
 
 export default {

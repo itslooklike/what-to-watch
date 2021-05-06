@@ -65,4 +65,14 @@ module.exports = {
     'no-use-before-define': 0,
     '@typescript-eslint/no-use-before-define': ['error'],
   },
+  overrides: [
+    {
+      files: ['*.stories.*'],
+      rules: {
+        'no-shadow': 0,
+        'import/no-extraneous-dependencies': 0,
+        'react/jsx-props-no-spreading': 0,
+      },
+    },
+  ],
 }
