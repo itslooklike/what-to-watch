@@ -1,5 +1,5 @@
 import { useState, forwardRef, useRef, useEffect } from 'react'
-import { css } from 'linaria'
+import { css, cx } from 'linaria'
 import { styled } from 'linaria/react'
 
 import type { IFilm } from '~/store/FilmsStore'
@@ -12,7 +12,7 @@ const Root = styled.article`
 
   :hover {
     z-index: 3;
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 `
 
@@ -28,7 +28,18 @@ const ImgWrap = styled.div`
     bottom: 0;
     left: 0;
     z-index: 1;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0.63) 97%);
+    background-image: linear-gradient(
+      180deg,
+      hsla(0, 0%, 35.29%, 0) 0%,
+      hsla(0, 0%, 34.53%, 0.034375) 16.36%,
+      hsla(0, 0%, 32.42%, 0.125) 33.34%,
+      hsla(0, 0%, 29.18%, 0.253125) 50.1%,
+      hsla(0, 0%, 24.96%, 0.4) 65.75%,
+      hsla(0, 0%, 19.85%, 0.546875) 79.43%,
+      hsla(0, 0%, 13.95%, 0.675) 90.28%,
+      hsla(0, 0%, 7.32%, 0.765625) 97.43%,
+      hsla(0, 0%, 0%, 0.8) 100%
+    );
     content: '';
   }
 `
@@ -40,17 +51,30 @@ const Img = styled.img`
   vertical-align: top;
 `
 
-const Title = styled.h3`
+const styleSubtext = css`
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
   z-index: 2;
+  transition: all 0.5s;
+
+  &.light {
+    opacity: 0.2;
+    transition: all 4s;
+  }
+`
+
+const LeftSlot = styled.h3`
+  right: 40px;
+  bottom: 10px;
+  left: 15px;
   margin: 0;
-  padding: 10px 15px;
   font-weight: 500;
   font-size: 17px;
-  line-height: 20px;
+`
+
+const RightSlot = styled.span`
+  right: 15px;
+  bottom: 9px;
+  font-size: 12px;
 `
 
 const stylesLink = css`
@@ -116,11 +140,12 @@ export const SmallMovieCard = forwardRef<HTMLAnchorElement, TProps>((props, ref)
           <Img src={film.preview_image} alt={film.name} width="280" height="175" loading="lazy" />
         )}
       </ImgWrap>
-      <Title>
+      <LeftSlot className={cx(styleSubtext, isShowVideo && 'light')}>
         <a className={stylesLink} ref={ref} href={href} onClick={onClick}>
           {film.name}
         </a>
-      </Title>
+      </LeftSlot>
+      <RightSlot className={cx(styleSubtext, isShowVideo && 'light')}>★ {film.rating}</RightSlot>
     </Root>
   )
 })

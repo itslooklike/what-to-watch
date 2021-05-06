@@ -25,7 +25,7 @@ Default.args = {
 }
 Default.decorators = [
   (Story) => (
-    <div style={{ width: 300, margin: '1em' }}>
+    <div style={{ width: 300 }}>
       <Story />
     </div>
   ),
