@@ -7,21 +7,14 @@ import type { NextPage } from 'next'
 
 import { RatingStars, TextArea } from '~/design/atoms'
 import { Header } from '~/design/molecules'
+import { LayoutNoFooter } from '~/design/layouts'
 import { getInitialFilms } from '~/utils/getInitialFilms'
 import { withAuth } from '~/store/hocs'
 import { useMobxStores } from '~/store'
 
-const Root = styled.section`
-  position: relative;
-  z-index: 1;
-  min-height: 100vh;
-  padding-bottom: 80px;
-  color: var(--color-primary);
-  color: var(--color-secondary);
-`
-
 const Top = styled.div`
   position: relative;
+  z-index: 1;
 `
 
 const Background = styled.div`
@@ -58,6 +51,11 @@ const PosterImage = styled.img`
   height: 100%;
   object-fit: cover;
   vertical-align: top;
+`
+
+const ReviewContent = styled.div`
+  flex-grow: 1;
+  background-color: var(--color-secondary);
 `
 
 const ReviewBlock = styled.div`
@@ -118,7 +116,7 @@ const MoviePageAddReviews: NextPage = () => {
       <Head>
         <title>WTW - {film.name}</title>
       </Head>
-      <Root>
+      <LayoutNoFooter>
         <Top>
           <Background>
             <Image src={film.background_image} alt={film.name} />
@@ -134,21 +132,23 @@ const MoviePageAddReviews: NextPage = () => {
           </Poster>
         </Top>
 
-        <ReviewBlock>
-          <form onSubmit={handleSubmit}>
-            <RatingWrap>
-              <RatingStars name="rating" onChange={handleStars} currentRating={rating} />
-            </RatingWrap>
-            <TextArea
-              loading={commentsStore.loading}
-              value={comment}
-              name="review-text"
-              placeholder="Review text"
-              onChange={handleText}
-            />
-          </form>
-        </ReviewBlock>
-      </Root>
+        <ReviewContent>
+          <ReviewBlock>
+            <form onSubmit={handleSubmit}>
+              <RatingWrap>
+                <RatingStars name="rating" onChange={handleStars} currentRating={rating} />
+              </RatingWrap>
+              <TextArea
+                loading={commentsStore.loading}
+                value={comment}
+                name="review-text"
+                placeholder="Review text"
+                onChange={handleText}
+              />
+            </form>
+          </ReviewBlock>
+        </ReviewContent>
+      </LayoutNoFooter>
     </>
   )
 }
