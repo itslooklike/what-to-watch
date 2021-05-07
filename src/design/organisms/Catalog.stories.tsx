@@ -22,6 +22,7 @@ Default.decorators = [
       },
       userStoreInitialData: {},
       favoriteStoreInitialData: {},
+      commentsStoreInitialData: {},
     }
 
     const stores = getStores(initialStoreData)

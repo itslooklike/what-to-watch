@@ -27,6 +27,7 @@ Default.decorators = [
         data: mocksUser,
       },
       favoriteStoreInitialData: {},
+      commentsStoreInitialData: {},
     }
 
     const stores = getStores(initialStoreData)
