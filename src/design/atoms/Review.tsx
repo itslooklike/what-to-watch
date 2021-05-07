@@ -1,4 +1,5 @@
 import React from 'react'
+import dayjs from 'dayjs'
 import { styled } from 'linaria/react'
 
 const Root = styled.div`
@@ -62,13 +63,12 @@ const Rating = styled.div`
 
 type TProps = {
   author: string
-  date: string
-  humanDate: string
+  date: Date
   rating: string
 }
 
 export const Review: React.FC<TProps> = (props) => {
-  const { children, author, humanDate, date, rating } = props
+  const { children, author, date, rating } = props
 
   return (
     <Root>
@@ -76,7 +76,7 @@ export const Review: React.FC<TProps> = (props) => {
         <Text>{children}</Text>
         <Details>
           <Author>{author}</Author>
-          <Time dateTime={date}>{humanDate}</Time>
+          <Time>{dayjs(date).format('DD.MM.YYYY HH:mm')}</Time>
         </Details>
       </Quote>
       <Rating>{rating}</Rating>

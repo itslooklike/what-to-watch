@@ -4,16 +4,17 @@ import type { NextPage } from 'next'
 
 import { FilmReviews } from '~/design/molecules'
 import { FilmLayout } from '~/design/templates'
-import { getInitialFilms } from '~/utils/getInitialFilms'
+import { getInitialFilmsWithComments } from '~/utils/getInitialFilmsWithComments'
 import { SeoHead } from '~/utils/SeoHead'
 import { useMobxStores } from '~/store'
 
 const MoviePageReviews: NextPage = () => {
-  const { filmsStore } = useMobxStores()
+  const { filmsStore, commentsStore } = useMobxStores()
   const router = useRouter()
   const id = router.query.id as string
 
   const film = filmsStore.selectFilmById(id)
+  const comments = commentsStore.getComment(+id)
 
   if (!film) {
     return <>404</>
@@ -26,12 +27,12 @@ const MoviePageReviews: NextPage = () => {
       </Head>
       <SeoHead film={filmsStore.firstFilm} url={router.asPath} />
       <FilmLayout film={film}>
-        <FilmReviews />
+        <FilmReviews comments={comments} />
       </FilmLayout>
     </>
   )
 }
 
-MoviePageReviews.getInitialProps = getInitialFilms
+MoviePageReviews.getInitialProps = getInitialFilmsWithComments
 
 export default MoviePageReviews

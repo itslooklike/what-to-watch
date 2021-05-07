@@ -4,11 +4,13 @@ import { isServer } from '~/utils/env'
 import { FilmsStore } from './FilmsStore'
 import { UserStore } from './UserStore'
 import { FavoriteStore } from './FavoriteStore'
+import { CommentsStore } from './CommentsStore'
 
 export interface IStore {
   filmsStore: FilmsStore
   userStore: UserStore
   favoriteStore: FavoriteStore
+  commentsStore: CommentsStore
 }
 
 let clientSideStores: IStore
@@ -18,6 +20,7 @@ export function getStores(
     filmsStoreInitialData: {},
     userStoreInitialData: {},
     favoriteStoreInitialData: {},
+    commentsStoreInitialData: {},
   }
 ) {
   if (isServer) {
@@ -25,6 +28,7 @@ export function getStores(
       filmsStore: new FilmsStore(initialData.filmsStoreInitialData),
       userStore: new UserStore(initialData.userStoreInitialData),
       favoriteStore: new FavoriteStore(initialData.favoriteStoreInitialData),
+      commentsStore: new CommentsStore(initialData.commentsStoreInitialData),
     }
   }
 
@@ -33,6 +37,7 @@ export function getStores(
       filmsStore: new FilmsStore(initialData.filmsStoreInitialData),
       userStore: new UserStore(initialData.userStoreInitialData),
       favoriteStore: new FavoriteStore(initialData.favoriteStoreInitialData),
+      commentsStore: new CommentsStore(initialData.commentsStoreInitialData),
     }
   }
 
