@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 
 import { api } from '~/utils/api'
-import { IComment } from './types'
+import { IComment, ICommentAdd } from './types'
 
 interface ICommentsStoreData {
   [_: number]: IComment[]
@@ -30,6 +30,25 @@ export class CommentsStore {
 
     try {
       const { data } = await api.get<IComment[]>(`/comments/${filmId}`)
+
+      runInAction(() => {
+        this.loading = false
+        this.error = null
+        this.data[filmId] = data
+      })
+    } catch (error) {
+      runInAction(() => {
+        this.loading = false
+        this.error = error
+      })
+    }
+  }
+
+  async addComment(filmId: number, comment: ICommentAdd) {
+    this.loading = true
+
+    try {
+      const { data } = await api.post<IComment[]>(`/comments/${filmId}`, comment)
 
       runInAction(() => {
         this.loading = false

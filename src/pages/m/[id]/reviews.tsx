@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { observer } from 'mobx-react-lite'
 import type { NextPage } from 'next'
 
 import { FilmReviews } from '~/design/molecules'
@@ -35,4 +36,4 @@ const MoviePageReviews: NextPage = () => {
 
 MoviePageReviews.getInitialProps = getInitialFilmsWithComments
 
-export default MoviePageReviews
+export default observer(MoviePageReviews)

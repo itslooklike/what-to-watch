@@ -43,15 +43,17 @@ type TProps = {
   name: string
   value: string
   placeholder?: string
+  loading?: boolean
   onChange: (_: string) => void
 }
 
 export const TextArea = (props: TProps) => {
-  const { name, placeholder, onChange, value } = props
+  const { name, placeholder, onChange, loading, value } = props
 
   return (
     <Root>
       <Area
+        readOnly={loading}
         value={value}
         name={name}
         placeholder={placeholder}
@@ -60,7 +62,9 @@ export const TextArea = (props: TProps) => {
         }}
       />
       <Footer>
-        <SubmitButton type="submit">Post</SubmitButton>
+        <SubmitButton disabled={loading} type="submit">
+          Post
+        </SubmitButton>
       </Footer>
     </Root>
   )

@@ -74,13 +74,13 @@ const RatingWrap = styled.div`
 `
 
 const MoviePageAddReviews: NextPage = () => {
-  const { filmsStore } = useMobxStores()
+  const { filmsStore, commentsStore } = useMobxStores()
   const router = useRouter()
   const id = router.query.id as string
   const film = filmsStore.selectFilmById(id)
 
   const [rating, setRating] = useState('4')
-  const [text, setText] = useState('')
+  const [comment, setComment] = useState('')
 
   if (!film) {
     return <>404</>
@@ -91,12 +91,17 @@ const MoviePageAddReviews: NextPage = () => {
   }
 
   const handleText = (textAreaText: string) => {
-    setText(textAreaText)
+    setComment(textAreaText)
   }
 
-  const handleSubmit = (event: SyntheticEvent) => {
+  const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault()
-    console.log('submit', { text, rating })
+
+    await commentsStore.addComment(+id, { rating: +rating, comment })
+
+    if (!commentsStore.error) {
+      router.push(`/m/${id}/reviews`)
+    }
   }
 
   const headerTitle = (
@@ -135,7 +140,8 @@ const MoviePageAddReviews: NextPage = () => {
               <RatingStars name="rating" onChange={handleStars} currentRating={rating} />
             </RatingWrap>
             <TextArea
-              value={text}
+              loading={commentsStore.loading}
+              value={comment}
               name="review-text"
               placeholder="Review text"
               onChange={handleText}

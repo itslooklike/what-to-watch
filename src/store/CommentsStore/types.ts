@@ -10,3 +10,8 @@ export interface IComment {
   comment: string
   date: Date
 }
+
+export interface ICommentAdd {
+  rating: number
+  comment: string
+}
