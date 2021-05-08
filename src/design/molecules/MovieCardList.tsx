@@ -6,7 +6,7 @@ import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 20px;
 `
 

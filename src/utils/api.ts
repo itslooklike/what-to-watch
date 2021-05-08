@@ -27,9 +27,11 @@ export const api = axios.create({
 if (withProxy) {
   api.interceptors.response.use((response) => {
     let newData = JSON.stringify(response.data)
-    newData = newData.replaceAll(`${apiPrefix}/static`, '/api/static')
+
+    newData = newData.replace(`${apiPrefix}/static`, '/api/static')
     newData = JSON.parse(newData)
     response.data = newData
+
     return response
   })
 }
