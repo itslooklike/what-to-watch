@@ -3,11 +3,11 @@ import { styled } from 'linaria/react'
 
 const Root = styled.div`
   width: 100%;
-  max-width: 1300px;
+  max-width: var(--base-content-width);
   margin-right: auto;
   margin-bottom: 100px;
   margin-left: auto;
-  padding: 30px 75px 0;
+  padding: 30px var(--base-content-padding) 0;
 `
 export const ContentWrap: React.FC = (props) => {
   const { children } = props

@@ -14,10 +14,10 @@ const Root = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 1300px;
+  max-width: var(--base-content-width);
   margin-right: auto;
   margin-left: auto;
-  padding: 20px 75px;
+  padding: 20px var(--base-content-padding);
 `
 
 const LogoWrap = styled.div`

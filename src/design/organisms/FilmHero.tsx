@@ -54,10 +54,10 @@ const BackgroundImg = styled.img`
 `
 
 const Wrap = styled.div`
-  max-width: 1300px;
+  max-width: var(--base-content-width);
   margin-right: auto;
   margin-left: auto;
-  padding: 0 75px;
+  padding: 0 var(--base-content-padding);
 `
 
 const Description = styled.div`
@@ -88,24 +88,30 @@ const Genre = styled.span`
 
 const ButtonsWrap = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 15px;
 `
 
 const TranslateTop = styled.div`
   position: relative;
   z-index: 2;
-  max-width: 1300px;
+  max-width: var(--base-content-width);
   margin-top: -170px;
   margin-right: auto;
   margin-left: auto;
-  padding: 0 75px;
+  padding: 0 var(--base-content-padding);
+`
+
+const Info = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
 `
 
 const Poster = styled.div`
   flex-shrink: 0;
   width: 273px;
   height: 410px;
-  margin-right: 40px;
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 0 0 8px 0 var(--color-black-opacity);
@@ -118,11 +124,15 @@ const PosterImg = styled.img`
   vertical-align: top;
 `
 
+const ContentWrap = styled.div`
+  flex: 1 1 auto;
+`
+
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 170px;
+  padding-top: 130px;
 `
 
 const NavList = styled.ul`
@@ -164,11 +174,6 @@ const stylesLink = css`
   &.active::after {
     display: block;
   }
-`
-
-const Info = styled.div`
-  display: flex;
-  align-items: flex-start;
 `
 
 const Navigation = ({ filmId }: { filmId: number | string }) => {
@@ -261,12 +266,12 @@ export const FilmHero = observer((props: TProps) => {
               height="327"
             />
           </Poster>
-          <div>
+          <ContentWrap>
             <Nav>
               <Navigation filmId={film.id} />
             </Nav>
-            <div>{content}</div>
-          </div>
+            {content}
+          </ContentWrap>
         </Info>
       </TranslateTop>
     </Root>

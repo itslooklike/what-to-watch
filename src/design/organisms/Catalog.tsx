@@ -9,18 +9,17 @@ import { useMobxStores } from '~/store'
 import type { TGenre } from '~/store/FilmsStore'
 
 const List = styled.ul`
-  display: grid;
-  grid-auto-flow: column;
-  gap: 20px;
-  justify-content: left;
-  margin: 0;
-  padding: 25px 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 20px;
+  padding-left: 0;
   list-style: none;
 `
 
 const stylesLink = css`
   position: relative;
   display: block;
+  padding: 25px 10px 5px;
   color: var(--color-primary-dark);
   text-decoration: none;
   transition: font-weight;

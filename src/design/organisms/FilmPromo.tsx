@@ -44,22 +44,23 @@ const CardImg = styled.img`
 `
 
 const CardWrap = styled.div`
-  max-width: 1300px;
+  max-width: 1180px;
   margin-right: auto;
   margin-left: auto;
-  padding: 0 75px;
+  padding: 0 15px;
 `
 
 const CardInfo = styled.div`
   display: flex;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
 `
 
 const CardPoster = styled.div`
   flex-shrink: 0;
   width: 218px;
   height: 327px;
-  margin-right: 40px;
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 0 0 8px 0 var(--color-black-opacity);

@@ -19,6 +19,9 @@
   --color-grey-light: rgba(134, 104, 102, 1);
   --color-error: rgba(168, 66, 30, 1);
   --color-red-dark: rgba(43, 27, 27, 1);
+
+  --base-content-width: 1200px;
+  --base-content-padding: 20px;
 }
 
 *,
@@ -45,7 +48,7 @@ body {
   color: var(--color-primary);
   background-color: #1a1414;
   margin: 0;
-  min-width: 830px;
+  /* min-width: 830px; */
   position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
