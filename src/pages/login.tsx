@@ -7,7 +7,7 @@ import type { NextPage } from 'next'
 
 import { Input } from '~/design/atoms'
 import { Header } from '~/design/molecules'
-import { BasicWithFooter } from '~/design/layouts'
+import { LWithFooter } from '~/design/layouts'
 import { useMobxStores } from '~/store'
 
 const Content = styled.div`
@@ -106,7 +106,7 @@ const Login: NextPage = () => {
       <Head>
         <title>WTW - Login</title>
       </Head>
-      <BasicWithFooter>
+      <LWithFooter>
         <Header title={<span onClick={devLogin}>Sign in</span>} centerTitle hideUser />
         <Content>
           <form onSubmit={handleSubmit}>
@@ -136,7 +136,7 @@ const Login: NextPage = () => {
             </ButtonWrap>
           </form>
         </Content>
-      </BasicWithFooter>
+      </LWithFooter>
     </>
   )
 }

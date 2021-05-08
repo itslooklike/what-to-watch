@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 
 import { portalId } from '~/utils/config'
 
-const ClientOnlyPortal: FC = ({ children }) => {
+export const ClientOnlyPortal: FC = ({ children }) => {
   const ref = useRef()
   const [mounted, setMounted] = useState(false)
 
@@ -16,5 +16,3 @@ const ClientOnlyPortal: FC = ({ children }) => {
   // @ts-ignore
   return mounted ? createPortal(children, ref.current) : null
 }
-
-export default ClientOnlyPortal

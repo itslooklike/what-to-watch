@@ -1,6 +1,7 @@
+import { useEffect } from 'react'
 import { styled } from 'linaria/react'
 
-import ClientOnlyPortal from '~/utils/ClientOnlyPortal'
+import { ClientOnlyPortal } from '~/design/utils'
 
 const Backdrop = styled.div`
   position: fixed;
@@ -11,14 +12,20 @@ const Backdrop = styled.div`
   z-index: 10;
 `
 
-// FIXME: избавиться от `style jsx`
-export const Modal: React.FC = ({ children }) => (
-  <ClientOnlyPortal>
-    <Backdrop>{children}</Backdrop>
-    <style jsx>{`
-      :global(body) {
-        overflow: hidden;
-      }
-    `}</style>
-  </ClientOnlyPortal>
-)
+const globalClass = 'modal-is-open'
+
+export const Modal: React.FC = ({ children }) => {
+  useEffect(() => {
+    document.querySelector('body')?.classList.add(globalClass)
+
+    return () => {
+      document.querySelector('body')?.classList.remove(globalClass)
+    }
+  }, [])
+
+  return (
+    <ClientOnlyPortal>
+      <Backdrop>{children}</Backdrop>
+    </ClientOnlyPortal>
+  )
+}

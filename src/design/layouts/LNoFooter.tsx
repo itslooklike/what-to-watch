@@ -1,8 +1,6 @@
 import React from 'react'
 import { styled } from 'linaria/react'
 
-import { Footer } from '~/design/molecules'
-
 const Root = styled.div`
   display: flex;
   flex-direction: column;
@@ -16,13 +14,12 @@ const Content = styled.div`
   flex-direction: column;
 `
 
-export const BasicWithFooter: React.FC = (props) => {
+export const LNoFooter: React.FC = (props) => {
   const { children } = props
 
   return (
     <Root>
       <Content>{children}</Content>
-      <Footer />
     </Root>
   )
 }

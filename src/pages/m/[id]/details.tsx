@@ -5,7 +5,7 @@ import type { NextPage } from 'next'
 import { Details } from '~/design/atoms'
 import { FilmTemplate } from '~/design/templates'
 import { getInitialFilms } from '~/store/utils/getInitialFilms'
-import { SeoHead } from '~/utils/SeoHead'
+import { SeoHead } from '~/design/utils'
 import { useMobxStores } from '~/store'
 
 const MoviePageDetails: NextPage = () => {

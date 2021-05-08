@@ -5,9 +5,9 @@ import type { NextPage } from 'next'
 
 import { ContentWrap } from '~/design/atoms'
 import { FilmPromo, Catalog } from '~/design/organisms'
-import { BasicWithFooter } from '~/design/layouts'
+import { LWithFooter } from '~/design/layouts'
 import { getInitialFilms } from '~/store/utils/getInitialFilms'
-import { SeoHead } from '~/utils/SeoHead'
+import { SeoHead } from '~/design/utils'
 import { useMobxStores } from '~/store'
 
 const Home: NextPage = () => {
@@ -20,12 +20,12 @@ const Home: NextPage = () => {
         <title>What To Watch - Have a Good Time!</title>
       </Head>
       <SeoHead film={filmsStore.firstFilm} url={router.asPath} />
-      <BasicWithFooter>
+      <LWithFooter>
         <FilmPromo film={filmsStore.firstFilm} />
         <ContentWrap>
           <Catalog />
         </ContentWrap>
-      </BasicWithFooter>
+      </LWithFooter>
     </>
   )
 }

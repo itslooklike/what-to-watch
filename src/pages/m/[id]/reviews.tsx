@@ -6,7 +6,7 @@ import type { NextPage } from 'next'
 import { FilmReviews } from '~/design/molecules'
 import { FilmTemplate } from '~/design/templates'
 import { getInitialFilmsWithComments } from '~/store/utils/getInitialFilmsWithComments'
-import { SeoHead } from '~/utils/SeoHead'
+import { SeoHead } from '~/design/utils'
 import { useMobxStores } from '~/store'
 
 const MoviePageReviews: NextPage = () => {

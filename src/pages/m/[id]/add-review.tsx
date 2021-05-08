@@ -7,7 +7,7 @@ import type { NextPage } from 'next'
 
 import { RatingStars, TextArea } from '~/design/atoms'
 import { Header } from '~/design/molecules'
-import { LayoutNoFooter } from '~/design/layouts'
+import { LNoFooter } from '~/design/layouts'
 import { getInitialFilms } from '~/store/utils/getInitialFilms'
 import { useAuth } from '~/store/hooks'
 import { useMobxStores } from '~/store'
@@ -118,7 +118,7 @@ const MoviePageAddReviews: NextPage = () => {
       <Head>
         <title>WTW - {film.name}</title>
       </Head>
-      <LayoutNoFooter>
+      <LNoFooter>
         <Top>
           <Background>
             <Image src={film.background_image} alt={film.name} />
@@ -150,7 +150,7 @@ const MoviePageAddReviews: NextPage = () => {
             </form>
           </ReviewBlock>
         </ReviewContent>
-      </LayoutNoFooter>
+      </LNoFooter>
     </>
   )
 }

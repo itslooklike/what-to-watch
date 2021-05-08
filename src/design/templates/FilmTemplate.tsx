@@ -3,7 +3,7 @@ import { styled } from 'linaria/react'
 import { ContentWrap } from '~/design/atoms'
 import { CardList } from '~/design/molecules'
 import { FilmHero } from '~/design/organisms'
-import { BasicWithFooter } from '~/design/layouts'
+import { LWithFooter } from '~/design/layouts'
 import { useMobxStores } from '~/store'
 import type { IFilm } from '~/store/FilmsStore'
 
@@ -27,7 +27,7 @@ export const FilmTemplate: React.FC<TProps> = (props) => {
   const films = filmsStore.selectLikeThis(film)
 
   return (
-    <BasicWithFooter>
+    <LWithFooter>
       <FilmHero film={film} content={children} />
       {films.length > 0 && (
         <ContentWrap>
@@ -35,6 +35,6 @@ export const FilmTemplate: React.FC<TProps> = (props) => {
           <CardList films={films} />
         </ContentWrap>
       )}
-    </BasicWithFooter>
+    </LWithFooter>
   )
 }

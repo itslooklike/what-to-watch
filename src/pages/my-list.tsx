@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 
 import { ContentWrap } from '~/design/atoms'
 import { Header, CardList } from '~/design/molecules'
-import { BasicWithFooter } from '~/design/layouts'
+import { LWithFooter } from '~/design/layouts'
 import { useAuth } from '~/store/hooks'
 import { getInitialFavorite } from '~/store/utils/getInitialFavorite'
 import { useMobxStores } from '~/store'
@@ -17,12 +17,12 @@ const MyList: NextPage = () => {
       <Head>
         <title>WTW - Favorites</title>
       </Head>
-      <BasicWithFooter>
+      <LWithFooter>
         <Header title="My Films" />
         <ContentWrap>
           <CardList films={favoriteStore.data} />
         </ContentWrap>
-      </BasicWithFooter>
+      </LWithFooter>
     </>
   )
 }

@@ -1,2 +1,2 @@
-export { BasicWithFooter } from './BasicWithFooter'
-export { LayoutNoFooter } from './LayoutNoFooter'
+export { LWithFooter } from './LWithFooter'
+export { LNoFooter } from './LNoFooter'
