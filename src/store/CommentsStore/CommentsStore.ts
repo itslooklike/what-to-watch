@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 
 import { api } from '~/utils/api'
-import { IComment, ICommentAdd } from './types'
+import type { IComment, ICommentAdd } from './types'
 
 interface ICommentsStoreData {
   [_: number]: IComment[]

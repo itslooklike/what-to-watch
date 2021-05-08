@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 
 import { api } from '~/utils/api'
-import { IFilm } from '~/store/FilmsStore'
+import type { IFilm } from '~/store/FilmsStore'
 
 export class FavoriteStore {
   loading = false

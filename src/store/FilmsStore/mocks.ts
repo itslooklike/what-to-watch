@@ -1,4 +1,4 @@
-import { IFilm } from './types'
+import type { IFilm } from './types'
 
 export const mockFilm: IFilm = {
   name: 'Macbeth',

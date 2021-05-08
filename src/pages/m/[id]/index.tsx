@@ -5,7 +5,7 @@ import type { NextPage } from 'next'
 
 import { FilmOverview } from '~/design/atoms'
 import { FilmLayout } from '~/design/templates'
-import { getInitialFilms } from '~/utils/getInitialFilms'
+import { getInitialFilms } from '~/store/utils/getInitialFilms'
 import { SeoHead } from '~/utils/SeoHead'
 import { useMobxStores } from '~/store'
 
