@@ -22,7 +22,7 @@ const Hero = styled.div`
   position: relative;
   z-index: 1;
   min-height: 555px;
-  padding-bottom: 210px;
+  padding-bottom: 250px;
 `
 
 const Background = styled.div`
@@ -96,7 +96,7 @@ const TranslateTop = styled.div`
   position: relative;
   z-index: 2;
   max-width: var(--base-content-width);
-  margin-top: -170px;
+  margin-top: -40px;
   margin-right: auto;
   margin-left: auto;
   padding: 0 var(--base-content-padding);
@@ -109,30 +109,36 @@ const Info = styled.div`
 `
 
 const Poster = styled.div`
+  position: relative;
   flex-shrink: 0;
   width: 273px;
-  height: 410px;
-  overflow: hidden;
-  border-radius: 5px;
+  height: 200px;
   box-shadow: 0 0 8px 0 var(--color-black-opacity);
 `
 
 const PosterImg = styled.img`
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: -200px;
+  left: 0;
+  width: 273px;
+  height: 410px;
   object-fit: cover;
-  vertical-align: top;
+  overflow: hidden;
+  border-radius: 5px;
 `
 
 const ContentWrap = styled.div`
   flex: 1 1 auto;
 `
 
+const Content = styled.div`
+  max-width: 635px;
+`
+
 const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-top: 130px;
 `
 
 const NavList = styled.ul`
@@ -270,7 +276,7 @@ export const FilmHero = observer((props: TProps) => {
             <Nav>
               <Navigation filmId={film.id} />
             </Nav>
-            {content}
+            <Content>{content}</Content>
           </ContentWrap>
         </Info>
       </TranslateTop>

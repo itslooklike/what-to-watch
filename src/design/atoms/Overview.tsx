@@ -43,8 +43,6 @@ const RatingCount = styled.span`
 `
 
 const Text = styled.div`
-  width: 100%;
-  max-width: 635px;
   color: var(--color-black);
   font-size: 19px;
   line-height: 27px;

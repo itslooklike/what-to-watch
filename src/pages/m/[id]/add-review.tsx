@@ -60,9 +60,9 @@ const ReviewContent = styled.div`
 
 const ReviewBlock = styled.div`
   width: 100%;
-  max-width: 520px;
+  max-width: 560px;
   margin: 0 auto;
-  padding-top: 62px;
+  padding: 62px var(--base-content-padding) 20px;
 `
 
 const RatingWrap = styled.div`
