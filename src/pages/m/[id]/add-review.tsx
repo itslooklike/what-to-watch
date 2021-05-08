@@ -9,7 +9,7 @@ import { RatingStars, TextArea } from '~/design/atoms'
 import { Header } from '~/design/molecules'
 import { LayoutNoFooter } from '~/design/layouts'
 import { getInitialFilms } from '~/store/utils/getInitialFilms'
-import { withAuth } from '~/store/hocs'
+import { useAuth } from '~/store/hooks'
 import { useMobxStores } from '~/store'
 
 const Top = styled.div`
@@ -72,6 +72,8 @@ const RatingWrap = styled.div`
 `
 
 const MoviePageAddReviews: NextPage = () => {
+  useAuth()
+
   const { filmsStore, commentsStore } = useMobxStores()
   const router = useRouter()
   const id = router.query.id as string
@@ -153,9 +155,6 @@ const MoviePageAddReviews: NextPage = () => {
   )
 }
 
-// FIXME: fix type
-const WithAuth = withAuth(MoviePageAddReviews) as typeof MoviePageAddReviews
+MoviePageAddReviews.getInitialProps = getInitialFilms
 
-WithAuth.getInitialProps = getInitialFilms
-
-export default WithAuth
+export default MoviePageAddReviews

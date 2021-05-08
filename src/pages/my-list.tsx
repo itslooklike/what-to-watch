@@ -4,11 +4,12 @@ import type { NextPage } from 'next'
 import { ContentWrap } from '~/design/atoms'
 import { Header, MovieCardList } from '~/design/molecules'
 import { BasicWithFooter } from '~/design/layouts'
-import { withAuth } from '~/store/hocs'
+import { useAuth } from '~/store/hooks'
 import { getInitialFavorite } from '~/store/utils/getInitialFavorite'
 import { useMobxStores } from '~/store'
 
 const MyList: NextPage = () => {
+  useAuth()
   const { favoriteStore } = useMobxStores()
 
   return (
@@ -26,9 +27,6 @@ const MyList: NextPage = () => {
   )
 }
 
-// FIXME: fix type
-const WithAuth = withAuth(MyList) as typeof MyList
+MyList.getInitialProps = getInitialFavorite
 
-WithAuth.getInitialProps = getInitialFavorite
-
-export default WithAuth
+export default MyList
