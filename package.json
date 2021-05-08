@@ -8,7 +8,7 @@
     "start": "next start",
     "lint:ts": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:css": "stylelint 'src/**/*.{js,jsx,ts,tsx}'",
-    "storybook": "start-storybook -p 6006 -s public --ci",
+    "sb": "start-storybook -p 6006 -s public --ci",
     "build-storybook": "build-storybook"
   },
   "dependencies": {

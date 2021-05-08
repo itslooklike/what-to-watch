@@ -2,7 +2,7 @@
 
 ![Site Screenshot](./images/screen-1.png)
 
-Demo site: https://what-to-watch-kohl.vercel.app/
+Demo site: https://what-to-watch-kohl.vercel.app
 
 ---
 
@@ -12,9 +12,11 @@ Demo site: https://what-to-watch-kohl.vercel.app/
 - NextJS
 - MobX
 - Linaria
+- SEO
+- BFF Proxy
 - Storybook
 
----
+![Site Screenshot](./images/screen-2.png)
 
 ## Quick start with Docker
 
@@ -28,11 +30,17 @@ docker run --init --rm -itp 3000:3000 wtw
 ## Local develop
 
 ```sh
-yarn           # install deps
-yarn dev       # -> app:       http://localhost:3000/
-yarn storybook # -> storybook: http://localhost:6006/
+yarn     # install deps
+yarn dev # -> app:       http://localhost:3000/
+yarn sb  # -> storybook: http://localhost:6006/
 ```
 
----
+![Site Screenshot](./images/screen-3.png)
 
-![Site Screenshot](./images/screen-2.png)
+## TO-DO
+
+- [ ] Normal Auth (current working until refresh)
+- [ ] 404 page on dynamic routes
+- [ ] Save url to redirect after login
+- [ ] Store errors handling
+- [ ] Formik (for 2 inputs?... meeeehh)
