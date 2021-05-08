@@ -11,7 +11,7 @@ const Root = styled.div`
 `
 
 const Text = styled.p`
-  margin: 20px 0 0;
+  margin: 0;
   color: var(--color-black);
 `
 
