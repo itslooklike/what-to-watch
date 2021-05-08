@@ -1,10 +1,15 @@
 import React from 'react'
+import { enableStaticRendering } from 'mobx-react-lite'
 
 import { isServer } from '~/utils/env'
 import { FilmsStore } from './FilmsStore'
 import { UserStore } from './UserStore'
 import { FavoriteStore } from './FavoriteStore'
 import { CommentsStore } from './CommentsStore'
+
+if (isServer) {
+  enableStaticRendering(true)
+}
 
 export interface IStore {
   filmsStore: FilmsStore
