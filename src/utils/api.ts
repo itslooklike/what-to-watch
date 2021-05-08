@@ -24,11 +24,19 @@ export const api = axios.create({
   withCredentials: true,
 })
 
+// polifill
+function replaceAll(string: string, search: string, replace: string) {
+  return string.split(search).join(replace)
+}
+
 if (withProxy) {
   api.interceptors.response.use((response) => {
     let newData = JSON.stringify(response.data)
 
-    newData = newData.replace(`${apiPrefix}/static`, '/api/static')
+    // need 15+ node on vercel support
+    // newData = newData.replaceAll(`${apiPrefix}/static`, '/api/static')
+
+    newData = replaceAll(newData, `${apiPrefix}/static`, '/api/static')
     newData = JSON.parse(newData)
     response.data = newData
 
