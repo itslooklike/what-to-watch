@@ -97,7 +97,7 @@ type TProps = {
   href?: string
 }
 
-export const SmallMovieCard = forwardRef<HTMLAnchorElement, TProps>((props, ref) => {
+export const Card = forwardRef<HTMLAnchorElement, TProps>((props, ref) => {
   const { film, onClick, href } = props
 
   const timerRef = useRef<ReturnType<typeof setTimeout>>()

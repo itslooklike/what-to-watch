@@ -1,8 +1,8 @@
 import { styled } from 'linaria/react'
 
 import { ContentWrap } from '~/design/atoms'
-import { MovieCardList } from '~/design/molecules'
-import { FilmCard } from '~/design/organisms'
+import { CardList } from '~/design/molecules'
+import { FilmHero } from '~/design/organisms'
 import { BasicWithFooter } from '~/design/layouts'
 import { useMobxStores } from '~/store'
 import type { IFilm } from '~/store/FilmsStore'
@@ -19,7 +19,7 @@ type TProps = {
   film: IFilm
 }
 
-export const FilmLayout: React.FC<TProps> = (props) => {
+export const FilmTemplate: React.FC<TProps> = (props) => {
   const { children, film } = props
 
   const { filmsStore } = useMobxStores()
@@ -28,11 +28,11 @@ export const FilmLayout: React.FC<TProps> = (props) => {
 
   return (
     <BasicWithFooter>
-      <FilmCard film={film} content={children} />
+      <FilmHero film={film} content={children} />
       {films.length > 0 && (
         <ContentWrap>
           <Title>More like this</Title>
-          <MovieCardList films={films} />
+          <CardList films={films} />
         </ContentWrap>
       )}
     </BasicWithFooter>

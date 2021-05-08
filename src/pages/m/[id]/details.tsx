@@ -2,8 +2,8 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
 
-import { FilmDetails } from '~/design/atoms'
-import { FilmLayout } from '~/design/templates'
+import { Details } from '~/design/atoms'
+import { FilmTemplate } from '~/design/templates'
 import { getInitialFilms } from '~/store/utils/getInitialFilms'
 import { SeoHead } from '~/utils/SeoHead'
 import { useMobxStores } from '~/store'
@@ -25,9 +25,9 @@ const MoviePageDetails: NextPage = () => {
         <title>WTW - {film.name}</title>
       </Head>
       <SeoHead film={filmsStore.firstFilm} url={router.asPath} />
-      <FilmLayout film={film}>
-        <FilmDetails film={film} />
-      </FilmLayout>
+      <FilmTemplate film={film}>
+        <Details film={film} />
+      </FilmTemplate>
     </>
   )
 }

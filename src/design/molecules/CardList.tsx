@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { styled } from 'linaria/react'
 
-import { SmallMovieCard } from '~/design/atoms'
+import { Card } from '~/design/atoms'
 import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.div`
@@ -14,14 +14,14 @@ type TProps = {
   films: IFilm[]
 }
 
-export function MovieCardList(props: TProps) {
+export function CardList(props: TProps) {
   const { films } = props
 
   return (
     <Root>
       {films.map((film, idx) => (
         <Link href={`/m/${film.id}`} key={idx} passHref>
-          <SmallMovieCard film={film} />
+          <Card film={film} />
         </Link>
       ))}
     </Root>

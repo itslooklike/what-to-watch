@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import { observer } from 'mobx-react-lite'
 import type { NextPage } from 'next'
 
-import { FilmOverview } from '~/design/atoms'
-import { FilmLayout } from '~/design/templates'
+import { Overview } from '~/design/atoms'
+import { FilmTemplate } from '~/design/templates'
 import { getInitialFilms } from '~/store/utils/getInitialFilms'
 import { SeoHead } from '~/utils/SeoHead'
 import { useMobxStores } from '~/store'
@@ -26,9 +26,9 @@ const MovieIndex: NextPage = () => {
         <title>WTW - {film.name}</title>
       </Head>
       <SeoHead film={filmsStore.firstFilm} url={router.asPath} />
-      <FilmLayout film={film}>
-        <FilmOverview film={film} />
-      </FilmLayout>
+      <FilmTemplate film={film}>
+        <Overview film={film} />
+      </FilmTemplate>
     </>
   )
 }

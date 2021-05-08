@@ -118,7 +118,7 @@ type TProps = {
   film: IFilm
 }
 
-export const MovieCardHeader = observer((props: TProps) => {
+export const FilmPromo = observer((props: TProps) => {
   const { film } = props
 
   const { handleOpenPlayer, playerModal } = usePlayerModal(film)

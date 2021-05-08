@@ -32,7 +32,7 @@ type TProps = {
 }
 
 // FIXME: время переформатировать
-export const FilmDetails = (props: TProps) => {
+export const Details = (props: TProps) => {
   const { film } = props
 
   return (

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { css, cx } from 'linaria'
 import { styled } from 'linaria/react'
 
-import { MovieCardList } from '~/design/molecules'
+import { CardList } from '~/design/molecules'
 import { useFilmsPagination } from '~/store/hooks'
 import { useMobxStores } from '~/store'
 import type { TGenre } from '~/store/FilmsStore'
@@ -94,7 +94,7 @@ export const Catalog = () => {
           </li>
         ))}
       </List>
-      <MovieCardList films={currentFilms} />
+      <CardList films={currentFilms} />
       {isHasMore && (
         <ButtonWrap>
           <ButtonMore type="button" onClick={handleMore}>

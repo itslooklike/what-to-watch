@@ -1,5 +1,5 @@
 export { FilmReviews } from './FilmReviews'
 export { Footer } from './Footer'
 export { Header } from './Header'
-export { MovieCardList } from './MovieCardList'
+export { CardList } from './CardList'
 export { Player } from './Player'

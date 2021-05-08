@@ -1,23 +1,25 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { FilmCard } from './FilmCard'
+import { FilmTemplate } from './FilmTemplate'
 
 import { getStores, StoreProvider, TInitialStoreData } from '~/store'
 import { mockFilm } from '~/store/FilmsStore/mocks'
 import { mocksUser } from '~/store/UserStore/mocks'
 
 export default {
-  title: 'organisms/FilmCard',
-  component: FilmCard,
+  title: 'templates/FilmTemplate',
+  component: FilmTemplate,
 } as Meta
 
-const Template: Story<React.ComponentProps<typeof FilmCard>> = (args) => <FilmCard {...args} />
+const Template: Story<React.ComponentProps<typeof FilmTemplate>> = (args) => (
+  <FilmTemplate {...args} />
+)
 
 export const Default = Template.bind({})
 Default.args = {
   film: mockFilm,
-  content: <>CONTENT HERE</>,
+  children: <>CONTENT HERE</>,
 }
 Default.decorators = [
   (Story) => {

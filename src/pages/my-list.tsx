@@ -2,7 +2,7 @@ import Head from 'next/head'
 import type { NextPage } from 'next'
 
 import { ContentWrap } from '~/design/atoms'
-import { Header, MovieCardList } from '~/design/molecules'
+import { Header, CardList } from '~/design/molecules'
 import { BasicWithFooter } from '~/design/layouts'
 import { useAuth } from '~/store/hooks'
 import { getInitialFavorite } from '~/store/utils/getInitialFavorite'
@@ -20,7 +20,7 @@ const MyList: NextPage = () => {
       <BasicWithFooter>
         <Header title="My Films" />
         <ContentWrap>
-          <MovieCardList films={favoriteStore.data} />
+          <CardList films={favoriteStore.data} />
         </ContentWrap>
       </BasicWithFooter>
     </>

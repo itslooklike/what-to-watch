@@ -1,1 +1,1 @@
-export { FilmLayout } from './FilmLayout'
+export { FilmTemplate } from './FilmTemplate'

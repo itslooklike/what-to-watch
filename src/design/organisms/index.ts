@@ -1,3 +1,3 @@
 export { Catalog } from './Catalog'
-export { FilmCard } from './FilmCard'
-export { MovieCardHeader } from './MovieCardHeader'
+export { FilmHero } from './FilmHero'
+export { FilmPromo } from './FilmPromo'

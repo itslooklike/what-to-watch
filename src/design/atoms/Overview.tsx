@@ -64,7 +64,7 @@ type TProps = {
   film: IFilm
 }
 
-export const FilmOverview = (props: TProps) => {
+export const Overview = (props: TProps) => {
   const { film } = props
 
   return (

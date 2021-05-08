@@ -207,7 +207,7 @@ type TProps = {
   content: React.ReactNode
 }
 
-export const FilmCard = observer((props: TProps) => {
+export const FilmHero = observer((props: TProps) => {
   const { film, content } = props
 
   const { playerModal, handleOpenPlayer } = usePlayerModal(film)

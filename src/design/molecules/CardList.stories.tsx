@@ -1,13 +1,13 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { MovieCardList } from './MovieCardList'
+import { CardList } from './CardList'
 
 import { mockFilms } from '~/store/FilmsStore/mocks'
 
 export default {
-  title: 'molecules/MovieCardList',
-  component: MovieCardList,
+  title: 'molecules/CardList',
+  component: CardList,
   parameters: {
     backgrounds: {
       default: 'pink',
@@ -15,9 +15,7 @@ export default {
   },
 } as Meta
 
-const Template: Story<React.ComponentProps<typeof MovieCardList>> = (args) => (
-  <MovieCardList {...args} />
-)
+const Template: Story<React.ComponentProps<typeof CardList>> = (args) => <CardList {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
