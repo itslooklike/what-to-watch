@@ -12,10 +12,9 @@ import { useMobxStores } from '~/store'
 
 const Content = styled.div`
   width: 100%;
-  max-width: 480px;
+  max-width: 520px;
   margin: 0 auto;
-  padding-top: 80px;
-  padding-bottom: 165px;
+  padding: 80px var(--base-content-padding) 165px;
 `
 
 const LoginButton = styled.button`

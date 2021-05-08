@@ -57,8 +57,8 @@ const Title = styled.div`
 
   &.center {
     position: absolute;
-    right: 200px;
-    left: 200px;
+    right: 100px;
+    left: 100px;
     margin: 0 auto;
     text-align: center;
   }

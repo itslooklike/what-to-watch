@@ -54,6 +54,7 @@ const Img = styled.img`
 const styleSubtext = css`
   position: absolute;
   z-index: 2;
+  color: var(--color-primary);
   transition: all 0.5s;
 
   &.light {
@@ -75,13 +76,6 @@ const RightSlot = styled.span`
   right: 15px;
   bottom: 9px;
   font-size: 12px;
-`
-
-const stylesLink = css`
-  display: inline-block;
-  color: var(--color-primary);
-  text-decoration: none;
-  vertical-align: top;
 `
 
 const Video = styled.video`
@@ -132,20 +126,18 @@ export const Card = forwardRef<HTMLAnchorElement, TProps>((props, ref) => {
   }, [])
 
   return (
-    <Root onMouseEnter={handleHover} onMouseLeave={handleLeave}>
-      <ImgWrap>
-        {isShowVideo ? (
-          <Video src={film.video_link} autoPlay poster={film.preview_image} muted />
-        ) : (
-          <Img src={film.preview_image} alt={film.name} width="280" height="175" loading="lazy" />
-        )}
-      </ImgWrap>
-      <LeftSlot className={cx(styleSubtext, isShowVideo && 'light')}>
-        <a className={stylesLink} ref={ref} href={href} onClick={onClick}>
-          {film.name}
-        </a>
-      </LeftSlot>
-      <RightSlot className={cx(styleSubtext, isShowVideo && 'light')}>★ {film.rating}</RightSlot>
-    </Root>
+    <a ref={ref} href={href} onClick={onClick}>
+      <Root onMouseEnter={handleHover} onMouseLeave={handleLeave}>
+        <ImgWrap>
+          {isShowVideo ? (
+            <Video src={film.video_link} autoPlay poster={film.preview_image} muted />
+          ) : (
+            <Img src={film.preview_image} alt={film.name} width="280" height="175" loading="lazy" />
+          )}
+        </ImgWrap>
+        <LeftSlot className={cx(styleSubtext, isShowVideo && 'light')}>{film.name}</LeftSlot>
+        <RightSlot className={cx(styleSubtext, isShowVideo && 'light')}>★ {film.rating}</RightSlot>
+      </Root>
+    </a>
   )
 })
