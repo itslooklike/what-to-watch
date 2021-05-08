@@ -4,7 +4,9 @@ import { apiUrl } from '~/utils/config'
 const proxy = createProxyMiddleware('/api', {
   target: apiUrl,
   changeOrigin: true,
-  pathRewrite: { '^/api': '/wtw' },
+  pathRewrite: {
+    '^/api': '/wtw',
+  },
   onProxyReq: fixRequestBody,
 })
 

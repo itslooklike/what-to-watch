@@ -34,7 +34,9 @@ function MyApp({ Component, pageProps, initialStoreData }: AppProps & TCustomPro
 
 MyApp.getInitialProps = async (appContext: AppContext) => {
   const mobxStores = getStores()
+
   appContext.ctx.mobxStores = mobxStores
+
   const appProps = await App.getInitialProps(appContext)
 
   const initialStoreData: TInitialStoreData = {

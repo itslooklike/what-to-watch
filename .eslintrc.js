@@ -32,7 +32,7 @@ module.exports = {
     camelcase: 0,
     'object-curly-newline': 0,
     'no-param-reassign': 0,
-
+    'prefer-arrow-callback': 0,
     'comma-dangle': ['error', 'only-multiline'],
     'import/extensions': [
       'error',

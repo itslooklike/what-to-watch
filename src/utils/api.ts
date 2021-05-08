@@ -1,12 +1,35 @@
 import axios from 'axios'
-import { apiUrl } from '~/utils/config'
+import { apiUrl, withProxy } from '~/utils/config'
 import { isServer } from '~/utils/env'
 
 export type { AxiosError } from 'axios'
 
+const apiPrefix = `${apiUrl}/wtw`
+
+const baseURL = (() => {
+  if (isServer) {
+    return apiPrefix
+  }
+
+  if (withProxy) {
+    return `/api`
+  }
+
+  return apiPrefix
+})()
+
 export const api = axios.create({
-  // baseURL: `${apiUrl}/wtw`, // NO-PROXY use
-  baseURL: isServer ? `${apiUrl}/wtw` : `/api`,
+  baseURL,
   timeout: 5_000,
   withCredentials: true,
 })
+
+if (withProxy) {
+  api.interceptors.response.use((response) => {
+    let newData = JSON.stringify(response.data)
+    newData = newData.replaceAll(`${apiPrefix}/static`, '/api/static')
+    newData = JSON.parse(newData)
+    response.data = newData
+    return response
+  })
+}

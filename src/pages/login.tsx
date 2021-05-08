@@ -72,8 +72,8 @@ const Login: NextPage = () => {
     setPassword(value)
   }
 
-  const handleSubmit = async (event: SyntheticEvent) => {
-    event.preventDefault()
+  const handleSubmit = async (event?: SyntheticEvent) => {
+    event?.preventDefault()
 
     if (!email || !password) {
       setEmptyError('Please fill fields')
@@ -88,13 +88,26 @@ const Login: NextPage = () => {
     }
   }
 
+  let count = 0
+
+  // FIXME: потом убрать это
+  const devLogin = async () => {
+    count += 1
+    console.log('count', count)
+    if (count === 3) {
+      await userStore.submit({ email: '22@22.ru', password: '2' })
+      await filmsStore.fetchFilms()
+      router.push('/')
+    }
+  }
+
   return (
     <>
       <Head>
         <title>WTW - Login</title>
       </Head>
       <BasicWithFooter>
-        <Header title="Sign in" centerTitle hideUser />
+        <Header title={<span onClick={devLogin}>Sign in</span>} centerTitle hideUser />
         <Content>
           <form onSubmit={handleSubmit}>
             <ErrorTitle>
