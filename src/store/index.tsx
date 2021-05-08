@@ -1,5 +1,3 @@
-/* eslint-disable max-classes-per-file */
-
 import React from 'react'
 import { enableStaticRendering } from 'mobx-react-lite'
 
@@ -20,55 +18,41 @@ export interface IStore {
   commentsStore: CommentsStore
 }
 
+const initialEmpty = {
+  filmsStoreInitialData: {},
+  userStoreInitialData: {},
+  favoriteStoreInitialData: {},
+  commentsStoreInitialData: {},
+}
+
+const createRootStore = (initialData: typeof initialEmpty) =>
+  class RootStore implements IStore {
+    filmsStore: FilmsStore
+
+    userStore: UserStore
+
+    favoriteStore: FavoriteStore
+
+    commentsStore: CommentsStore
+
+    constructor() {
+      this.filmsStore = new FilmsStore(initialData.filmsStoreInitialData, this)
+      this.userStore = new UserStore(initialData.userStoreInitialData, this)
+      this.favoriteStore = new FavoriteStore(initialData.favoriteStoreInitialData, this)
+      this.commentsStore = new CommentsStore(initialData.commentsStoreInitialData, this)
+    }
+  }
+
 let clientSideStores: IStore
 
-export function getStores(
-  initialData = {
-    filmsStoreInitialData: {},
-    userStoreInitialData: {},
-    favoriteStoreInitialData: {},
-    commentsStoreInitialData: {},
-  }
-) {
+export function getStores(initialData = initialEmpty) {
   if (isServer) {
-    class RootStore implements IStore {
-      filmsStore: FilmsStore
-
-      userStore: UserStore
-
-      favoriteStore: FavoriteStore
-
-      commentsStore: CommentsStore
-
-      constructor() {
-        this.filmsStore = new FilmsStore(initialData.filmsStoreInitialData, this)
-        this.userStore = new UserStore(initialData.userStoreInitialData, this)
-        this.favoriteStore = new FavoriteStore(initialData.favoriteStoreInitialData, this)
-        this.commentsStore = new CommentsStore(initialData.commentsStoreInitialData, this)
-      }
-    }
-
+    const RootStore = createRootStore(initialData)
     return new RootStore()
   }
 
   if (!clientSideStores) {
-    class RootStore {
-      filmsStore: FilmsStore
-
-      userStore: UserStore
-
-      favoriteStore: FavoriteStore
-
-      commentsStore: CommentsStore
-
-      constructor() {
-        this.filmsStore = new FilmsStore(initialData.filmsStoreInitialData, this)
-        this.userStore = new UserStore(initialData.userStoreInitialData, this)
-        this.favoriteStore = new FavoriteStore(initialData.favoriteStoreInitialData, this)
-        this.commentsStore = new CommentsStore(initialData.commentsStoreInitialData, this)
-      }
-    }
-
+    const RootStore = createRootStore(initialData)
     clientSideStores = new RootStore()
   }
 
