@@ -4,15 +4,19 @@
 
 Demo site: https://what-to-watch-kohl.vercel.app/
 
+---
+
 ## Stack
 
-- NextJS (SSR)
 - Typescript
+- NextJS
 - MobX
 - Linaria
 - Storybook
 
-## Quick local start with Docker
+---
+
+## Quick start with Docker
 
 ```sh
 docker build -t wtw .
@@ -28,3 +32,7 @@ yarn           # install deps
 yarn dev       # -> app:       http://localhost:3000/
 yarn storybook # -> storybook: http://localhost:6006/
 ```
+
+---
+
+![Site Screenshot](./images/screen-2.png)
