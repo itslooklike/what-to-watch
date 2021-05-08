@@ -33,6 +33,7 @@ export class UserStore {
         this.data = data
       })
     } catch (error) {
+      console.log('💥 UserStore.submit', error)
       runInAction(() => {
         this.loading = false
         this.error = error
