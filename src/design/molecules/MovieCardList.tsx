@@ -6,7 +6,7 @@ import type { IFilm } from '~/store/FilmsStore'
 
 const Root = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
   gap: 20px;
 `
 
@@ -20,11 +20,9 @@ export function MovieCardList(props: TProps) {
   return (
     <Root>
       {films.map((film, idx) => (
-        <div key={idx}>
-          <Link href={`/m/${film.id}`} passHref>
-            <SmallMovieCard film={film} />
-          </Link>
-        </div>
+        <Link href={`/m/${film.id}`} key={idx} passHref>
+          <SmallMovieCard film={film} />
+        </Link>
       ))}
     </Root>
   )
