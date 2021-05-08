@@ -7,7 +7,7 @@ import type { IFilm } from '~/store/FilmsStore'
 export const useToggleFavorite = (film: IFilm) => {
   const router = useRouter()
 
-  const { userStore, favoriteStore, filmsStore } = useMobxStores()
+  const { userStore, favoriteStore } = useMobxStores()
 
   const handleFavorite = useCallback(async () => {
     if (!userStore.user) {
@@ -20,12 +20,10 @@ export const useToggleFavorite = (film: IFilm) => {
     } else {
       await favoriteStore.add(film.id)
     }
-
-    await filmsStore.fetchFilms()
   }, [userStore.user, film])
 
   return {
     handleFavorite,
-    loading: favoriteStore.loading,
+    loadingUpdate: favoriteStore.loadingUpdate,
   }
 }

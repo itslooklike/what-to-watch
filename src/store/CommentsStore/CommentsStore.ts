@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 
 import { api } from '~/utils/api'
+import type { IStore } from '~/store'
 import type { IComment, ICommentAdd } from './types'
 
 interface ICommentsStoreData {
@@ -8,14 +9,17 @@ interface ICommentsStoreData {
 }
 
 export class CommentsStore {
+  rootStore
+
   loading = false
 
   data: ICommentsStoreData = {}
 
   error = null
 
-  constructor(initialData: Partial<CommentsStore> = {}) {
-    makeAutoObservable(this)
+  constructor(initialData: Partial<CommentsStore> = {}, rootStore: IStore) {
+    makeAutoObservable(this, { rootStore: false })
+    this.rootStore = rootStore
     this.data = initialData.data || {}
   }
 

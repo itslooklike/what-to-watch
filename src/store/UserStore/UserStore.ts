@@ -1,17 +1,21 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 
 import { api, AxiosError } from '~/utils/api'
+import type { IStore } from '~/store'
 import type { IUser, IUserSubmit, IUserResponseError } from './types'
 
 export class UserStore {
+  rootStore
+
   loading = false
 
   data: IUser | null = null
 
   error: AxiosError<IUserResponseError> | null = null
 
-  constructor(initialData: Partial<UserStore> = {}) {
-    makeAutoObservable(this)
+  constructor(initialData: Partial<UserStore> = {}, rootStore: IStore) {
+    makeAutoObservable(this, { rootStore: false })
+    this.rootStore = rootStore
     this.data = initialData.data || null
   }
 

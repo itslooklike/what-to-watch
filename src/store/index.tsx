@@ -1,3 +1,5 @@
+/* eslint-disable max-classes-per-file */
+
 import React from 'react'
 import { enableStaticRendering } from 'mobx-react-lite'
 
@@ -29,21 +31,45 @@ export function getStores(
   }
 ) {
   if (isServer) {
-    return {
-      filmsStore: new FilmsStore(initialData.filmsStoreInitialData),
-      userStore: new UserStore(initialData.userStoreInitialData),
-      favoriteStore: new FavoriteStore(initialData.favoriteStoreInitialData),
-      commentsStore: new CommentsStore(initialData.commentsStoreInitialData),
+    class RootStore implements IStore {
+      filmsStore: FilmsStore
+
+      userStore: UserStore
+
+      favoriteStore: FavoriteStore
+
+      commentsStore: CommentsStore
+
+      constructor() {
+        this.filmsStore = new FilmsStore(initialData.filmsStoreInitialData, this)
+        this.userStore = new UserStore(initialData.userStoreInitialData, this)
+        this.favoriteStore = new FavoriteStore(initialData.favoriteStoreInitialData, this)
+        this.commentsStore = new CommentsStore(initialData.commentsStoreInitialData, this)
+      }
     }
+
+    return new RootStore()
   }
 
   if (!clientSideStores) {
-    clientSideStores = {
-      filmsStore: new FilmsStore(initialData.filmsStoreInitialData),
-      userStore: new UserStore(initialData.userStoreInitialData),
-      favoriteStore: new FavoriteStore(initialData.favoriteStoreInitialData),
-      commentsStore: new CommentsStore(initialData.commentsStoreInitialData),
+    class RootStore {
+      filmsStore: FilmsStore
+
+      userStore: UserStore
+
+      favoriteStore: FavoriteStore
+
+      commentsStore: CommentsStore
+
+      constructor() {
+        this.filmsStore = new FilmsStore(initialData.filmsStoreInitialData, this)
+        this.userStore = new UserStore(initialData.userStoreInitialData, this)
+        this.favoriteStore = new FavoriteStore(initialData.favoriteStoreInitialData, this)
+        this.commentsStore = new CommentsStore(initialData.commentsStoreInitialData, this)
+      }
     }
+
+    clientSideStores = new RootStore()
   }
 
   return clientSideStores

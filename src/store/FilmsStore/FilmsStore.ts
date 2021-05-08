@@ -1,24 +1,27 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 
 import { api } from '~/utils/api'
+import type { IStore } from '~/store'
 import type { IFilm, TGenre } from './types'
 
 export class FilmsStore {
+  rootStore
+
   loading = false
 
   data: IFilm[] = []
 
-  error: any = null
+  error = null
 
-  constructor(initialData: Partial<FilmsStore> = {}) {
-    makeAutoObservable(this)
+  constructor(initialData: Partial<FilmsStore> = {}, rootStore: IStore) {
+    makeAutoObservable(this, { rootStore: false })
+    this.rootStore = rootStore
     this.data = initialData.data || []
   }
 
   hydrate() {
     return {
       data: this.data,
-      // error: this.error,
     }
   }
 
@@ -40,6 +43,11 @@ export class FilmsStore {
         this.error = error
       })
     }
+  }
+
+  update(newFilm: IFilm) {
+    const filmIndex = this.data.findIndex((film) => film.id === newFilm.id)
+    this.data[filmIndex] = newFilm
   }
 
   get filmGenres() {
