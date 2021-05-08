@@ -25,9 +25,12 @@ const MyList: NextPage = () => {
   )
 }
 
-MyList.getInitialProps = async ({ mobxStores }) => {
+// FIXME: fix type
+const WithAuth = withAuth(MyList) as typeof MyList
+
+WithAuth.getInitialProps = async ({ mobxStores }) => {
   await mobxStores.favoriteStore.fetchFavorite()
   return {}
 }
 
-export default withAuth(MyList)
+export default WithAuth

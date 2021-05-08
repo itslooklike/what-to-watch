@@ -11,13 +11,13 @@ export function withAuth<T>(WrappedComponent: React.ComponentType<T>) {
     if (isClient) {
       if (!userStore.user) {
         router.push('/login')
-        return null
+        return <></>
       }
 
       /* eslint-disable-next-line react/jsx-props-no-spreading */
       return <WrappedComponent {...props} />
     }
 
-    return null
+    return <></>
   }
 }

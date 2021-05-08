@@ -153,6 +153,9 @@ const MoviePageAddReviews: NextPage = () => {
   )
 }
 
-MoviePageAddReviews.getInitialProps = getInitialFilms
+// FIXME: fix type
+const WithAuth = withAuth(MoviePageAddReviews) as typeof MoviePageAddReviews
 
-export default withAuth(MoviePageAddReviews)
+WithAuth.getInitialProps = getInitialFilms
+
+export default WithAuth
