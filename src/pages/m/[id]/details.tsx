@@ -4,7 +4,7 @@ import type { NextPage } from 'next'
 
 import { Details } from '~/design/atoms'
 import { FilmTemplate } from '~/design/templates'
-import { getInitialFilms } from '~/store/utils/getInitialFilms'
+import { getInitialFilms } from '~/store/utils'
 import { SeoHead } from '~/design/utils'
 import { useMobxStores } from '~/store'
 

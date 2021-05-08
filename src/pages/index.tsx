@@ -6,7 +6,7 @@ import type { NextPage } from 'next'
 import { ContentWrap } from '~/design/atoms'
 import { FilmPromo, Catalog } from '~/design/organisms'
 import { LWithFooter } from '~/design/layouts'
-import { getInitialFilms } from '~/store/utils/getInitialFilms'
+import { getInitialFilms } from '~/store/utils'
 import { SeoHead } from '~/design/utils'
 import { useMobxStores } from '~/store'
 

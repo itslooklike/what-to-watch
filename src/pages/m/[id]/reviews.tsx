@@ -5,7 +5,7 @@ import type { NextPage } from 'next'
 
 import { FilmReviews } from '~/design/molecules'
 import { FilmTemplate } from '~/design/templates'
-import { getInitialFilmsWithComments } from '~/store/utils/getInitialFilmsWithComments'
+import { getInitialFilmsWithComments } from '~/store/utils'
 import { SeoHead } from '~/design/utils'
 import { useMobxStores } from '~/store'
 

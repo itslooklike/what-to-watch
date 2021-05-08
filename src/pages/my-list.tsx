@@ -5,7 +5,7 @@ import { ContentWrap } from '~/design/atoms'
 import { Header, CardList } from '~/design/molecules'
 import { LWithFooter } from '~/design/layouts'
 import { useAuth } from '~/store/hooks'
-import { getInitialFavorite } from '~/store/utils/getInitialFavorite'
+import { getInitialFavorite } from '~/store/utils'
 import { useMobxStores } from '~/store'
 
 const MyList: NextPage = () => {

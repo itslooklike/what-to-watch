@@ -8,7 +8,7 @@ import type { NextPage } from 'next'
 import { RatingStars, TextArea } from '~/design/atoms'
 import { Header } from '~/design/molecules'
 import { LNoFooter } from '~/design/layouts'
-import { getInitialFilms } from '~/store/utils/getInitialFilms'
+import { getInitialFilms } from '~/store/utils'
 import { useAuth } from '~/store/hooks'
 import { useMobxStores } from '~/store'
 
