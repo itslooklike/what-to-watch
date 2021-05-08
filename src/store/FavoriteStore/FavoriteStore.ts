@@ -40,8 +40,10 @@ export class FavoriteStore {
     }
   }
 
-  private static async changeStatus(id: number, status: 0 | 1) {
+  private async changeStatus(id: number, status: 0 | 1) {
+    this.loading = true
     const { data } = await api.post<IFilm>(`/favorite/${id}/${status}`)
+    this.loading = false
     return data
   }
 
@@ -51,12 +53,12 @@ export class FavoriteStore {
   }
 
   async add(id: number) {
-    const newFilm = await FavoriteStore.changeStatus(id, 1)
+    const newFilm = await this.changeStatus(id, 1)
     this.updateList(newFilm)
   }
 
   async remove(id: number) {
-    const newFilm = await FavoriteStore.changeStatus(id, 0)
+    const newFilm = await this.changeStatus(id, 0)
     this.updateList(newFilm)
   }
 }

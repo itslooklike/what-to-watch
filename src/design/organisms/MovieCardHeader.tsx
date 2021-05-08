@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { styled } from 'linaria/react'
+import { observer } from 'mobx-react-lite'
 
 import { Button } from '~/design/atoms'
 import { Header } from '~/design/molecules'
@@ -117,12 +118,12 @@ type TProps = {
   film: IFilm
 }
 
-export const MovieCardHeader = (props: TProps) => {
+export const MovieCardHeader = observer((props: TProps) => {
   const { film } = props
 
   const { handleOpenPlayer, playerModal } = usePlayerModal(film)
 
-  const { handleFavorite } = useToggleFavorite(film)
+  const { handleFavorite, loading } = useToggleFavorite(film)
 
   return (
     <Card>
@@ -156,7 +157,11 @@ export const MovieCardHeader = (props: TProps) => {
               <Button icon="IconPlay" onClick={handleOpenPlayer}>
                 Play
               </Button>
-              <Button icon={film.is_favorite ? 'IconInList' : 'IconAdd'} onClick={handleFavorite}>
+              <Button
+                loading={loading}
+                icon={film.is_favorite ? 'IconInList' : 'IconAdd'}
+                onClick={handleFavorite}
+              >
                 My list
               </Button>
             </CardButtons>
@@ -165,4 +170,4 @@ export const MovieCardHeader = (props: TProps) => {
       </CardWrap>
     </Card>
   )
-}
+})

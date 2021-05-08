@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { css, cx } from 'linaria'
 import { styled } from 'linaria/react'
+import { observer } from 'mobx-react-lite'
 
 import { Button } from '~/design/atoms'
 import { Header } from '~/design/molecules'
@@ -206,12 +207,12 @@ type TProps = {
   content: React.ReactNode
 }
 
-export const FilmCard = (props: TProps) => {
+export const FilmCard = observer((props: TProps) => {
   const { film, content } = props
 
   const { playerModal, handleOpenPlayer } = usePlayerModal(film)
 
-  const { handleFavorite } = useToggleFavorite(film)
+  const { handleFavorite, loading } = useToggleFavorite(film)
 
   return (
     <Root>
@@ -233,7 +234,11 @@ export const FilmCard = (props: TProps) => {
               <Button icon="IconPlay" onClick={handleOpenPlayer}>
                 Play
               </Button>
-              <Button icon={film.is_favorite ? 'IconInList' : 'IconAdd'} onClick={handleFavorite}>
+              <Button
+                loading={loading}
+                icon={film.is_favorite ? 'IconInList' : 'IconAdd'}
+                onClick={handleFavorite}
+              >
                 My list
               </Button>
               <Link href={`/m/${film.id}/add-review`}>
@@ -266,4 +271,4 @@ export const FilmCard = (props: TProps) => {
       </TranslateTop>
     </Root>
   )
-}
+})

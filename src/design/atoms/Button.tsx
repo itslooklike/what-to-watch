@@ -48,13 +48,18 @@ type TProps = {
   asTag?: string
   className?: string
   icon?: keyof typeof Icons
+  loading?: boolean
   onClick?: VoidFunction
 }
 
 export const Button: React.FC<TProps> = React.forwardRef((props, ref) => {
-  const { children, className, icon, asTag = 'button', ...rest } = props
+  const { children, loading, className, icon, asTag = 'button', ...rest } = props
 
-  const Icon = icon ? Icons[icon] : undefined
+  const Icon = (() => {
+    if (loading) return Icons.Spinner
+    if (icon) return Icons[icon]
+    return undefined
+  })()
 
   return React.createElement(
     asTag,

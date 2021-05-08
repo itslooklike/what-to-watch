@@ -26,5 +26,6 @@ export const useToggleFavorite = (film: IFilm) => {
 
   return {
     handleFavorite,
+    loading: favoriteStore.loading,
   }
 }
