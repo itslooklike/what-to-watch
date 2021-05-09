@@ -14,7 +14,7 @@ const Content = styled.div`
   width: 100%;
   max-width: 520px;
   margin: 0 auto;
-  padding: 80px var(--base-content-padding) 165px;
+  padding: 10px var(--base-content-padding) 165px;
 `
 
 const LoginButton = styled.button`
@@ -89,10 +89,9 @@ const Login: NextPage = () => {
 
   let count = 0
 
-  // FIXME: потом убрать это
-  const devLogin = async () => {
+  const cheatDevLogin = async () => {
     count += 1
-    console.log('count', count)
+
     if (count === 3) {
       await userStore.submit({ email: '22@22.ru', password: '2' })
       await filmsStore.fetchFilms()
@@ -106,7 +105,7 @@ const Login: NextPage = () => {
         <title>WTW - Login</title>
       </Head>
       <LWithFooter>
-        <Header title={<span onClick={devLogin}>Sign in</span>} centerTitle hideUser />
+        <Header title={<span onClick={cheatDevLogin}>Sign in</span>} centerTitle hideUser />
         <Content>
           <form onSubmit={handleSubmit}>
             <ErrorTitle>

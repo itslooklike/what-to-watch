@@ -1,5 +1,7 @@
 import { styled } from 'linaria/react'
 
+import { Spinner } from '~/icons'
+
 const Root = styled.div`
   background-color: var(--color-secondary-light);
   border-radius: 8px;
@@ -20,9 +22,18 @@ const Area = styled.textarea`
 `
 
 const Footer = styled.div`
+  position: relative;
   display: flex;
   justify-content: flex-end;
   padding: 10px 20px;
+`
+
+const SpinnerWrap = styled.div`
+  position: absolute;
+  right: 25px;
+  bottom: calc(100% + 5px);
+  width: 20px;
+  height: 20px;
 `
 
 const SubmitButton = styled.button`
@@ -62,6 +73,11 @@ export const TextArea = (props: TProps) => {
         }}
       />
       <Footer>
+        {!loading && (
+          <SpinnerWrap>
+            <Spinner />
+          </SpinnerWrap>
+        )}
         <SubmitButton disabled={loading} type="submit">
           Post
         </SubmitButton>
