@@ -73,7 +73,7 @@ export const TextArea = (props: TProps) => {
         }}
       />
       <Footer>
-        {!loading && (
+        {loading && (
           <SpinnerWrap>
             <Spinner />
           </SpinnerWrap>
