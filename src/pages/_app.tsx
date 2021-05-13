@@ -1,14 +1,15 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import 'normalize.css'
+import './nprogress.css'
 import './globals.css'
 
-import React from 'react'
 import App from 'next/app'
 import Head from 'next/head'
 import type { AppProps, AppContext } from 'next/app'
 
 import { getStores, StoreProvider, TInitialStoreData } from '~/store'
+import { useNProgress } from '~/design/utils'
 
 type TCustomProps = {
   initialStoreData: TInitialStoreData
@@ -16,6 +17,7 @@ type TCustomProps = {
 
 function MyApp({ Component, pageProps, initialStoreData }: AppProps & TCustomProps) {
   const stores = getStores(initialStoreData)
+  useNProgress()
 
   return (
     <>
