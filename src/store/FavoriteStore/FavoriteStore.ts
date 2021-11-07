@@ -37,7 +37,7 @@ export class FavoriteStore {
         this.error = null
         this.data = data
       })
-    } catch (error) {
+    } catch (error: any) {
       runInAction(() => {
         this.loading = false
         this.error = error

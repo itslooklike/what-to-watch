@@ -40,7 +40,7 @@ export class CommentsStore {
         this.error = null
         this.data[filmId] = data
       })
-    } catch (error) {
+    } catch (error: any) {
       runInAction(() => {
         this.loading = false
         this.error = error
@@ -59,7 +59,7 @@ export class CommentsStore {
         this.error = null
         this.data[filmId] = data
       })
-    } catch (error) {
+    } catch (error: any) {
       runInAction(() => {
         this.loading = false
         this.error = error

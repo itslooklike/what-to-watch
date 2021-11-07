@@ -36,7 +36,7 @@ export class FilmsStore {
         this.error = null
         this.data = data
       })
-    } catch (error) {
+    } catch (error: any) {
       console.log('💥 fetchFilms', error)
       runInAction(() => {
         this.loading = false
