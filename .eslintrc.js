@@ -11,7 +11,11 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', 'react-hooks', '@typescript-eslint'],
+  plugins: [
+    'react',
+    // 'react-hooks',
+    '@typescript-eslint',
+  ],
   extends: [
     'plugin:react/recommended',
     'airbnb',
@@ -31,9 +35,12 @@ module.exports = {
     semi: 0,
     camelcase: 0,
     'object-curly-newline': 0,
+
     'no-param-reassign': 0,
     'prefer-arrow-callback': 0,
     'comma-dangle': ['error', 'only-multiline'],
+    'import/no-extraneous-dependencies': 0,
+    'import/prefer-default-export': 0,
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -42,10 +49,9 @@ module.exports = {
         tsx: 'never',
       },
     ],
-    'import/prefer-default-export': 0,
     'jsx-a11y/anchor-is-valid': 0,
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'warn',
+    // 'react-hooks/rules-of-hooks': 'error',
+    // 'react-hooks/exhaustive-deps': 'warn',
     'react/prop-types': 0,
     'react/react-in-jsx-scope': 0,
     'react/no-array-index-key': 0,
