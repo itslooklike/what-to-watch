@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { css, cx } from 'linaria'
-import { styled } from 'linaria/react'
+import { css, cx } from '@linaria/core'
+import { styled } from '@linaria/react'
 import { observer } from 'mobx-react-lite'
 
 import { Button } from '~/design/atoms'

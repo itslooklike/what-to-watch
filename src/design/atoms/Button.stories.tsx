@@ -30,7 +30,7 @@ export const AllIcons = () => (
     {Object.keys(Icons).map((IconName) => {
       const Btn = Template.bind({})
       return (
-        <div style={{ margin: '0 1em 1em 0', display: 'inline-block' }}>
+        <div key={IconName} style={{ margin: '0 1em 1em 0', display: 'inline-block' }}>
           <Btn icon={IconName as keyof typeof Icons} />
         </div>
       )

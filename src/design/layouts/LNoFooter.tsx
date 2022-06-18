@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from 'linaria/react'
+import { styled } from '@linaria/react'
 
 const Root = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const Content = styled.div`
   flex-direction: column;
 `
 
-export const LNoFooter: React.FC = (props) => {
+export const LNoFooter: React.FC<React.PropsWithChildren<unknown>> = (props) => {
   const { children } = props
 
   return (

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useState, SyntheticEvent } from 'react'
-import { styled } from 'linaria/react'
+import { styled } from '@linaria/react'
 import { observer } from 'mobx-react-lite'
 import { useRouter } from 'next/router'
 import type { NextPage } from 'next'

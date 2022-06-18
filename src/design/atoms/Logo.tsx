@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { cx, css } from 'linaria'
-import { styled } from 'linaria/react'
+import { cx, css } from '@linaria/core'
+import { styled } from '@linaria/react'
 
 const Root = styled.div`
   display: inline-flex;

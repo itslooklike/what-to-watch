@@ -3,16 +3,18 @@ import { createPortal } from 'react-dom'
 
 import { portalId } from '~/utils/config'
 
-export const ClientOnlyPortal: FC = ({ children }) => {
-  const ref = useRef()
+export const ClientOnlyPortal: FC<React.PropsWithChildren<unknown>> = ({ children }) => {
+  const ref = useRef<ReturnType<typeof document.querySelector>>()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    // @ts-ignore
     ref.current = document.querySelector(`#${portalId}`)
     setMounted(true)
   }, [])
 
-  // @ts-ignore
-  return mounted ? createPortal(children, ref.current) : null
+  if (mounted && ref.current) {
+    return createPortal(children, ref.current)
+  }
+
+  return null
 }

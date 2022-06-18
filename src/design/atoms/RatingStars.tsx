@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from 'linaria/react'
+import { styled } from '@linaria/react'
 
 const Root = styled.div`
   display: inline-flex;

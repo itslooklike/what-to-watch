@@ -1,9 +1,8 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { Card } from './Card'
-
 import { mockFilm } from '~/store/FilmsStore/mocks'
+import { Card } from './Card'
 
 export default {
   title: 'atoms/Card',

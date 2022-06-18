@@ -1,5 +1,5 @@
 import React from 'react'
-import { styled } from 'linaria/react'
+import { styled } from '@linaria/react'
 
 import { Footer } from '~/design/molecules'
 
@@ -16,7 +16,7 @@ const Content = styled.div`
   flex-direction: column;
 `
 
-export const LWithFooter: React.FC = (props) => {
+export const LWithFooter: React.FC<React.PropsWithChildren<unknown>> = (props) => {
   const { children } = props
 
   return (

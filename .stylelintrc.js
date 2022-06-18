@@ -2,7 +2,7 @@ module.exports = {
   customSyntax: 'postcss-scss',
   extends: [
     'stylelint-config-recommended',
-    'linaria/stylelint-config',
+    '@linaria/stylelint',
     'stylelint-config-rational-order',
   ],
 }

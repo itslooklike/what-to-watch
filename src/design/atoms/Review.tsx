@@ -1,6 +1,6 @@
 import React from 'react'
 import dayjs from 'dayjs'
-import { styled } from 'linaria/react'
+import { styled } from '@linaria/react'
 
 const Root = styled.div`
   position: relative;
@@ -67,7 +67,7 @@ type TProps = {
   rating: string
 }
 
-export const Review: React.FC<TProps> = (props) => {
+export const Review: React.FC<React.PropsWithChildren<TProps>> = (props) => {
   const { children, author, date, rating } = props
 
   return (

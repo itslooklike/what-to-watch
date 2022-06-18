@@ -1,6 +1,6 @@
 import React from 'react'
-import { css, cx } from 'linaria'
-import { styled } from 'linaria/react'
+import { css, cx } from '@linaria/core'
+import { styled } from '@linaria/react'
 
 import * as Icons from '~/icons'
 
@@ -52,7 +52,7 @@ type TProps = {
   onClick?: VoidFunction
 }
 
-export const Button: React.FC<TProps> = React.forwardRef((props, ref) => {
+export const Button: React.FC<React.PropsWithChildren<TProps>> = React.forwardRef((props, ref) => {
   const { children, loading, className, icon, asTag = 'button', ...rest } = props
 
   const Icon = (() => {

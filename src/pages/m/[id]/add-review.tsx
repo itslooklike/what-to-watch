@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { SyntheticEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { styled } from 'linaria/react'
+import { styled } from '@linaria/react'
 import type { NextPage } from 'next'
 
 import { RatingStars, TextArea } from '~/design/atoms'

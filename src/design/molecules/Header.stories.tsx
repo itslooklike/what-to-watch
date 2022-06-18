@@ -1,10 +1,10 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { Header } from './Header'
 
 import { getStores, StoreProvider, TInitialStoreData } from '~/store'
 import { mocksUser } from '~/store/UserStore/mocks'
+import { Header } from './Header'
 
 export default {
   title: 'molecules/Header',

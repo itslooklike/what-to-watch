@@ -1,5 +1,5 @@
 import React from 'react'
-import { css, cx } from 'linaria'
+import { css, cx } from '@linaria/core'
 
 const stylesInput = css`
   display: block;

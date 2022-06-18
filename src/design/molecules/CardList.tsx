@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { styled } from 'linaria/react'
+import { styled } from '@linaria/react'
 
 import { Card } from '~/design/atoms'
 import type { IFilm } from '~/store/FilmsStore'

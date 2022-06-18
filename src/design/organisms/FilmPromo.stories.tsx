@@ -1,10 +1,10 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
-import { FilmPromo } from './FilmPromo'
 
 import { getStores, StoreProvider, TInitialStoreData } from '~/store'
 import { mockFilm } from '~/store/FilmsStore/mocks'
 import { mocksUser } from '~/store/UserStore/mocks'
+import { FilmPromo } from './FilmPromo'
 
 export default {
   title: 'organisms/FilmPromo',

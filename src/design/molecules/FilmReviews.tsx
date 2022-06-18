@@ -1,4 +1,4 @@
-import { styled } from 'linaria/react'
+import { styled } from '@linaria/react'
 
 import { Review } from '~/design/atoms'
 import { IComment } from '~/store/CommentsStore'

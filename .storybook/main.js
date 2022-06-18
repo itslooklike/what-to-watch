@@ -29,6 +29,9 @@ function traverse(rules) {
 }
 
 module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   webpackFinal: async (config) => {
@@ -42,7 +45,7 @@ module.exports = {
       exclude: /node_modules/,
       use: [
         {
-          loader: require.resolve('linaria/loader'),
+          loader: require.resolve('@linaria/webpack-loader'),
           options: {
             sourceMap: process.env.NODE_ENV !== 'production',
             extension: LINARIA_EXTENSION,
@@ -60,7 +63,7 @@ module.exports = {
     )
 
     config.module.rules.splice(indexOfRuleToRemove, 1, {
-      test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/,
+      test: /\.(ico|jpg|jpeg|png|apng|gif|eot|otf|webp|ttf|woff|woff2|cur|ani|pdf)(\?.*)?$/,
       loader: require.resolve('file-loader'),
       options: {
         name: 'static/media/[name].[hash:8].[ext]',

@@ -1,4 +1,4 @@
-import { styled } from 'linaria/react'
+import { styled } from '@linaria/react'
 
 import { ContentWrap } from '~/design/atoms'
 import { CardList } from '~/design/molecules'
@@ -19,7 +19,7 @@ type TProps = {
   film: IFilm
 }
 
-export const FilmTemplate: React.FC<TProps> = (props) => {
+export const FilmTemplate: React.FC<React.PropsWithChildren<TProps>> = (props) => {
   const { children, film } = props
 
   const { filmsStore } = useMobxStores()

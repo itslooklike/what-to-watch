@@ -1,5 +1,5 @@
 import ReactPlayer from 'react-player'
-import { styled } from 'linaria/react'
+import { styled } from '@linaria/react'
 
 import { Button } from '~/design/atoms'
 import type { IFilm } from '~/store/FilmsStore'

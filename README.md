@@ -37,7 +37,7 @@ yarn sb  # -> storybook: http://localhost:6006/
 # lint
 npx prettier --write 'src/**/*.{css,scss,ts,tsx,js,jsx}'
 npx eslint 'src/**/*.{js,jsx,ts,tsx}' --fix
-npx stylelint "src/**/*.{css,scss}" --fix
+npx stylelint "src/**/*.{js,jsx,ts,tsx}" # not work with stylelint ^14.0.0: https://github.com/callstack/linaria/issues/930
 ```
 
 ![Site Screenshot](./images/screen-3.png)

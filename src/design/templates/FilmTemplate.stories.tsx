@@ -1,11 +1,11 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react'
 
-import { FilmTemplate } from './FilmTemplate'
 
 import { getStores, StoreProvider, TInitialStoreData } from '~/store'
 import { mockFilm } from '~/store/FilmsStore/mocks'
 import { mocksUser } from '~/store/UserStore/mocks'
+import { FilmTemplate } from './FilmTemplate'
 
 export default {
   title: 'templates/FilmTemplate',

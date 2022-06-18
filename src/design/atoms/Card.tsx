@@ -1,6 +1,6 @@
 import { useState, forwardRef, useRef, useEffect } from 'react'
-import { css, cx } from 'linaria'
-import { styled } from 'linaria/react'
+import { css, cx } from '@linaria/core'
+import { styled } from '@linaria/react'
 
 import type { IFilm } from '~/store/FilmsStore'
 
