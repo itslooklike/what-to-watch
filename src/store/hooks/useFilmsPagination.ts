@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
-import { TGenre } from '~/store/FilmsStore'
 import { useMobxStores } from '~/store'
 
 const PAG_SIZE = 8
 
-export const useFilmsPagination = (genre: TGenre) => {
+export const useFilmsPagination = (genre: string) => {
   const { filmsStore } = useMobxStores()
   const films = filmsStore.selectFilmsByGenre(genre)
   const [currentFilms, setCurrentFilms] = useState(films.slice(0, PAG_SIZE))

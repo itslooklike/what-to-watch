@@ -9,7 +9,7 @@ type TProps = {
 }
 
 export const SeoHead = ({ film, url }: TProps) => {
-  const image = film.preview_image
+  const image = film.imagePreview.url
 
   return (
     <Head>

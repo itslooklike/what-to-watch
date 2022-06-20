@@ -1,21 +1,30 @@
-export type TGenre = 'Adventure' | 'Fantasy' | 'Drama' | 'Action' | 'Crime' | 'Comedy' | 'Thriller'
+type UploadUrl = {
+  url: string
+}
 
 export interface IFilm {
-  background_color: string
-  background_image: string
+  backgroundColor: string
   description: string
   director: string
-  genre: TGenre
+
   id: number
-  is_favorite: boolean
   name: string
-  poster_image: string
-  preview_image: string
-  preview_video_link: string
+
   rating: number
   released: number
   run_time: number
   scores_count: number
-  starring: string[]
-  video_link: string
+  videoLink: string
+  videoPreviewLink: string
+  starring: {
+    id: string
+    name: string
+  }[]
+  genre: {
+    id: string
+    name: string
+  }
+  imageBackground: UploadUrl
+  imagePoster: UploadUrl
+  imagePreview: UploadUrl
 }

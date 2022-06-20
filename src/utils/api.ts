@@ -1,8 +1,11 @@
 import axios from 'axios'
+import { GraphQLClient } from 'graphql-request'
 import { apiUrl, withProxy } from '~/utils/config'
 import { isServer } from '~/utils/env'
 
 export type { AxiosError } from 'axios'
+
+export const graphQLClient = new GraphQLClient('http://localhost:3022/api/graphql')
 
 const apiPrefix = `${apiUrl}/wtw`
 

@@ -6,7 +6,6 @@ import { styled } from '@linaria/react'
 import { CardList } from '~/design/molecules'
 import { useFilmsPagination } from '~/store/hooks'
 import { useMobxStores } from '~/store'
-import type { TGenre } from '~/store/FilmsStore'
 
 const List = styled.ul`
   display: flex;
@@ -73,7 +72,7 @@ export const Catalog = () => {
 
   const router = useRouter()
 
-  const genre = router?.query.genre as TGenre
+  const genre = router?.query.genre as string
 
   const [currentFilms, handleMore, isHasMore] = useFilmsPagination(genre)
 

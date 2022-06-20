@@ -1,8 +1,8 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-
-import { api } from '~/utils/api'
+import { gql } from 'graphql-request'
+import { graphQLClient } from '~/utils/api'
 import type { IStore } from '~/store'
-import type { IFilm, TGenre } from './types'
+import type { IFilm } from './types'
 
 export class FilmsStore {
   rootStore
@@ -29,12 +29,47 @@ export class FilmsStore {
     this.loading = true
 
     try {
-      const { data } = await api.get<IFilm[]>('/films')
+      const queryFilms = gql`
+        query films {
+          films {
+            id
+            name
+            description
+            released
+            backgroundColor
+            rating
+            scoresCount
+            director
+            videoLink
+            videoPreviewLink
+            runTime
+            genre {
+              id
+              name
+            }
+            starring {
+              id
+              name
+            }
+            imagePoster {
+              url
+            }
+            imagePreview {
+              url
+            }
+            imageBackground {
+              url
+            }
+          }
+        }
+      `
+
+      const { films } = await graphQLClient.request(queryFilms)
 
       runInAction(() => {
         this.loading = false
         this.error = null
-        this.data = data
+        this.data = films
       })
     } catch (error: any) {
       console.log('💥 fetchFilms', error)
@@ -51,7 +86,7 @@ export class FilmsStore {
   }
 
   get filmGenres() {
-    return Array.from(new Set(this.data.map((item) => item.genre)))
+    return Array.from(new Set(this.data.map((item) => item.genre.name)))
   }
 
   get films() {
@@ -62,9 +97,9 @@ export class FilmsStore {
     return this.data[0]
   }
 
-  selectFilmsByGenre(genre: TGenre) {
+  selectFilmsByGenre(genre: string) {
     if (genre) {
-      return this.data.filter((film) => film.genre === genre)
+      return this.data.filter((film) => film.genre.name === genre)
     }
 
     return this.data

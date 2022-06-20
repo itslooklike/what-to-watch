@@ -7,7 +7,7 @@ export interface IUser {
   id: number
   email: string
   name: string
-  avatar_url: string
+  avatar_url?: string
 }
 
 export interface IUserResponseError {

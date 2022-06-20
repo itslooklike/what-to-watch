@@ -20,6 +20,8 @@
     "@svgr/webpack": "^6.2.1",
     "axios": "^0.27.2",
     "dayjs": "^1.11.3",
+    "graphql": "^16.5.0",
+    "graphql-request": "^4.3.0",
     "http-proxy-middleware": "^2.0.6",
     "mobx": "^6.6.0",
     "mobx-react-lite": "^3.4.0",

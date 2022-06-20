@@ -1,4 +1,3 @@
-import React from 'react'
 import { styled } from '@linaria/react'
 
 import type { IFilm } from '~/store/FilmsStore'
@@ -80,7 +79,7 @@ export const Overview = (props: TProps) => {
           <strong>Director: {film.director}</strong>
         </TextDirector>
         <TextStarring>
-          <strong>Starring: {film.starring.join(', ')} and other</strong>
+          <strong>Starring: {film.starring.map(({ name }) => name).join(', ')} and other</strong>
         </TextStarring>
       </Text>
     </div>

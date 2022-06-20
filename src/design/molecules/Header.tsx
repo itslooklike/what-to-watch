@@ -5,7 +5,6 @@ import { observer } from 'mobx-react-lite'
 
 import { IconUser } from '~/icons'
 import { Logo } from '~/design/atoms'
-import { apiUrl } from '~/utils/config'
 import { useMobxStores } from '~/store'
 
 const avatarSize = 63
@@ -92,7 +91,7 @@ export const Header = observer((props: TProps) => {
                 <Avatar
                   width={avatarSize}
                   height={avatarSize}
-                  src={apiUrl + userStore.user.avatar_url}
+                  src={userStore.user.avatar_url || 'https://i.pravatar.cc/300'}
                 />
               ) : (
                 <IconUser width={avatarSize} height={avatarSize} />

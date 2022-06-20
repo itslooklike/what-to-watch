@@ -114,7 +114,7 @@ export const Card = forwardRef<HTMLAnchorElement, TProps>((props, ref) => {
     }
   }
 
-  const isShowVideo = isHover && film.video_link
+  const isShowVideo = isHover && film.videoLink
 
   /* eslint-disable-next-line arrow-body-style */
   useEffect(() => {
@@ -130,9 +130,15 @@ export const Card = forwardRef<HTMLAnchorElement, TProps>((props, ref) => {
       <Root onMouseEnter={handleHover} onMouseLeave={handleLeave}>
         <ImgWrap>
           {isShowVideo ? (
-            <Video src={film.video_link} autoPlay poster={film.preview_image} muted />
+            <Video src={film.videoLink} autoPlay poster={film.imagePreview.url} muted />
           ) : (
-            <Img src={film.preview_image} alt={film.name} width="280" height="175" loading="lazy" />
+            <Img
+              src={film.imagePreview.url}
+              alt={film.name}
+              width="280"
+              height="175"
+              loading="lazy"
+            />
           )}
         </ImgWrap>
         <LeftSlot className={cx(styleSubtext, isShowVideo && 'light')}>{film.name}</LeftSlot>

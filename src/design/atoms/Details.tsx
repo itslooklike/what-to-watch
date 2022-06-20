@@ -1,4 +1,3 @@
-import React from 'react'
 import { styled } from '@linaria/react'
 
 import type { IFilm } from '~/store/FilmsStore'
@@ -44,7 +43,7 @@ export const Details = (props: TProps) => {
         </Item>
         <Item>
           <ItemName>Starring</ItemName>
-          <ItemValue>{film.starring.join(', ')}</ItemValue>
+          <ItemValue>{film.starring.map(({ name }) => name).join(', ')}</ItemValue>
         </Item>
       </Col>
       <Col>
@@ -54,7 +53,7 @@ export const Details = (props: TProps) => {
         </Item>
         <Item>
           <ItemName>Genre</ItemName>
-          <ItemValue>{film.genre}</ItemValue>
+          <ItemValue>{film.genre.name}</ItemValue>
         </Item>
         <Item>
           <ItemName>Released</ItemName>

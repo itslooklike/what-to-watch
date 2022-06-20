@@ -1,8 +1,38 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+import { gql } from 'graphql-request'
 
-import { api, AxiosError } from '~/utils/api'
+import { graphQLClient } from '~/utils/api'
 import type { IStore } from '~/store'
-import type { IUser, IUserSubmit, IUserResponseError } from './types'
+import type { IUser, IUserSubmit } from './types'
+
+const mutationAuth = gql`
+  mutation Auth($email: String!, $password: String!) {
+    authenticateUserWithPassword(email: $email, password: $password) {
+      ... on UserAuthenticationWithPasswordSuccess {
+        sessionToken
+        item {
+          id
+          name
+          email
+          favoriteFilmsCount
+          favoriteActorsCount
+        }
+      }
+      ... on UserAuthenticationWithPasswordFailure {
+        message
+      }
+    }
+  }
+`
+
+const mutationCreateUser = gql`
+  mutation createUser($data: [UserCreateInput!]!) {
+    createUser(data: $data) {
+      name
+      email
+    }
+  }
+`
 
 export class UserStore {
   rootStore
@@ -11,7 +41,7 @@ export class UserStore {
 
   data: IUser | null = null
 
-  error: AxiosError<IUserResponseError> | null = null
+  error: any = null
 
   constructor(initialData: Partial<UserStore> = {}, rootStore: IStore) {
     makeAutoObservable(this, { rootStore: false })
@@ -29,13 +59,38 @@ export class UserStore {
     this.loading = true
 
     try {
-      const { data } = await api.post<IUser>('/login', { email, password })
-
-      runInAction(() => {
-        this.loading = false
-        this.error = null
-        this.data = data
+      const {
+        authenticateUserWithPassword: { message, item },
+      } = await graphQLClient.request(mutationAuth, {
+        email,
+        password,
       })
+
+      if (message) {
+        const { data, errors } = await graphQLClient.request(mutationCreateUser, {
+          data: {
+            name: 'coon',
+            email,
+            password,
+          },
+        })
+
+        if (errors && errors.length) {
+          throw new Error(message)
+        }
+
+        runInAction(() => {
+          this.loading = false
+          this.error = null
+          this.data = data.createUser
+        })
+      } else {
+        runInAction(() => {
+          this.loading = false
+          this.error = null
+          this.data = item
+        })
+      }
     } catch (error: any) {
       console.log('💥 UserStore.submit', error)
       runInAction(() => {
@@ -45,30 +100,7 @@ export class UserStore {
     }
   }
 
-  async checkAuth() {
-    this.loading = true
-
-    try {
-      const { data } = await api.get<IUser>('/login')
-
-      runInAction(() => {
-        this.loading = false
-        this.error = null
-        this.data = data
-      })
-    } catch (error: any) {
-      runInAction(() => {
-        this.loading = false
-        this.error = error
-      })
-    }
-  }
-
   get user() {
     return this.data
-  }
-
-  get getError() {
-    return this.error?.response?.data.error
   }
 }

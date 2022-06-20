@@ -48,6 +48,10 @@ const InputsWrap = styled.div`
   gap: 10px;
 `
 
+const TitleWrap = styled.span`
+  user-select: none;
+`
+
 const Login: NextPage = () => {
   const [emptyError, setEmptyError] = useState('')
   const [email, setEmail] = useState('')
@@ -81,7 +85,8 @@ const Login: NextPage = () => {
 
     await userStore.submit({ email, password })
 
-    if (!userStore.getError) {
+    if (!userStore.error) {
+      console.log('>> Success login')
       await filmsStore.fetchFilms()
       router.push('/')
     }
@@ -93,7 +98,7 @@ const Login: NextPage = () => {
     count += 1
 
     if (count === 3) {
-      await userStore.submit({ email: '22@22.ru', password: '2' })
+      await userStore.submit({ email: 'user@from.dev', password: '12345678' })
       await filmsStore.fetchFilms()
       router.push('/')
     }
@@ -105,13 +110,15 @@ const Login: NextPage = () => {
         <title>WTW - Login</title>
       </Head>
       <LWithFooter>
-        <Header title={<span onClick={cheatDevLogin}>Sign in</span>} centerTitle hideUser />
+        <Header
+          title={<TitleWrap onClick={cheatDevLogin}>Sign in</TitleWrap>}
+          centerTitle
+          hideUser
+        />
         <Content>
           <form onSubmit={handleSubmit}>
             <ErrorTitle>
-              {userStore.getError
-                ? 'Please enter a valid email address'
-                : emptyError || <>&nbsp;</>}
+              {userStore.error ? 'Please enter a valid email address' : emptyError || <>&nbsp;</>}
             </ErrorTitle>
             <InputsWrap>
               <Input
@@ -119,7 +126,7 @@ const Login: NextPage = () => {
                 type="email"
                 placeholder="Email address"
                 id="user-email"
-                isError={Boolean(userStore.getError || emptyError)}
+                isError={Boolean(userStore.error || emptyError)}
               />
               <Input
                 onChange={handlePassword}
