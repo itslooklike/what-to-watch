@@ -1,14 +1,13 @@
 type TCommentUser = {
-  is: number
   name: string
 }
 
 export interface IComment {
-  id: number
-  user: TCommentUser
-  rating: string
+  id: string
   comment: string
+  rating: number
   date: Date
+  user: TCommentUser
 }
 
 export interface ICommentAdd {

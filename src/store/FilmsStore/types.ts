@@ -3,13 +3,11 @@ type UploadUrl = {
 }
 
 export interface IFilm {
+  id: string
+  name: string
   backgroundColor: string
   description: string
   director: string
-
-  id: number
-  name: string
-
   rating: number
   released: number
   run_time: number

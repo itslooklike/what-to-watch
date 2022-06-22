@@ -13,7 +13,7 @@ export const getInitialFilmsWithComments = async ({ mobxStores, query }: NextPag
   }
 
   if (isServer || filmId) {
-    const promise = mobxStores.commentsStore.fetchComments(+filmId)
+    const promise = mobxStores.commentsStore.fetchComments(filmId)
     promises.push(promise)
   }
 

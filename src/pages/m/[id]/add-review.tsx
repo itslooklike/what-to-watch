@@ -97,7 +97,7 @@ const MoviePageAddReviews: NextPage = () => {
   const handleSubmit = async (event: SyntheticEvent) => {
     event.preventDefault()
 
-    await commentsStore.addComment(+id, { rating: +rating, comment })
+    await commentsStore.addComment(id, { rating: +rating, comment })
 
     if (!commentsStore.error) {
       router.push(`/m/${id}/reviews`)

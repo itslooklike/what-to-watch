@@ -1,19 +1,30 @@
 import { makeAutoObservable, runInAction } from 'mobx'
+import { gql } from 'graphql-request'
 
-import { api } from '~/utils/api'
+import { graphQLClient, api } from '~/utils/api'
 import type { IStore } from '~/store'
 import type { IComment, ICommentAdd } from './types'
 
-interface ICommentsStoreData {
-  [_: number]: IComment[]
-}
+const queryCommentsById = gql`
+  query comments($id: ID!) {
+    comments(where: { film: { id: { equals: $id } } }) {
+      id
+      comment
+      rating
+      date
+      user {
+        name
+      }
+    }
+  }
+`
 
 export class CommentsStore {
   rootStore
 
   loading = false
 
-  data: ICommentsStoreData = {}
+  data: Record<string, IComment[]> = {}
 
   error = null
 
@@ -29,16 +40,16 @@ export class CommentsStore {
     }
   }
 
-  async fetchComments(filmId: number) {
+  async fetchComments(filmId: string) {
     this.loading = true
 
     try {
-      const { data } = await api.get<IComment[]>(`/comments/${filmId}`)
+      const { comments } = await graphQLClient.request(queryCommentsById, { id: filmId })
 
       runInAction(() => {
         this.loading = false
         this.error = null
-        this.data[filmId] = data
+        this.data[filmId] = comments
       })
     } catch (error: any) {
       runInAction(() => {
@@ -48,7 +59,7 @@ export class CommentsStore {
     }
   }
 
-  async addComment(filmId: number, comment: ICommentAdd) {
+  async addComment(filmId: string, comment: ICommentAdd) {
     this.loading = true
 
     try {
@@ -67,7 +78,7 @@ export class CommentsStore {
     }
   }
 
-  getComment(filmId: number) {
+  getComment(filmId: string) {
     return this.data[filmId]
   }
 }

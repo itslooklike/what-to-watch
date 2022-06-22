@@ -64,7 +64,7 @@ const Rating = styled.div`
 type TProps = {
   author: string
   date: Date
-  rating: string
+  rating: string | number
 }
 
 export const Review: React.FC<React.PropsWithChildren<TProps>> = (props) => {

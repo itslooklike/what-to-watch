@@ -15,7 +15,7 @@ const MoviePageReviews: NextPage = () => {
   const id = router.query.id as string
 
   const film = filmsStore.selectFilmById(id)
-  const comments = commentsStore.getComment(+id)
+  const comments = commentsStore.getComment(id)
 
   if (!film) {
     return <>404</>

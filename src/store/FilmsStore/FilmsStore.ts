@@ -105,8 +105,8 @@ export class FilmsStore {
     return this.data
   }
 
-  selectFilmById(id: number | string) {
-    return this.data.find((film) => film.id === (typeof id === 'string' ? +id : id))
+  selectFilmById(id: string) {
+    return this.data.find((film) => film.id === id)
   }
 
   selectLikeThis(currentFilm: IFilm) {
