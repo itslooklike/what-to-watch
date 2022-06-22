@@ -1,13 +1,13 @@
 import Head from 'next/head'
-import { SyntheticEvent, useState } from 'react'
+
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { styled } from '@linaria/react'
 import type { NextPage } from 'next'
 
-import { RatingStars, TextArea } from '~/design/atoms'
 import { Header } from '~/design/molecules'
 import { LNoFooter } from '~/design/layouts'
+import { ReviewBlock } from '~/components/ReviewBlock'
 import { getInitialFilms } from '~/store/utils'
 import { useAuth } from '~/store/hooks'
 import { useMobxStores } from '~/store'
@@ -58,50 +58,16 @@ const ReviewContent = styled.div`
   background-color: var(--color-secondary);
 `
 
-const ReviewBlock = styled.div`
-  width: 100%;
-  max-width: 560px;
-  margin: 0 auto;
-  padding: 62px var(--base-content-padding) 20px;
-`
-
-const RatingWrap = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 15px;
-`
-
 const MoviePageAddReviews: NextPage = () => {
   useAuth()
 
-  const { filmsStore, commentsStore } = useMobxStores()
+  const { filmsStore } = useMobxStores()
   const router = useRouter()
   const id = router.query.id as string
   const film = filmsStore.selectFilmById(id)
 
-  const [rating, setRating] = useState('4')
-  const [comment, setComment] = useState('')
-
   if (!film) {
     return <>404</>
-  }
-
-  const handleStars = (value: string) => {
-    setRating(value)
-  }
-
-  const handleText = (textAreaText: string) => {
-    setComment(textAreaText)
-  }
-
-  const handleSubmit = async (event: SyntheticEvent) => {
-    event.preventDefault()
-
-    await commentsStore.addComment(id, { rating: +rating, comment })
-
-    if (!commentsStore.error) {
-      router.push(`/m/${id}/reviews`)
-    }
   }
 
   const headerTitle = (
@@ -135,20 +101,7 @@ const MoviePageAddReviews: NextPage = () => {
         </Top>
 
         <ReviewContent>
-          <ReviewBlock>
-            <form onSubmit={handleSubmit}>
-              <RatingWrap>
-                <RatingStars name="rating" onChange={handleStars} currentRating={rating} />
-              </RatingWrap>
-              <TextArea
-                loading={commentsStore.loading}
-                value={comment}
-                name="review-text"
-                placeholder="Review text"
-                onChange={handleText}
-              />
-            </form>
-          </ReviewBlock>
+          <ReviewBlock filmId={id} />
         </ReviewContent>
       </LNoFooter>
     </>

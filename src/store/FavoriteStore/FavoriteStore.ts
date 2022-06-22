@@ -5,6 +5,51 @@ import { graphQLClient } from '~/utils/api'
 import type { IStore } from '~/store'
 import type { IFilm } from '~/store/FilmsStore'
 
+const queryFavoriteFilms = gql`
+  query favoriteFilms($id: ID!) {
+    user(where: { id: $id }) {
+      favoriteFilms {
+        id
+        name
+        description
+        released
+        backgroundColor
+        rating
+        scoresCount
+        director
+        videoLink
+        videoPreviewLink
+        runTime
+        genre {
+          id
+          name
+        }
+        starring {
+          id
+          name
+        }
+        imagePoster {
+          url
+        }
+        imagePreview {
+          url
+        }
+        imageBackground {
+          url
+        }
+      }
+    }
+  }
+`
+
+const mutateUpdateUser = gql`
+  mutation mutateUpdateUser($where: UserWhereUniqueInput!, $data: UserUpdateInput!) {
+    updateUser(where: $where, data: $data) {
+      id
+    }
+  }
+`
+
 export class FavoriteStore {
   rootStore
 
@@ -32,12 +77,15 @@ export class FavoriteStore {
     this.loading = true
 
     try {
-      // const { data } = await api.get<IFilm[]>('/favorite')
-      // runInAction(() => {
-      //   this.loading = false
-      //   this.error = null
-      //   this.data = data
-      // })
+      const { user } = await graphQLClient.request(queryFavoriteFilms, {
+        id: this.rootStore.userStore.user?.id,
+      })
+
+      runInAction(() => {
+        this.loading = false
+        this.error = null
+        this.data = user.favoriteFilms
+      })
     } catch (error: any) {
       runInAction(() => {
         this.loading = false
@@ -46,29 +94,35 @@ export class FavoriteStore {
     }
   }
 
-  private static async changeStatus(id: number, status: 0 | 1) {
-    // const { data } = await api.post<IFilm>(`/favorite/${id}/${status}`)
-    const data = { id, status }
-
-    return data
-  }
-
-  private updateList(newFilm: IFilm) {
-    const filmIndex = this.data.findIndex((film) => film.id === newFilm.id)
-    this.data[filmIndex] = newFilm
-    this.rootStore.filmsStore.update(newFilm)
-    this.loadingUpdate = false
-  }
-
-  async add(id: number) {
+  async add(id: string) {
     this.loadingUpdate = true
-    const newFilm = await FavoriteStore.changeStatus(id, 1)
-    this.updateList(newFilm)
+
+    await graphQLClient.request(mutateUpdateUser, {
+      where: { id: this.rootStore.userStore.user?.id },
+      data: { favoriteFilms: { connect: { id } } },
+    })
+
+    const newFilm = this.rootStore.filmsStore.data.find((film) => film.id === id)
+
+    runInAction(() => {
+      this.data.push(newFilm!)
+      this.loadingUpdate = false
+    })
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     this.loadingUpdate = true
-    const newFilm = await FavoriteStore.changeStatus(id, 0)
-    this.updateList(newFilm)
+
+    await graphQLClient.request(mutateUpdateUser, {
+      where: { id: this.rootStore.userStore.user?.id },
+      data: { favoriteFilms: { disconnect: { id } } },
+    })
+
+    const filtered = this.data.filter((film) => film.id !== id)
+
+    runInAction(() => {
+      this.data = filtered
+      this.loadingUpdate = false
+    })
   }
 }

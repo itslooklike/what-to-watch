@@ -220,10 +220,8 @@ type TProps = {
 
 export const FilmHero = observer((props: TProps) => {
   const { film, content } = props
-
   const { playerModal, handleOpenPlayer } = usePlayerModal(film)
-
-  const { handleFavorite, loadingUpdate } = useToggleFavorite(film)
+  const { handleFavorite, loadingUpdate, isFilmFav } = useToggleFavorite(film)
 
   return (
     <Root>
@@ -247,7 +245,7 @@ export const FilmHero = observer((props: TProps) => {
               </Button>
               <Button
                 loading={loadingUpdate}
-                icon={film.is_favorite ? 'IconInList' : 'IconAdd'}
+                icon={isFilmFav ? 'IconInList' : 'IconAdd'}
                 onClick={handleFavorite}
               >
                 My list

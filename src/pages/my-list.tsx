@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import type { NextPage } from 'next'
+import { observer } from 'mobx-react-lite'
 
 import { ContentWrap } from '~/design/atoms'
 import { Header, CardList } from '~/design/molecules'
@@ -10,6 +11,7 @@ import { useMobxStores } from '~/store'
 
 const MyList: NextPage = () => {
   useAuth()
+
   const { favoriteStore } = useMobxStores()
 
   return (
@@ -20,7 +22,11 @@ const MyList: NextPage = () => {
       <LWithFooter>
         <Header title="My Films" />
         <ContentWrap>
-          <CardList films={favoriteStore.data} />
+          {favoriteStore.data.length ? (
+            <CardList films={favoriteStore.data} />
+          ) : (
+            <div>List empty</div>
+          )}
         </ContentWrap>
       </LWithFooter>
     </>
@@ -29,4 +35,4 @@ const MyList: NextPage = () => {
 
 MyList.getInitialProps = getInitialFavorite
 
-export default MyList
+export default observer(MyList)

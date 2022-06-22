@@ -25,6 +25,7 @@ const queryCommentsById = gql`
     }
   }
 `
+
 const createComment = gql`
   ${CommentFragment}
   mutation createComment($data: CommentCreateInput!) {

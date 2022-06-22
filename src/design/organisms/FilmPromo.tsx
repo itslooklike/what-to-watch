@@ -124,7 +124,7 @@ export const FilmPromo = observer((props: TProps) => {
 
   const { handleOpenPlayer, playerModal } = usePlayerModal(film)
 
-  const { handleFavorite, loadingUpdate } = useToggleFavorite(film)
+  const { handleFavorite, loadingUpdate, isFilmFav } = useToggleFavorite(film)
 
   return (
     <Card>
@@ -160,7 +160,7 @@ export const FilmPromo = observer((props: TProps) => {
               </Button>
               <Button
                 loading={loadingUpdate}
-                icon={film.is_favorite ? 'IconInList' : 'IconAdd'}
+                icon={isFilmFav ? 'IconInList' : 'IconAdd'}
                 onClick={handleFavorite}
               >
                 My list

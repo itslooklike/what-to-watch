@@ -4,6 +4,41 @@ import { graphQLClient } from '~/utils/api'
 import type { IStore } from '~/store'
 import type { IFilm } from './types'
 
+const queryFilms = gql`
+  query films {
+    films {
+      id
+      name
+      description
+      released
+      backgroundColor
+      rating
+      scoresCount
+      director
+      videoLink
+      videoPreviewLink
+      runTime
+      genre {
+        id
+        name
+      }
+      starring {
+        id
+        name
+      }
+      imagePoster {
+        url
+      }
+      imagePreview {
+        url
+      }
+      imageBackground {
+        url
+      }
+    }
+  }
+`
+
 export class FilmsStore {
   rootStore
 
@@ -29,41 +64,6 @@ export class FilmsStore {
     this.loading = true
 
     try {
-      const queryFilms = gql`
-        query films {
-          films {
-            id
-            name
-            description
-            released
-            backgroundColor
-            rating
-            scoresCount
-            director
-            videoLink
-            videoPreviewLink
-            runTime
-            genre {
-              id
-              name
-            }
-            starring {
-              id
-              name
-            }
-            imagePoster {
-              url
-            }
-            imagePreview {
-              url
-            }
-            imageBackground {
-              url
-            }
-          }
-        }
-      `
-
       const { films } = await graphQLClient.request(queryFilms)
 
       runInAction(() => {
