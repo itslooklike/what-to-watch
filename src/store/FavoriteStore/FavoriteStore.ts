@@ -1,5 +1,7 @@
 import { makeAutoObservable, runInAction } from 'mobx'
-import { api } from '~/utils/api'
+import { gql } from 'graphql-request'
+
+import { graphQLClient } from '~/utils/api'
 import type { IStore } from '~/store'
 import type { IFilm } from '~/store/FilmsStore'
 
@@ -30,13 +32,12 @@ export class FavoriteStore {
     this.loading = true
 
     try {
-      const { data } = await api.get<IFilm[]>('/favorite')
-
-      runInAction(() => {
-        this.loading = false
-        this.error = null
-        this.data = data
-      })
+      // const { data } = await api.get<IFilm[]>('/favorite')
+      // runInAction(() => {
+      //   this.loading = false
+      //   this.error = null
+      //   this.data = data
+      // })
     } catch (error: any) {
       runInAction(() => {
         this.loading = false
@@ -46,7 +47,9 @@ export class FavoriteStore {
   }
 
   private static async changeStatus(id: number, status: 0 | 1) {
-    const { data } = await api.post<IFilm>(`/favorite/${id}/${status}`)
+    // const { data } = await api.post<IFilm>(`/favorite/${id}/${status}`)
+    const data = { id, status }
+
     return data
   }
 

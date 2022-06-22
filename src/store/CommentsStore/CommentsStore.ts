@@ -1,20 +1,35 @@
 import { makeAutoObservable, runInAction } from 'mobx'
 import { gql } from 'graphql-request'
 
-import { graphQLClient, api } from '~/utils/api'
+import { graphQLClient } from '~/utils/api'
 import type { IStore } from '~/store'
 import type { IComment, ICommentAdd } from './types'
 
+const CommentFragment = gql`
+  fragment CommentFragment on Comment {
+    id
+    comment
+    rating
+    date
+    user {
+      name
+    }
+  }
+`
+
 const queryCommentsById = gql`
+  ${CommentFragment}
   query comments($id: ID!) {
     comments(where: { film: { id: { equals: $id } } }) {
-      id
-      comment
-      rating
-      date
-      user {
-        name
-      }
+      ...CommentFragment
+    }
+  }
+`
+const createComment = gql`
+  ${CommentFragment}
+  mutation createComment($data: CommentCreateInput!) {
+    createComment(data: $data) {
+      ...CommentFragment
     }
   }
 `
@@ -63,7 +78,14 @@ export class CommentsStore {
     this.loading = true
 
     try {
-      const { data } = await api.post<IComment[]>(`/comments/${filmId}`, comment)
+      const data = await graphQLClient.request(createComment, {
+        data: {
+          comment: comment.comment,
+          rating: comment.rating,
+          film: { connect: { id: filmId } },
+          user: { connect: { id: this.rootStore.userStore.user?.id } },
+        },
+      })
 
       runInAction(() => {
         this.loading = false

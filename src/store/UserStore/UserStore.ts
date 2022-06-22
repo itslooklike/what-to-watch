@@ -5,17 +5,24 @@ import { graphQLClient } from '~/utils/api'
 import type { IStore } from '~/store'
 import type { IUser, IUserSubmit } from './types'
 
+const UserFragment = gql`
+  fragment UserFragment on User {
+    id
+    name
+    email
+    favoriteFilmsCount
+    favoriteActorsCount
+  }
+`
+
 const mutationAuth = gql`
+  ${UserFragment}
   mutation Auth($email: String!, $password: String!) {
     authenticateUserWithPassword(email: $email, password: $password) {
       ... on UserAuthenticationWithPasswordSuccess {
         sessionToken
         item {
-          id
-          name
-          email
-          favoriteFilmsCount
-          favoriteActorsCount
+          ...UserFragment
         }
       }
       ... on UserAuthenticationWithPasswordFailure {
@@ -26,10 +33,10 @@ const mutationAuth = gql`
 `
 
 const mutationCreateUser = gql`
-  mutation createUser($data: [UserCreateInput!]!) {
+  ${UserFragment}
+  mutation createUser($data: UserCreateInput!) {
     createUser(data: $data) {
-      name
-      email
+      ...UserFragment
     }
   }
 `
@@ -59,24 +66,22 @@ export class UserStore {
     this.loading = true
 
     try {
-      const {
-        authenticateUserWithPassword: { message, item },
-      } = await graphQLClient.request(mutationAuth, {
+      const { authenticateUserWithPassword: data } = await graphQLClient.request(mutationAuth, {
         email,
         password,
       })
 
-      if (message) {
+      if (data.message) {
         const { data, errors } = await graphQLClient.request(mutationCreateUser, {
           data: {
-            name: 'coon',
+            name: 'coon' + Date.now(),
             email,
             password,
           },
         })
 
         if (errors && errors.length) {
-          throw new Error(message)
+          throw new Error(data.message)
         }
 
         runInAction(() => {
@@ -88,7 +93,7 @@ export class UserStore {
         runInAction(() => {
           this.loading = false
           this.error = null
-          this.data = item
+          this.data = data.item
         })
       }
     } catch (error: any) {
