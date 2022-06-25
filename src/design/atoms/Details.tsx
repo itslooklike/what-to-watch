@@ -1,6 +1,10 @@
+import dayjs from 'dayjs'
+import duration from 'dayjs/plugin/duration'
 import { styled } from '@linaria/react'
 
 import type { IFilm } from '~/store/FilmsStore'
+
+dayjs.extend(duration)
 
 const Root = styled.div`
   display: flex;
@@ -49,7 +53,7 @@ export const Details = (props: TProps) => {
       <Col>
         <Item>
           <ItemName>Run Time</ItemName>
-          <ItemValue>{film.run_time}</ItemValue>
+          <ItemValue>{dayjs.duration(film.runTime, 'minutes').format('H[h] m[m]')}</ItemValue>
         </Item>
         <Item>
           <ItemName>Genre</ItemName>

@@ -10,7 +10,7 @@ export interface IFilm {
   director: string
   rating: number
   released: number
-  run_time: number
+  runTime: number
   scores_count: number
   videoLink: string
   videoPreviewLink: string
