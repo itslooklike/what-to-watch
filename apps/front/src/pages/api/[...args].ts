@@ -8,7 +8,6 @@ const proxy = createProxyMiddleware('/api', {
     '^/api': '/wtw',
   },
 
-  // @ts-expect-error какая-то ошибка в типах самой либы, в будущем будет версия 3, возможно с ней проблемы устранятся
   onProxyReq: fixRequestBody,
 })
 
