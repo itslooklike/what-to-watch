@@ -1,51 +1,77 @@
-# what-to-watch
+# Turborepo starter
 
-![Site Screenshot](./images/screen-1.png)
+This is an official Yarn v1 starter turborepo.
 
-Demo site: https://what-to-watch-kohl.vercel.app
+## What's inside?
 
----
+This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package manager. It includes the following packages/apps:
 
-## Stack
+### Apps and Packages
 
-- Typescript
-- NextJS
-- MobX
-- Linaria
-- SEO
-- BFF Proxy
-- Storybook
+- `docs`: a [Next.js](https://nextjs.org) app
+- `web`: another [Next.js](https://nextjs.org) app
+- `ui`: a stub React component library shared by both `web` and `docs` applications
+- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
-![Site Screenshot](./images/screen-2.png)
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-## Quick start with Docker
+### Utilities
 
-```sh
-docker build -t wtw .
-docker run --init --rm -itp 3000:3000 wtw
-# http://localhost:3000
-# `ctrl + c` - for exit
+This turborepo has some additional tools already setup for you:
+
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
+
+## Setup
+
+This repository is used in the `npx create-turbo` command, and selected when choosing which package manager you wish to use with your monorepo (Yarn).
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```
+cd my-turborepo
+yarn run build
 ```
 
-## Local develop
+### Develop
 
-```sh
-yarn     # install deps
-yarn dev # -> app:       http://localhost:3000/
-yarn sb  # -> storybook: http://localhost:6006/
+To develop all apps and packages, run the following command:
 
-# lint
-npx prettier --write 'src/**/*.{css,scss,ts,tsx,js,jsx}'
-npx eslint 'src/**/*.{js,jsx,ts,tsx}' --fix
-npx stylelint "src/**/*.{js,jsx,ts,tsx}" # not work with stylelint ^14.0.0: https://github.com/callstack/linaria/issues/930
+```
+cd my-turborepo
+yarn run dev
 ```
 
-![Site Screenshot](./images/screen-3.png)
+### Remote Caching
 
-## TO-DO
+Turborepo can use a technique known as [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-- [ ] Normal Auth (current working until refresh)
-- [ ] 404 page on dynamic routes
-- [ ] Save url to redirect after login
-- [ ] Store errors handling
-- [ ] Formik (for 2 inputs?... meeeehh)
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+
+```
+cd my-turborepo
+npx turbo login
+```
+
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
+
+```
+npx turbo link
+```
+
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Pipelines](https://turborepo.org/docs/core-concepts/pipelines)
+- [Caching](https://turborepo.org/docs/core-concepts/caching)
+- [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching)
+- [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
+- [Configuration Options](https://turborepo.org/docs/reference/configuration)
+- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)

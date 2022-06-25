@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
-
 import 'normalize.css'
 import './nprogress.css'
 import './globals.css'

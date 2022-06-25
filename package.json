@@ -1,70 +1,26 @@
 {
-  "name": "what-to-watch",
-  "version": "0.1.0",
+  "name": "my-turborepo",
+  "version": "0.0.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint:ts": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
-    "lint:css": "stylelint 'src/**/*.{js,jsx,ts,tsx}'",
-    "sb": "start-storybook -p 6006 -s public --ci",
-    "build-storybook": "build-storybook"
-  },
-  "dependencies": {
-    "@linaria/babel-preset": "^3.0.0-beta.21",
-    "@linaria/core": "^3.0.0-beta.21",
-    "@linaria/react": "^3.0.0-beta.21",
-    "@linaria/shaker": "^3.0.0-beta.21",
-    "@linaria/webpack-loader": "^3.0.0-beta.21",
-    "@svgr/webpack": "^6.2.1",
-    "axios": "^0.27.2",
-    "dayjs": "^1.11.3",
-    "graphql": "^16.5.0",
-    "graphql-request": "^4.3.0",
-    "http-proxy-middleware": "^2.0.6",
-    "mobx": "^6.6.0",
-    "mobx-react-lite": "^3.4.0",
-    "next": "12.1.6",
-    "next-compose-plugins": "^2.2.1",
-    "next-linaria": "^1.0.1-beta",
-    "normalize.css": "^8.0.1",
-    "nprogress": "^0.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-player": "^2.10.1"
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@babel/core": "^7.18.5",
-    "@linaria/stylelint": "^3.0.0-beta.21",
-    "@storybook/addon-actions": "^6.5.9",
-    "@storybook/addon-essentials": "^6.5.9",
-    "@storybook/addon-links": "^6.5.9",
-    "@storybook/builder-webpack5": "^6.5.9",
-    "@storybook/manager-webpack5": "^6.5.9",
-    "@storybook/react": "^6.5.9",
-    "@types/nprogress": "^0.2.0",
-    "@types/react": "^18.0.14",
-    "@types/react-dom": "^18.0.5",
-    "@typescript-eslint/eslint-plugin": "^5.28.0",
-    "@typescript-eslint/parser": "^5.28.0",
-    "babel-loader": "^8.2.5",
-    "eslint": "^8.18.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-import-resolver-typescript": "^2.7.1",
-    "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-react": "^7.30.0",
-    "prettier": "^2.7.1",
-    "react-docgen-typescript-loader": "^3.7.2",
-    "stylelint": "^14.9.1",
-    "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-config-recommended": "^8.0.0",
-    "typescript": "^4.7.4"
+    "eslint-config-custom": "*",
+    "prettier": "latest",
+    "turbo": "latest"
   },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "semi": false
-  }
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "packageManager": "yarn@1.22.19"
 }

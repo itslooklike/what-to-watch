@@ -116,7 +116,6 @@ export const Card = forwardRef<HTMLAnchorElement, TProps>((props, ref) => {
 
   const isShowVideo = isHover && film.videoLink
 
-  /* eslint-disable-next-line arrow-body-style */
   useEffect(() => {
     return () => {
       if (timerRef.current) {
