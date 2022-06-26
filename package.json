@@ -1,64 +1,33 @@
 {
-  "name": "what-to-watch",
-  "version": "0.1.0",
+  "name": "my-turborepo",
+  "version": "0.0.0",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint:ts": "eslint 'src/**/*.{js,jsx,ts,tsx}'",
-    "lint:css": "stylelint 'src/**/*.{js,jsx,ts,tsx}'",
-    "sb": "start-storybook -p 6006 -s public --ci",
-    "build-storybook": "build-storybook"
-  },
-  "dependencies": {
-    "@svgr/webpack": "^5.5.0",
-    "axios": "^0.24.0",
-    "dayjs": "^1.10.7",
-    "http-proxy-middleware": "^2.0.1",
-    "linaria": "^2.1.1",
-    "mobx": "^6.3.6",
-    "mobx-react-lite": "^3.2.2",
-    "next": "12.0.3",
-    "next-compose-plugins": "^2.2.1",
-    "next-linaria": "^0.11.0",
-    "normalize.css": "^8.0.1",
-    "nprogress": "^0.2.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-player": "^2.9.0"
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "build:front": "turbo run build --filter=front",
+    "build:cms": "turbo run build --filter=cms",
+    "start:front": "turbo run start --filter=front",
+    "start:cms": "turbo run start --filter=cms",
+    "heroku-postbuild": "if [ $CLIENT_ENV ]; then yarn run prod-front; elif [ $SERVER_ENV ]; then yarn run prod-cms; else echo no environment detected, please set CLIENT_ENV or SERVER_ENV; fi",
+    "prod-front": "yarn run build:front",
+    "prod-cms": "yarn run build:cms"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.0",
-    "@storybook/addon-actions": "^6.3.12",
-    "@storybook/addon-essentials": "^6.3.12",
-    "@storybook/addon-links": "^6.3.12",
-    "@storybook/react": "^6.3.12",
-    "@types/nprogress": "^0.2.0",
-    "@types/react": "^17.0.34",
-    "@types/react-dom": "^17.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.3.0",
-    "@typescript-eslint/parser": "^5.3.0",
-    "babel-loader": "^8.2.3",
-    "eslint": "^8.2.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-typescript": "^2.5.0",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.26.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.4.1",
-    "react-docgen-typescript-loader": "^3.7.2",
-    "stylelint": "^14.0.1",
-    "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-config-recommended": "^6.0.0",
-    "typescript": "^4.4.4"
+    "eslint-config-custom": "*",
+    "prettier": "latest",
+    "turbo": "latest"
   },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true,
-    "trailingComma": "es5",
-    "semi": false
-  }
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "packageManager": "yarn@1.22.19"
 }

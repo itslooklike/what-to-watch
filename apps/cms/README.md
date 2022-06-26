@@ -1,7 +1,6 @@
 #
 
 ```sh
-yarn
-yarn build
 yarn dev
+yarn dev --seed-data
 ```

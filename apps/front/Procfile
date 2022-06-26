@@ -1,0 +1,1 @@
+web: cd apps/front && yarn start
