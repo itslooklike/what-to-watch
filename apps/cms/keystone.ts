@@ -13,7 +13,7 @@ export default withAuth(
       port: PORT,
       maxFileSize: MiB * 1024 * 1024,
       cors: {
-        origin: 'http://localhost:3000',
+        origin: process.env.FRONT_URL || 'http://localhost:3000',
         credentials: true,
       },
       extendExpressApp: (app, createContext) => {

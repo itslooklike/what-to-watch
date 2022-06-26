@@ -10,7 +10,14 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "build:front": "turbo run build --filter=front",
+    "build:cms": "turbo run build --filter=cms",
+    "start:front": "turbo run start --filter=front",
+    "start:cms": "turbo run start --filter=cms",
+    "heroku-postbuild": "if [ $CLIENT_ENV ]; then yarn run prod-front; elif [ $SERVER_ENV ]; then yarn run prod-cms; else echo no environment detected, please set CLIENT_ENV or SERVER_ENV; fi",
+    "prod-front": "yarn run build:front",
+    "prod-cms": "yarn run build:cms"
   },
   "devDependencies": {
     "eslint-config-custom": "*",
