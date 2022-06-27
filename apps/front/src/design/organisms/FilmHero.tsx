@@ -228,14 +228,14 @@ export const FilmHero = observer((props: TProps) => {
       {playerModal}
       <Hero>
         <Background>
-          <BackgroundImg src={film.imageBackground.url} alt={film.name} />
+          <BackgroundImg src={film.imageBackground?.publicUrl} alt={film.name} />
         </Background>
         <Header />
         <Wrap>
           <Description>
             <Title>{film.name}</Title>
             <Meta>
-              <Genre>{film.genre.name}</Genre>
+              <Genre>{film.genre?.name}</Genre>
               <span>{film.released}</span>
             </Meta>
 
@@ -264,7 +264,7 @@ export const FilmHero = observer((props: TProps) => {
         <Info>
           <Poster>
             <PosterImg
-              src={film.imagePoster.url}
+              src={film.imagePoster?.publicUrl}
               alt={`${film.name} poster`}
               width="218"
               height="327"

@@ -1,13 +1,13 @@
 {
+  "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**"]
+      "outputs": ["dist/**", ".next/**", ".keystone/admin/**"]
     },
     "start": {
       "dependsOn": ["^build"]
     },
-    "start:app": {},
     "lint": {
       "outputs": []
     },

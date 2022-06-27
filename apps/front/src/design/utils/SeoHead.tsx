@@ -4,12 +4,16 @@ import type { IFilm } from '~/store/FilmsStore'
 const site = 'https://what-to-watch-kohl.vercel.app'
 
 type TProps = {
-  film: IFilm
+  film?: IFilm
   url: string
 }
 
 export const SeoHead = ({ film, url }: TProps) => {
-  const image = film.imagePreview.url
+  if (!film) {
+    return null
+  }
+
+  const image = film.imagePreview?.publicUrl
 
   return (
     <Head>

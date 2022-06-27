@@ -1,11 +1,22 @@
 import fs from 'fs'
 import path from 'path'
+import { v2 as cloudinary } from 'cloudinary'
+
 import { type KeystoneContext } from '@keystone-6/core/types'
+
 import { films } from './data-films'
 import { prepareToUpload } from './utils'
+import { isCloudinary, cloudApis } from '../config'
 
 // TODO: вытащить тип из схемы
 type FilmProps = typeof films[0]
+
+cloudinary.config({
+  cloud_name: cloudApis.cloudName,
+  api_key: cloudApis.apiKey,
+  api_secret: cloudApis.apiSecret,
+  secure: true,
+})
 
 export async function insertSeedData(context: KeystoneContext) {
   console.log(`🌱 Inserting seed data`)
@@ -18,14 +29,29 @@ export async function insertSeedData(context: KeystoneContext) {
 
   console.log(`💀 Reset data`)
   // `Promise.all` - not work?
+  await context.prisma.Actor.deleteMany()
+  await context.prisma.Comment.deleteMany()
   await context.prisma.Film.deleteMany()
   await context.prisma.Genre.deleteMany()
-  await context.prisma.Actor.deleteMany()
+
+  if (isCloudinary) {
+    await cloudinary.api.delete_resources_by_prefix('films/')
+  }
 
   const createFilm = async (filmData: FilmProps) => {
-    const imagePoster = path.resolve(__dirname + filmData.poster_image)
-    const imagePreview = path.resolve(__dirname + filmData.preview_image)
-    const imageBackground = path.resolve(__dirname + filmData.background_image)
+    console.log('🤖 __dirname', __dirname) // `../../seed`
+    console.log('🤖 process.cwd()', process.cwd()) // `/app/apps/cms`
+
+    // FIXME: `turborepo` paths strange?
+    const currentFolderName = path.basename(__dirname)
+    const seedFolderPath = path.join(process.cwd(), currentFolderName)
+    const imagePoster = path.join(seedFolderPath, filmData.poster_image)
+    const imagePreview = path.join(seedFolderPath, filmData.preview_image)
+    const imageBackground = path.join(seedFolderPath, filmData.background_image)
+
+    // const imagePoster = path.resolve(__dirname, filmData.poster_image)
+    // const imagePreview = path.resolve(__dirname, filmData.preview_image)
+    // const imageBackground = path.resolve(__dirname, filmData.background_image)
 
     let genre = await context.prisma.Genre.findFirst({ where: { name: filmData.genre } })
 
@@ -67,15 +93,18 @@ export async function insertSeedData(context: KeystoneContext) {
         genre: {
           connect: { id: genre.id },
         },
-        imagePoster: {
-          upload: prepareToUpload(imagePoster),
-        },
-        imagePreview: {
-          upload: prepareToUpload(imagePreview),
-        },
-        imageBackground: {
-          upload: prepareToUpload(imageBackground),
-        },
+
+        ...(isCloudinary
+          ? {
+              imagePoster: prepareToUpload(imagePoster),
+              imagePreview: prepareToUpload(imagePreview),
+              imageBackground: prepareToUpload(imageBackground),
+            }
+          : {
+              imagePoster: { upload: prepareToUpload(imagePoster) },
+              imagePreview: { upload: prepareToUpload(imagePreview) },
+              imageBackground: { upload: prepareToUpload(imageBackground) },
+            }),
       },
     })
   }

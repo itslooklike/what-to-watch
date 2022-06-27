@@ -2,20 +2,9 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import { gql } from 'graphql-request'
 
 import { graphQLClient } from '~/utils/api'
+import { CommentFragment } from '~/store/gql'
 import type { IStore } from '~/store'
 import type { IComment, ICommentAdd } from './types'
-
-const CommentFragment = gql`
-  fragment CommentFragment on Comment {
-    id
-    comment
-    rating
-    date
-    user {
-      name
-    }
-  }
-`
 
 const queryCommentsById = gql`
   ${CommentFragment}

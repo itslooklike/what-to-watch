@@ -129,10 +129,10 @@ export const Card = forwardRef<HTMLAnchorElement, TProps>((props, ref) => {
       <Root onMouseEnter={handleHover} onMouseLeave={handleLeave}>
         <ImgWrap>
           {isShowVideo ? (
-            <Video src={film.videoLink} autoPlay poster={film.imagePreview.url} muted />
+            <Video src={film.videoLink} autoPlay poster={film.imagePreview?.publicUrl} muted />
           ) : (
             <Img
-              src={film.imagePreview.url}
+              src={film.imagePreview?.publicUrl}
               alt={film.name}
               width="280"
               height="175"

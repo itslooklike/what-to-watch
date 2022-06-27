@@ -80,7 +80,13 @@ input StringFilter {
   contains: String
   startsWith: String
   endsWith: String
+  mode: QueryMode
   not: NestedStringFilter
+}
+
+enum QueryMode {
+  default
+  insensitive
 }
 
 input NestedStringFilter {
@@ -255,6 +261,7 @@ input StringNullableFilter {
   contains: String
   startsWith: String
   endsWith: String
+  mode: QueryMode
   not: NestedStringNullableFilter
 }
 
@@ -392,9 +399,6 @@ type Film {
   name: String
   description: String
   released: Int
-  imagePoster: ImageFieldOutput
-  imagePreview: ImageFieldOutput
-  imageBackground: ImageFieldOutput
   backgroundColor: String
   rating: Float
   scoresCount: Int
@@ -417,22 +421,58 @@ type Film {
     skip: Int! = 0
   ): [Comment!]
   commentsCount(where: CommentWhereInput! = {}): Int
+  imagePoster: CloudinaryImage_File
+  imagePreview: CloudinaryImage_File
+  imageBackground: CloudinaryImage_File
 }
 
-type ImageFieldOutput {
-  id: ID!
-  filesize: Int!
-  width: Int!
-  height: Int!
-  extension: ImageExtension!
-  url: String!
+type CloudinaryImage_File {
+  id: ID
+  filename: String
+  originalFilename: String
+  mimetype: String
+  encoding: String
+  publicUrl: String
+  publicUrlTransformed(transformation: CloudinaryImageFormat): String
 }
 
-enum ImageExtension {
-  jpg
-  png
-  webp
-  gif
+"""
+Mirrors the formatting options [Cloudinary provides](https://cloudinary.com/documentation/image_transformation_reference).
+All options are strings as they ultimately end up in a URL.
+"""
+input CloudinaryImageFormat {
+  """
+  Rewrites the filename to be this pretty string. Do not include `/` or `.`
+  """
+  prettyName: String
+  width: String
+  height: String
+  crop: String
+  aspect_ratio: String
+  gravity: String
+  zoom: String
+  x: String
+  y: String
+  format: String
+  fetch_format: String
+  quality: String
+  radius: String
+  angle: String
+  effect: String
+  opacity: String
+  border: String
+  background: String
+  overlay: String
+  underlay: String
+  default_image: String
+  delay: String
+  color: String
+  color_space: String
+  dpr: String
+  page: String
+  density: String
+  flags: String
+  transformation: String
 }
 
 input FilmWhereUniqueInput {
@@ -499,9 +539,6 @@ input FilmUpdateInput {
   name: String
   description: String
   released: Int
-  imagePoster: ImageFieldInput
-  imagePreview: ImageFieldInput
-  imageBackground: ImageFieldInput
   backgroundColor: String
   rating: Float
   scoresCount: Int
@@ -512,22 +549,21 @@ input FilmUpdateInput {
   runTime: Int
   genre: GenreRelateToOneForUpdateInput
   comments: CommentRelateToManyForUpdateInput
+  imagePoster: Upload
+  imagePreview: Upload
+  imageBackground: Upload
 }
-
-input ImageFieldInput {
-  upload: Upload!
-}
-
-"""
-The `Upload` scalar type represents a file upload.
-"""
-scalar Upload
 
 input GenreRelateToOneForUpdateInput {
   create: GenreCreateInput
   connect: GenreWhereUniqueInput
   disconnect: Boolean
 }
+
+"""
+The `Upload` scalar type represents a file upload.
+"""
+scalar Upload
 
 input FilmUpdateArgs {
   where: FilmWhereUniqueInput!
@@ -538,9 +574,6 @@ input FilmCreateInput {
   name: String
   description: String
   released: Int
-  imagePoster: ImageFieldInput
-  imagePreview: ImageFieldInput
-  imageBackground: ImageFieldInput
   backgroundColor: String
   rating: Float
   scoresCount: Int
@@ -551,6 +584,9 @@ input FilmCreateInput {
   runTime: Int
   genre: GenreRelateToOneForCreateInput
   comments: CommentRelateToManyForCreateInput
+  imagePoster: Upload
+  imagePreview: Upload
+  imageBackground: Upload
 }
 
 input GenreRelateToOneForCreateInput {
@@ -928,11 +964,6 @@ enum KeystoneAdminUIFieldMetaItemViewFieldMode {
   edit
   read
   hidden
-}
-
-enum QueryMode {
-  default
-  insensitive
 }
 
 type KeystoneAdminUISort {

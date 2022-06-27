@@ -4,39 +4,14 @@ import { gql } from 'graphql-request'
 import { graphQLClient } from '~/utils/api'
 import type { IStore } from '~/store'
 import type { IFilm } from '~/store/FilmsStore'
+import { FilmFragment } from '~/store/gql'
 
 const queryFavoriteFilms = gql`
+  ${FilmFragment}
   query favoriteFilms($id: ID!) {
     user(where: { id: $id }) {
       favoriteFilms {
-        id
-        name
-        description
-        released
-        backgroundColor
-        rating
-        scoresCount
-        director
-        videoLink
-        videoPreviewLink
-        runTime
-        genre {
-          id
-          name
-        }
-        starring {
-          id
-          name
-        }
-        imagePoster {
-          url
-        }
-        imagePreview {
-          url
-        }
-        imageBackground {
-          url
-        }
+        ...FilmFragment
       }
     }
   }

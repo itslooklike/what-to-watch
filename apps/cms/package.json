@@ -1,16 +1,17 @@
 {
-  "name": "keystone-app",
+  "name": "cms",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "keystone dev",
     "dev2": "rm -rf ./public/images && keystone dev --seed-data",
-    "start": "keystone start",
+    "start": "keystone prisma migrate deploy && keystone start",
     "build": "keystone build",
     "postinstall": "keystone postinstall"
   },
   "dependencies": {
     "@keystone-6/auth": "^3.0.0",
+    "@keystone-6/cloudinary": "^3.0.0",
     "@keystone-6/core": "^2.0.0",
     "@keystone-6/fields-document": "^3.0.0",
     "mime": "^3.0.0",

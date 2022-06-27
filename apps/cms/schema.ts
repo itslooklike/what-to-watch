@@ -1,4 +1,5 @@
 import { list } from '@keystone-6/core'
+import { cloudinaryImage } from '@keystone-6/cloudinary'
 import {
   text,
   integer,
@@ -11,6 +12,18 @@ import {
 } from '@keystone-6/core/fields'
 import { document } from '@keystone-6/fields-document'
 import { Lists } from '.keystone/types'
+import { IMG_STORE_TYPE, isCloudinary, cloudApis } from './config'
+
+const cloudinaryStorage = cloudinaryImage({
+  cloudinary: {
+    cloudName: cloudApis.cloudName,
+    apiKey: cloudApis.apiKey,
+    apiSecret: cloudApis.apiSecret,
+    folder: 'films',
+  },
+})
+
+const minioStorage = image({ storage: IMG_STORE_TYPE === 'minio' ? 'minio_s3' : 'local' })
 
 export const lists: Lists = {
   User: list({
@@ -122,27 +135,28 @@ export const lists: Lists = {
       name: text(),
       description: text(),
       released: integer(),
-      imagePoster: image({ storage: 'my_local_images' }),
-      imagePreview: image({ storage: 'my_local_images' }),
-      imageBackground: image({ storage: 'my_local_images' }),
       backgroundColor: text(),
       rating: float(),
       scoresCount: integer(),
       director: text(),
       videoLink: text(),
       videoPreviewLink: text(),
-      starring: relationship({
-        ref: 'Actor.films',
-        many: true,
-      }),
+      starring: relationship({ ref: 'Actor.films', many: true }),
       runTime: integer(),
-      genre: relationship({
-        ref: 'Genre.films',
-      }),
-      comments: relationship({
-        ref: 'Comment.film',
-        many: true,
-      }),
+      genre: relationship({ ref: 'Genre.films' }),
+      comments: relationship({ ref: 'Comment.film', many: true }),
+
+      ...(isCloudinary
+        ? {
+            imagePoster: cloudinaryStorage,
+            imagePreview: cloudinaryStorage,
+            imageBackground: cloudinaryStorage,
+          }
+        : {
+            imagePoster: minioStorage,
+            imagePreview: minioStorage,
+            imageBackground: minioStorage,
+          }),
     },
   }),
   Comment: list({

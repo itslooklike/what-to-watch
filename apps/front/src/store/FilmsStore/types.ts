@@ -1,5 +1,6 @@
 type UploadUrl = {
-  url: string
+  // url: string
+  publicUrl: string
 }
 
 export interface IFilm {
@@ -22,7 +23,7 @@ export interface IFilm {
     id: string
     name: string
   }
-  imageBackground: UploadUrl
-  imagePoster: UploadUrl
-  imagePreview: UploadUrl
+  imagePoster?: UploadUrl
+  imagePreview?: UploadUrl
+  imageBackground?: UploadUrl
 }

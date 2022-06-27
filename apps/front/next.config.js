@@ -12,6 +12,12 @@ const withSVGr = {
   },
 }
 
-const config = withPlugins([[withSVGr], [withLinaria]])
+const nextConfig = {
+  env: {
+    CMS_URL: process.env.CMS_URL,
+  },
+}
+
+const config = withPlugins([[withSVGr], [withLinaria]], nextConfig)
 
 module.exports = config

@@ -66,13 +66,13 @@ export class UserStore {
     this.loading = true
 
     try {
-      const { authenticateUserWithPassword: data } = await graphQLClient.request(mutationAuth, {
+      const { authenticateUserWithPassword } = await graphQLClient.request(mutationAuth, {
         email,
         password,
       })
 
-      if (data.message) {
-        const { data, errors } = await graphQLClient.request(mutationCreateUser, {
+      if (authenticateUserWithPassword.message) {
+        const resp = await graphQLClient.request(mutationCreateUser, {
           data: {
             name: 'coon' + Date.now(),
             email,
@@ -80,20 +80,20 @@ export class UserStore {
           },
         })
 
-        if (errors && errors.length) {
-          throw new Error(data.message)
+        if (resp.errors && resp.errors.length) {
+          throw new Error(resp.data.message)
         }
 
         runInAction(() => {
           this.loading = false
           this.error = null
-          this.data = data.createUser
+          this.data = resp.createUser
         })
       } else {
         runInAction(() => {
           this.loading = false
           this.error = null
-          this.data = data.item
+          this.data = authenticateUserWithPassword.item
         })
       }
     } catch (error: any) {

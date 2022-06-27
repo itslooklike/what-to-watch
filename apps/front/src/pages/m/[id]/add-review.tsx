@@ -87,12 +87,12 @@ const MoviePageAddReviews: NextPage = () => {
       <LNoFooter>
         <Top>
           <Background>
-            <Image src={film.imageBackground.url} alt={film.name} />
+            <Image src={film.imageBackground?.publicUrl} alt={film.name} />
           </Background>
           <Header title={headerTitle} />
           <Poster>
             <PosterImage
-              src={film.imagePoster.url}
+              src={film.imagePoster?.publicUrl}
               alt={`${film.name} poster`}
               width="218"
               height="327"

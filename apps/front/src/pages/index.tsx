@@ -14,6 +14,10 @@ const Home: NextPage = () => {
   const { filmsStore } = useMobxStores()
   const router = useRouter()
 
+  if (!filmsStore.firstFilm) {
+    return null
+  }
+
   return (
     <>
       <Head>

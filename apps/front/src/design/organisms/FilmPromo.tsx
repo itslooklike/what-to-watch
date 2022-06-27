@@ -130,14 +130,14 @@ export const FilmPromo = observer((props: TProps) => {
     <Card>
       {playerModal}
       <CardBg>
-        <CardImg src={film.imageBackground.url} alt={film.name} />
+        <CardImg src={film.imageBackground?.publicUrl} alt={film.name} />
       </CardBg>
       <Header />
       <CardWrap>
         <CardInfo>
           <CardPoster>
             <CardPosterImg
-              src={film.imagePoster.url}
+              src={film.imagePoster?.publicUrl}
               alt={`${film.name} poster`}
               width="218"
               height="327"
@@ -151,7 +151,7 @@ export const FilmPromo = observer((props: TProps) => {
             </CardTitle>
 
             <CardMeta>
-              <CardGenre>{film.genre.name}</CardGenre>
+              <CardGenre>{film.genre?.name}</CardGenre>
               <span>{film.released}</span>
             </CardMeta>
             <CardButtons>

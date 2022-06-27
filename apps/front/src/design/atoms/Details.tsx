@@ -57,7 +57,7 @@ export const Details = (props: TProps) => {
         </Item>
         <Item>
           <ItemName>Genre</ItemName>
-          <ItemValue>{film.genre.name}</ItemValue>
+          <ItemValue>{film.genre?.name}</ItemValue>
         </Item>
         <Item>
           <ItemName>Released</ItemName>

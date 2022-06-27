@@ -5,12 +5,12 @@ import { insertSeedData } from './seed'
 
 const MiB = 10
 
-const PORT = 3022
+const PORT = process.env.PORT || 3022
 
 export default withAuth(
   config({
     server: {
-      port: PORT,
+      port: +PORT,
       maxFileSize: MiB * 1024 * 1024,
       cors: {
         origin: process.env.FRONT_URL || 'http://localhost:3000',
@@ -33,12 +33,16 @@ export default withAuth(
       },
     },
     db: {
-      provider: 'sqlite',
-      url: 'file:./keystone.db',
+      provider: 'postgresql',
+      url: process.env.DATABASE_URL || 'postgres://postgres:postgres@localhost:5432/keystone',
+      useMigrations: true,
+      idField: {
+        kind: 'uuid',
+      },
       async onConnect(context) {
-        if (process.argv.includes('--seed-data')) {
+        const firstFilm = await context.prisma.Film.findFirst({})
+        if (!firstFilm) {
           await insertSeedData(context)
-          // process.exit();
         }
       },
     },
@@ -46,7 +50,7 @@ export default withAuth(
       isAccessAllowed: (context) => !!context.session?.data,
     },
     storage: {
-      my_local_images: {
+      local: {
         kind: 'local',
         type: 'image',
         generateUrl: (path) => `http://localhost:${PORT}/images${path}`,
@@ -54,6 +58,16 @@ export default withAuth(
           path: '/images',
         },
         storagePath: 'public/images',
+      },
+      minio_s3: {
+        kind: 's3',
+        type: 'image',
+        bucketName: 'for-local-testing',
+        region: 'us-west-2',
+        accessKeyId: 'vTWOl8c06CsLk1W4',
+        secretAccessKey: 'Fr6zRM3VdUzQ42cosjaWYnUrlWjS1j7C',
+        endpoint: 'http://127.0.0.1:9000/',
+        forcePathStyle: true,
       },
     },
     lists,

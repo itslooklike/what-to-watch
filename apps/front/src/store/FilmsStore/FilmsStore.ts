@@ -2,39 +2,14 @@ import { makeAutoObservable, runInAction } from 'mobx'
 import { gql } from 'graphql-request'
 import { graphQLClient } from '~/utils/api'
 import type { IStore } from '~/store'
+import { FilmFragment } from '~/store/gql'
 import type { IFilm } from './types'
 
 const queryFilms = gql`
+  ${FilmFragment}
   query films {
     films {
-      id
-      name
-      description
-      released
-      backgroundColor
-      rating
-      scoresCount
-      director
-      videoLink
-      videoPreviewLink
-      runTime
-      genre {
-        id
-        name
-      }
-      starring {
-        id
-        name
-      }
-      imagePoster {
-        url
-      }
-      imagePreview {
-        url
-      }
-      imageBackground {
-        url
-      }
+      ...FilmFragment
     }
   }
 `
@@ -86,7 +61,7 @@ export class FilmsStore {
   }
 
   get filmGenres() {
-    return Array.from(new Set(this.data.map((item) => item.genre.name)))
+    return Array.from(new Set(this.data.map((item) => item.genre?.name)))
   }
 
   get films() {
@@ -99,7 +74,7 @@ export class FilmsStore {
 
   selectFilmsByGenre(genre: string) {
     if (genre) {
-      return this.data.filter((film) => film.genre.name === genre)
+      return this.data.filter((film) => film.genre?.name === genre)
     }
 
     return this.data
@@ -111,7 +86,7 @@ export class FilmsStore {
 
   selectLikeThis(currentFilm: IFilm) {
     return this.data.filter(
-      (film) => film.genre === currentFilm.genre && film.id !== currentFilm.id
+      (film) => film.genre?.name === currentFilm.genre?.name && film.id !== currentFilm.id
     )
   }
 }
