@@ -73,7 +73,6 @@ export class CommentsStore {
           comment: comment.comment,
           rating: comment.rating,
           film: { connect: { id: filmId } },
-          user: { connect: { id: this.rootStore.userStore.user?.id } },
         },
       })
 

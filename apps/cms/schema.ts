@@ -14,14 +14,15 @@ import { document } from '@keystone-6/fields-document'
 import { Lists } from '.keystone/types'
 import { IMG_STORE_TYPE, isCloudinary, cloudApis } from './config'
 
-const cloudinaryStorage = cloudinaryImage({
-  cloudinary: {
-    cloudName: cloudApis.cloudName,
-    apiKey: cloudApis.apiKey,
-    apiSecret: cloudApis.apiSecret,
-    folder: 'films',
-  },
-})
+const cloudinaryStorage = () =>
+  cloudinaryImage({
+    cloudinary: {
+      cloudName: cloudApis.cloudName,
+      apiKey: cloudApis.apiKey,
+      apiSecret: cloudApis.apiSecret,
+      folder: 'films',
+    },
+  })
 
 const minioStorage = image({ storage: IMG_STORE_TYPE === 'minio' ? 'minio_s3' : 'local' })
 
@@ -148,9 +149,9 @@ export const lists: Lists = {
 
       ...(isCloudinary
         ? {
-            imagePoster: cloudinaryStorage,
-            imagePreview: cloudinaryStorage,
-            imageBackground: cloudinaryStorage,
+            imagePoster: cloudinaryStorage(),
+            imagePreview: cloudinaryStorage(),
+            imageBackground: cloudinaryStorage(),
           }
         : {
             imagePoster: minioStorage,
@@ -167,11 +168,21 @@ export const lists: Lists = {
       film: relationship({ ref: 'Film.comments' }),
       user: relationship({ ref: 'User.comments' }),
     },
+    hooks: {
+      resolveInput: ({ resolvedData, context }) => {
+        const { date } = resolvedData
+        if (!date) {
+          return {
+            ...resolvedData,
+            date: new Date(),
+            user: { connect: { id: context.session.itemId } },
+          }
+        }
+        return resolvedData
+      },
+    },
   }),
   Genre: list({
-    // ui: {
-    //   isHidden: true,
-    // },
     fields: {
       name: text(),
       films: relationship({ ref: 'Film.genre', many: true }),

@@ -1,39 +1,31 @@
-#
+# what-to-watch
 
-https://wtw-front.herokuapp.com
-https://wtw-cms.herokuapp.com
-
-## dev urls
-
-- http://localhost:3000/
-- http://localhost:3022/
-
-## todo
-
-- разобраться с `__dirname` (`turborepo`)
-  - при `yarn dev` - все нормально
-  - при `yarn build && yarn start` - НЕ нормально
-- разобраться, почему при билде фронта, еще и билдится cms (`postinstall`?) - требует SESSION_SECRET
-- убрать и обновить креды
-- добиться легкого старта в дев режиме
-  - в dev не работают картинки
-  - генерится миграция
-- обновить storybook
+- https://wtw-front.herokuapp.com
+- https://wtw-cms.herokuapp.com
 
 ## develop
-
-```sh
-yarn
-yarn build
-yarn dev
-```
-
-## develop local env
 
 ```sh
 # postgres
 docker run -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=keystone -p 5432:5432 postgres
 
+## yarn, yarn build, yarn dev - в корне не работает из-за монорепы
+## нужно переименовать publicUrl в url при локальной разработке
+
+cd apps/cms
+yarn
+yarn dev
+# http://localhost:3022/
+
+cd apps/front
+yarn
+yarn dev
+# http://localhost:3000/
+```
+
+## others...
+
+```sh
 # minio
 docker run -p 9000:9000 -p 9001:9001 quay.io/minio/minio server /data --console-address ":9001"
 # TODO: automatize
@@ -43,7 +35,7 @@ docker run -p 9000:9000 -p 9001:9001 quay.io/minio/minio server /data --console-
 # - create service account
 ```
 
-## heroku
+## heroku setup
 
 ```sh
 heroku create -a wtw-front
@@ -85,11 +77,8 @@ heroku config:set YARN_PRODUCTION=false -a wtw-cms
 
 heroku logs --tail -a wtw-cms
 heroku logs --tail -a wtw-front
-```
 
-## heroku git
-
-```sh
+# GIT
 git remote add wtw-front https://git.heroku.com/wtw-front.git
 git remote add wtw-cms https://git.heroku.com/wtw-cms.git
 
@@ -97,7 +86,21 @@ git push wtw-cms main
 git push wtw-front main
 ```
 
-##
+## external dependencies
 
 - `db` - `postgres`
 - `store` - `local` | `minio` | `cloudinary`
+
+## fixme
+
+- разобраться с `__dirname` (`turborepo`)
+  - при `yarn dev` - все нормально
+  - при `yarn build && yarn start` - НЕ нормально
+- разобраться, почему при билде фронта, еще и билдится cms (`postinstall`?) - требует SESSION_SECRET
+- добиться легкого старта в дев режиме
+  - в dev не работают картинки
+  - генерится миграция
+  - нужно менять publicUrl
+- обновить storybook
+- вкуртить авторизацию
+  - проверять наличие `keystonejs-session`

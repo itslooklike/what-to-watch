@@ -11,13 +11,6 @@ import { isCloudinary, cloudApis } from '../config'
 // TODO: вытащить тип из схемы
 type FilmProps = typeof films[0]
 
-cloudinary.config({
-  cloud_name: cloudApis.cloudName,
-  api_key: cloudApis.apiKey,
-  api_secret: cloudApis.apiSecret,
-  secure: true,
-})
-
 export async function insertSeedData(context: KeystoneContext) {
   console.log(`🌱 Inserting seed data`)
 
@@ -35,6 +28,13 @@ export async function insertSeedData(context: KeystoneContext) {
   await context.prisma.Genre.deleteMany()
 
   if (isCloudinary) {
+    cloudinary.config({
+      cloud_name: cloudApis.cloudName,
+      api_key: cloudApis.apiKey,
+      api_secret: cloudApis.apiSecret,
+      secure: true,
+    })
+
     await cloudinary.api.delete_resources_by_prefix('films/')
   }
 
